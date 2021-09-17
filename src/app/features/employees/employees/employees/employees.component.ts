@@ -15,7 +15,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params["id"]) {
-        this.getCandicateById(params["id"])
+        this.getEmplooyesById(params["id"])
       } else {
         this.getEmployees();
       }
@@ -24,7 +24,7 @@ export class EmployeesComponent implements OnInit {
   getEmployees() {
     this.employeesService.getEmplooyes().subscribe(data => this.employees = data)
   }
-  getCandicateById(id:number){
+  getEmplooyesById(id:number){
     this.employeesService.getEmplooyesId(id).subscribe(data => this.employees= data)
   }
 }
