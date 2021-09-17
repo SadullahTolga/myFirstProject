@@ -48,8 +48,9 @@ export class CandidateAddComponent implements OnInit {
   }
 
   add() {
-    this.checkDublicateTc();
     this.checkDuplicateEmail();
+    this.checkDublicateTc();
+    
     this.checkDublicatePassword();
     if (this.candidateAddForm.valid) {
       if (!this.checkNatId && !this.checkEmail && !this.checkPassword) {

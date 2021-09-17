@@ -66,7 +66,11 @@ export class EmployeesAddComponent implements OnInit {
   }
 
   checkEmailWebsite(){
-    
+    let website=this.employeesAddForm.value["website"]
+
+
+    let mail =this.employeesAddForm.value["email"]
+
   }
 
 }
