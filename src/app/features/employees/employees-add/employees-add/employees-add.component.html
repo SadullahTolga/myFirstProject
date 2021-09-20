@@ -1,1 +1,106 @@
-<p>employees-add works!</p>
+<div class="container">
+
+    <div class="login-box" style="padding-top: 100px;background: linear-gradient(#141e30, #243b55);">
+        <h2>Sign in</h2>
+        <form [formGroup]="employeesAddForm">
+            <div class="user-box">
+                <small  class="form-text text-danger" 
+                *ngIf="employeesAddForm.get('companyName').hasError('required')&&employeesAddForm.get('companyName').touched">Company Name is required</small>
+
+                <input class="form-control" type="text" id="companyName" formControlName="companyName" placeholder="">
+                <label>Company Name</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="text" id="email" formControlName="email" placeholder="">
+                <label>E-mail</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="password" id="password" formControlName="password" placeholder="">
+                <label>Password</label>
+            </div>
+            <div class="user-box">
+                <input [(ngModel)]="confirmPassword" class="form-control" type="password" id="confirmPassword"
+                    formControlName="confirmPassword" placeholder="">
+                <label>Password</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="text" id="phoneNumber" formControlName="phoneNumber"
+                    placeholder="">
+                <label>Phone Number</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="text" id="website" formControlName="website"
+                    placeholder="">
+                <label>Website</label>
+            </div>
+            
+            <a (click)="addEmployer()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </a>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="content " >
+    <div class="col-md-12" style="padding-right: 400px;">
+        <div class="brand-title">ETİYA</div>
+        <form [formGroup]="candidateAddForm">
+            <div class="form-group mb-3 " style="font-family: sans-serif">
+                <label>Kullanıcı Email</label>
+                <input class="form-control" type="text" id="email" formControlName="email" placeholder="Kullanıcı email" />
+            </div>
+            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <label>First Name</label>
+                <input class="form-control" type="text" id="firstName" formControlName="firstName" placeholder="firstName" />
+            </div>
+            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <label>Last Name</label>
+                <input class="form-control" type="text" id="lastName" formControlName="lastName" placeholder="Kullanıcı lastName" />
+            </div>
+            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <label>Kullanıcı Birthday</label>
+                <input class="form-control" type="number" id="birthYear" formControlName="birthYear" placeholder="Kullanıcı birthday" />
+            </div>
+            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <label>Kullanıcı nationalityId</label>
+                <input class="form-control" type="text" id="nationalityId" formControlName="nationalityId" placeholder="Kullanıcı nationalityId" />
+            </div>
+            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <label>Kullanıcı password</label>
+                <input [(ngModel)]="password" class="form-control" type="password" id="password" formControlName="password" placeholder="Kullanıcı password" />
+            </div>
+            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                <label>Kullanıcı confirmDuplicate</label>
+                <input  [(ngModel)]="confirmPassword" class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Kullanıcı password" />
+                    
+            </div>
+            <button class="btn btn-primary btn-fill" (click)="add()">Aday Kayıt</button>
+        </form>
+    </div>
+</div> -->

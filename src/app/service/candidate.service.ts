@@ -10,6 +10,7 @@ export class CandidateService {
   apiUrl="https://javareactcamp-hrms-backend.herokuapp.com/api/candidates/"
   apiUrlUser= "https://javareactcamp-hrms-backend.herokuapp.com/api/"
   apiUrlId="https://javareactcamp-hrms-backend.herokuapp.com/api/candidates/get/byId?candId="
+  apiUrlLogin="https://javareactcamp-hrms-backend.herokuapp.com/api/candidates/get/"
   constructor(private httpClient:HttpClient) { }
 
   getCandidate():Observable<Candidate[]>{
@@ -29,5 +30,11 @@ export class CandidateService {
   getCandidateId(id:number):Observable<Candidate[]>{
     return this.httpClient.get<Candidate[]>(this.apiUrl+id)
 
+  }
+  enterCandidate(candidate:Candidate):Observable<Candidate[]>{
+    return this.httpClient.get<Candidate[]>(this.apiUrlLogin+"byEmailAndPW?email="+candidate.email+"&password="+candidate.password)
+  }
+  userExistsByLogin(candidate:Candidate):Observable<Candidate[]>{
+    return this.httpClient.get<Candidate[]>(this.apiUrlLogin + "/exists/byEmailAndPW?email="+candidate.email+ "&password="+candidate.password )
   }
 }

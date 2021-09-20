@@ -5,6 +5,7 @@ import { EmployerUpdate } from "./emplooyesUptade";
 export interface Employer{
     id: number;
     email: string;
+    password:string;
     profileImgId?: any;
     images: Image[];
     createdAt: Date;

@@ -1,6 +1,7 @@
 export interface Candidate{
     id:number
     email:string
+    password:string
     profileImgId:string
     images:[]
     createdAt:string

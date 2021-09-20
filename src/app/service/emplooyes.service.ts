@@ -18,7 +18,7 @@ export class EmplooyesService {
   }
 
   addEmplooyes(emplooyesId: Employer): Observable<Employer[]> {
-    return this.httpClient.post<Employer[]>(this.apiUrl , emplooyesId)
+    return this.httpClient.post<Employer[]>(this.apiUrlAdd , emplooyesId)
   }
   getEmplooyesId(id:number):Observable<Employer[]>{
     return  this.httpClient.get<Employer[]>(this.apiUrlGetId+id)
@@ -27,4 +27,5 @@ export class EmplooyesService {
   checkEmployeeUserEmail(email:string):Observable<Employer[]>{
     return this.httpClient.get<Employer[]>(this.apiUrl+"users/exists/byEmail?email="+ email)
   }
+  
 }

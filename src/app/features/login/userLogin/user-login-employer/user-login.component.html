@@ -1,0 +1,27 @@
+<div   class="container">
+
+  <div class="login-box" style="padding-top: 100px;background: linear-gradient(#141e30, #243b55);">
+    <h2>Login</h2>
+
+    <form [formGroup]="loginForm">
+      <div class="user-box">
+        <input class="form-control" type="text" id="email" formControlName="email" placeholder="">
+        <label>E-mail</label>
+      </div>
+      <div class="user-box">
+        <input class="form-control" type="password" id="password" formControlName="password" placeholder="">
+        <label>Password</label>
+      </div>
+
+      <a routerLink="/tinjob" (click)="login()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </a>
+    </form>
+
+  </div>
+
+</div>

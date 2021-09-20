@@ -11,7 +11,8 @@ import { EmplooyesService } from 'src/app/service/emplooyes.service';
 export class EmployeesComponent implements OnInit {
   employees: Employer[] = []
   constructor(private employeesService: EmplooyesService , private activatedRoute:ActivatedRoute) { }
-
+  totalRecords: number
+  page: number = 1
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params["id"]) {
@@ -22,9 +23,11 @@ export class EmployeesComponent implements OnInit {
     })
   }
   getEmployees() {
-    this.employeesService.getEmplooyes().subscribe(data => this.employees = data)
+    this.employeesService.getEmplooyes().subscribe((response:any )=> { this.employees = response.data
+      this.totalRecords = response.data.length })
   }
   getEmplooyesById(id:number){
-    this.employeesService.getEmplooyesId(id).subscribe(data => this.employees= data)
+    this.employeesService.getEmplooyesId(id).subscribe((data:any) => {this.employees= data.data}
+    )
   }
 }

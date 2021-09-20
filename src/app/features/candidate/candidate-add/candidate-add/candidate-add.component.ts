@@ -35,10 +35,10 @@ export class CandidateAddComponent implements OnInit {
   }
   createAddForm() {
     this.candidateAddForm = this.formBuilder.group({
-
-      email: ["", [Validators.required,Validators.email]],
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+
       birthYear: [0, Validators.required],
       nationalityId: ["", Validators.required],
       password: ["", Validators.required],
@@ -50,7 +50,7 @@ export class CandidateAddComponent implements OnInit {
   add() {
     this.checkDuplicateEmail();
     this.checkDublicateTc();
-    
+
     this.checkDublicatePassword();
     if (this.candidateAddForm.valid) {
       if (!this.checkNatId && !this.checkEmail && !this.checkPassword) {
@@ -75,7 +75,7 @@ export class CandidateAddComponent implements OnInit {
       }
       else {
         this.checkEmail = false
-        
+
       }
     })
   }
@@ -88,7 +88,7 @@ export class CandidateAddComponent implements OnInit {
       }
       else {
         this.checkNatId = false
-        
+
       }
     })
   }
@@ -96,7 +96,7 @@ export class CandidateAddComponent implements OnInit {
   checkDublicatePassword() {
     if (this.password === this.confirmPassword) {
       this.checkPassword = true
-      
+
     }
     else {
       this.checkPassword = false

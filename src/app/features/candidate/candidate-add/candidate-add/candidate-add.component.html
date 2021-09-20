@@ -1,4 +1,73 @@
-<div class="content " >
+<div class="container">
+
+    <div class="login-box" style="padding-top: 100px; background: linear-gradient(#141e30, #243b55);">
+        <h2>Sign in</h2>
+        <form [formGroup]="candidateAddForm">
+            <div class="user-box">
+                <input class="form-control" type="text" id="firstName" formControlName="firstName" placeholder="">
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="text" id="lastName" formControlName="lastName" placeholder="">
+                <label>Lastname</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="text" id="email" formControlName="email" placeholder="">
+                <label>E-mail</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="number" id="birthYear" formControlName="birthYear" placeholder="">
+                <label>Birth Year</label>
+            </div>
+            <div class="user-box">
+                <input class="form-control" type="text" id="nationalityId" formControlName="nationalityId"
+                    placeholder="">
+                <label>National ID</label>
+            </div>
+            <div class="user-box">
+                <input [(ngModel)]="password" class="form-control" type="password" id="password"
+                    formControlName="password" placeholder="">
+                <label>Password</label>
+            </div>
+            <div class="user-box">
+                <input [(ngModel)]="confirmPassword" class="form-control" type="password" id="confirmPassword"
+                    formControlName="confirmPassword" placeholder="">
+                <label>Password</label>
+            </div>
+            <a (click)="add()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+            </a>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="content " >
     <div class="col-md-12" style="padding-right: 400px;">
         <div class="brand-title">ETİYA</div>
         <form [formGroup]="candidateAddForm">
@@ -31,7 +100,7 @@
                 <input  [(ngModel)]="confirmPassword" class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Kullanıcı password" />
                     
             </div>
-            <button class="btn btn-primary btn-fill" (click)="add()">Aday ekle</button>
+            <button class="btn btn-primary btn-fill" (click)="add()">Aday Kayıt</button>
         </form>
     </div>
-</div>
+</div> -->

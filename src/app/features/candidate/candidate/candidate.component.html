@@ -1,1 +1,79 @@
-<p>candidate works!</p>
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
+<div style="margin-top: 15px;" class="container">
+    <div class="row">
+        <div class="overflow-auto">
+        <div >
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div >
+                            <h4 class="title">Candidate<span>List</span></h4>
+                            
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+                <div class="panel-body table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>E-mail</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>National ID</th>
+                                <th>Birth Year</th>
+                                <th>GitHub Account</th>
+                                <th>LinkedIn Account</th>
+                                <th>CVS</th>
+                                <th>Candidate Job Experiences</th>
+                                <th>Candidate Languages</th>
+                                <th>Candidate Schools</th>
+                                <th>Candidate Skills</th>
+                                
+                            </tr>
+                        </thead>
+                       
+                            
+                                <tbody  class="customtable ">
+                                    
+                                    <tr *ngFor="let candidate of candidates  ">
+                                        <td  style="font-family: serif;">{{candidate.id}}</td>
+                                        <td style="font-family: serif;">{{candidate.email}}</td>
+                                        <td style="font-family: serif;">{{candidate.firstName}}</td>
+                                        <td style="font-family: serif;">{{candidate.lastName}}</td>
+                                        <td style="font-family: serif;">{{candidate.nationalityId}}</td>
+                                        <td style="font-family: serif;">{{candidate.birthYear}}</td>
+                                        <td style="font-family: serif;">{{candidate.githubAccount}}</td>
+                                        <td style="font-family: serif;">{{candidate.linkedinAccount}}</td>
+                                        <td style="font-family: serif;">{{candidate.cvs}}</td>
+                                        <td style="font-family: serif;">{{candidate.candidateJobExperiences}}</td>
+                                        <td style="font-family: serif;">{{candidate.candidateLanguages}}</td>
+                                        <td style="font-family: serif;">{{candidate.candidateSchools}}</td>
+                                        <td style="font-family: serif;">{{candidate.candidateSkills}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            
+                        
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

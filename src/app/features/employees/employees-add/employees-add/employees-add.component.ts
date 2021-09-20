@@ -13,6 +13,7 @@ export class EmployeesAddComponent implements OnInit {
   employees: Employer[] = []
   employeesAddForm: FormGroup
   checkEmail: boolean = false
+  checkDomain:boolean=false
   password:string
   confirmPassword:string
   checkPassword:boolean=false
@@ -29,6 +30,7 @@ export class EmployeesAddComponent implements OnInit {
       companyName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
+      confirmPassword:["",Validators.required],
       phoneNumber: ["", Validators.required],
       website: ["", Validators.required]
     })
@@ -38,6 +40,26 @@ export class EmployeesAddComponent implements OnInit {
 
     this.employeesService.getEmplooyes().subscribe(data => this.employees = data)
 
+  }
+
+  addEmployer() {
+   
+    if (this.employeesAddForm.valid) {
+      if (!this.checkPassword) {
+        let employerModel = Object.assign({}, this.employeesAddForm.value);
+        this.employeesService.addEmplooyes(employerModel).subscribe((response: any) => {
+          console.log(employerModel)
+          this.toastrService.success("Kaydınız yapıldı.", employerModel.companyName)
+        },
+        (responseError) => {
+          let message = JSON.stringify(responseError.error.data.errors);
+          this.toastrService.error(
+            message.replace(/{|}|"/gi, ''), 'Doğrulama Hatası');
+        })
+      }
+    } else{
+      this.toastrService.error("Bilgiler eksik")
+    }
   }
 
   checkDuplicateEmail() {
@@ -56,21 +78,28 @@ export class EmployeesAddComponent implements OnInit {
   checkDublicatePassword() {
     if (this.password === this.confirmPassword) {
       this.checkPassword = true
-      
+      this.toastrService.error("Bu parolalar uyuşmuyor")
     }
     else {
       this.checkPassword = false
-      this.toastrService.error("Bu parolalar uyuşmuyor")
+     
     }
 
   }
 
-  checkEmailWebsite(){
-    let website=this.employeesAddForm.value["website"]
+  // checkEmailWebsite(){
+  //   let website=this.employeesAddForm.value["website"]
+  //   let webHeading = website.replace("www."," ")
 
+  //   let mail =this.employeesAddForm.value["email"]
+  //   let headingMail=mail.split("@")
 
-    let mail =this.employeesAddForm.value["email"]
-
-  }
+  //   if(webHeading===headingMail[1]){
+      
+  //     return this.checkDomain =false;
+  //   }else{
+  //     this.toastrService.error("Email-Website domaini uyuşmamaktadır.")
+  //     return this.checkDomain =true;}
+  // }
 
 }
