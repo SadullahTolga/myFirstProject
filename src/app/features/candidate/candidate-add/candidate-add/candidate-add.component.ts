@@ -22,7 +22,7 @@ export class CandidateAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createAddForm();
-    this.getCandidate();
+    
   }
 
 
@@ -84,10 +84,11 @@ export class CandidateAddComponent implements OnInit {
     this.candidateService.checkCandidateNationalityId(this.candidateAddForm.value["nationalityId"]).subscribe((data: any) => {
       if (data.success == true) {
         this.checkNatId = true;
-        this.toastrService.error("Bu TC kimlik numarası ile kayıt olamazsınız")
       }
       else {
         this.checkNatId = false
+        this.toastrService.error("Bu TC kimlik numarası ile kayıt olamazsınız")
+
 
       }
     })

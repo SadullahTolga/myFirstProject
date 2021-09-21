@@ -13,13 +13,13 @@ import { PositionService } from 'src/app/service/positionService';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  positions:Position[]=[]
-  addForm:FormGroup
-  checkPosition=false
-  constructor(private positionService:PositionService,
-    private toastrService:ToastrService,
-    private router:Router,
-    private formBuilder:FormBuilder,) { }
+  positions: Position[] = []
+  addForm: FormGroup
+  checkPosition = false
+  constructor(private positionService: PositionService,
+    private toastrService: ToastrService,
+    private router: Router,
+    private formBuilder: FormBuilder,) { }
 
   ngOnInit(): void {
     this.createAddForm()
@@ -27,33 +27,35 @@ export class AddComponent implements OnInit {
   }
 
   getPosition() {
-    this.positionService.getPosition().subscribe((response:any )=> { this.positions = response.data
-      })
-  }
-
-  createAddForm(){
-    this.addForm=this.formBuilder.group({
-      name:["",Validators.required]
+    this.positionService.getPosition().subscribe((response: any) => {
+      this.positions = response.data
     })
   }
 
-  add(){
-    if(this.addForm.valid){
-      if(!this.checkDuplicatePosition(this.addForm.value)){
+  createAddForm() {
+    this.addForm = this.formBuilder.group({
+      name: ["", Validators.required]
+    })
+  }
+
+  add() {
+    if (this.addForm.valid) {
+      if (!this.checkDuplicatePosition(this.addForm.value)) {
         this.positionService.addPosition(this.addForm.value).subscribe((response: any) => {
           this.toastrService.success(response.message, "Succes")
         })
-      } 
+      }
 
-    }else{this.toastrService.error("information is missing")}
+    } else { this.toastrService.error("information is missing") }
   }
 
-  checkDuplicatePosition(position:Position){
-    let item = this.positions.find((t)=>t.title.toLocaleLowerCase().trim===position.title.toLocaleLowerCase().trim)
-   if(item){
-this.toastrService.error("This position exists")
-return false
-   }else{
-     return true
-   }
-  }}
+  checkDuplicatePosition(position: Position) {
+    let item = this.positions.find((t) => t.title.toLocaleLowerCase().trim === position.title.toLocaleLowerCase().trim)
+    if (item) {
+      this.toastrService.error("This position exists")
+      return false
+    } else {
+      return true
+    }
+  }
+}

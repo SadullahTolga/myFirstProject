@@ -18,7 +18,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AddComponent } from './features/add/add/add.component';
 import { NaviUserInfoComponent } from './features/navi/navi-user-info/navi-user-info/navi-user-info.component';
 import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob.component';
-
+import { JobAdvertisementAddComponent } from './features/job/jobAdvertisementAdd/job-advertisement-add/job-advertisement-add.component';
+import { JobAdvertisementComponent } from './features/job/jobAdvertisement/job-advertisement/job-advertisement.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob.component'
     AddComponent,
     NaviUserInfoComponent,
     TinjobComponent,
-    CandidateComponent
+    CandidateComponent,
+    JobAdvertisementAddComponent,
+    JobAdvertisementComponent,
+    
    
     
   
@@ -43,11 +48,15 @@ import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob.component'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ToastrModule.forRoot({ positionClass: "toast-center-center" ,timeOut: 3500}),
+    TableModule, 
+  
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ToastrModule.forRoot({ positionClass: "toast-center-center" ,timeOut: 3500}),
+     
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

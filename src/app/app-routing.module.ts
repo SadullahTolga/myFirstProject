@@ -6,9 +6,11 @@ import { CandidateComponent } from './features/candidate/candidate/candidate.com
 import { DepartmentAddComponent } from './features/departmentAdd/department/department.component';
 import { EmployeesAddComponent } from './features/employees/employees-add/employees-add/employees-add.component';
 import { EmployeesComponent } from './features/employees/employees/employees/employees.component';
+import { JobAdvertisementComponent } from './features/job/jobAdvertisement/job-advertisement/job-advertisement.component';
+import { JobAdvertisementAddComponent } from './features/job/jobAdvertisementAdd/job-advertisement-add/job-advertisement-add.component';
 import { UserLoginComponent } from './features/login/userLogin/user-login-employer/user-login.component';
 import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob.component';
-import { LoginGuard } from './guards/login.guard';
+
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:"department",component:DepartmentAddComponent},
   {path:"employer",component:EmployeesComponent},
   {path:"candidate",component:CandidateComponent},
+  {path:"job-advertisement",component:JobAdvertisementAddComponent},
+  {path:"activeJobAdvertisement",component:JobAdvertisementComponent},
   {path:"department-add",component:AddComponent},
   {path:"tinjob",component:TinjobComponent}
 ];

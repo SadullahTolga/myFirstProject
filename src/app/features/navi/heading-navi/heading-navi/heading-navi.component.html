@@ -46,11 +46,21 @@
             <a  style="color: white;" routerLink="/candidate" class="nav-link ">Candidate List </a>
           </li>
         </div>
+        <div *ngIf="checkEmployer()">
+          <li class="nav-item">
+            <a  style="color: white;" routerLink="/job-advertisement" class="nav-link ">Share Job Advertisement</a>
+          </li>
+        </div>
         <div *ngIf="checkCandidate()" >
         <li class="nav-item">
           <a  style="color: white;" routerLink="/employer" class="nav-link ">Employer List</a>
         </li>
         </div>
+        <div *ngIf="checkCandidate()" >
+          <li class="nav-item">
+            <a  style="color: white;" routerLink="/activeJobAdvertisement" class="nav-link ">Active Job Advertisement</a>
+          </li>
+          </div>
         </ul>
     
         <div *ngIf="checkUser(); else notLoginedUser">
