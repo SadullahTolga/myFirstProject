@@ -25,6 +25,7 @@ export class JobAdvertisementComponent implements OnInit {
 
   passiveJA(jobAdvertisement:JobAdvertisement){
     this.jobAdvertisementService.passiveJA(jobAdvertisement).subscribe((response:any) => {
+      window.location.reload();
       this.toastrService.info('Deleted');
   })
 
