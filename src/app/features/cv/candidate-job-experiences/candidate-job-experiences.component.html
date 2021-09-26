@@ -1,0 +1,127 @@
+
+ <p-card>
+  <ng-template pTemplate="title">
+    Personal Job Experiences İnformation
+  </ng-template>
+<form style=" font-family: 'Gemunu Libre', sans-serif;" style="padding-top: 20px;" [formGroup]="jobExperienceForm">
+    <div class="row mb-3">
+        <div class="form-group col-md-12">
+          
+          <select
+            name="positionId"
+            id="positionId"
+            class="form-select"
+            formControlName="positionId"
+          >
+            <option value="" disabled selected>Please select your position</option>
+            <option *ngFor="let position of positions" value="{{position.id}}">{{position.title}}</option>
+            
+          </select>
+        
+        
+         
+        </div>
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <input type="text" formControlName="workPlace" placeholder="Please enter your work place!" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <input type="text" formControlName="startYear" placeholder="Please enter your start job date!" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <input type="text" formControlName="quitYear" placeholder="Please enter your quit job date!(Optional)" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+
+      
+      <button
+    
+      class="btn btn-primary my-4"
+      (click)="add()"
+    >
+      Add 
+    </button>
+    </form>
+    
+
+
+    <div style="padding-top: 20px; font-family: 'Gemunu Libre', sans-serif; " class="container">
+      <p-table id="myTable" #dt class="deneme" [value]="candidateJobExperiencesList" dataKey="id"
+        styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+        >
+        <ng-template pTemplate="caption">
+          <div class="table-header">
+            List of Job Experiences
+    
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="positionId">
+              <div class="d-flex justify-content-between align-items-center">
+                Position
+                <p-sortIcon field="positionId"></p-sortIcon>
+                <p-columnFilter type="text" field="positionId" display="menu" class="ms-auto"></p-columnFilter>
+              </div>
+            </th>
+  
+            <th pSortableColumn="workPlace">
+              <div class="d-flex justify-content-between align-items-center">
+               Work Place
+                <p-sortIcon field="workPlace"></p-sortIcon>
+                <p-columnFilter type="text" field="workPlace" display="menu" class="ms-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="startYear">
+              <div class="d-flex justify-content-between align-items-center">
+              Start Date
+                <p-sortIcon field="startYear"></p-sortIcon>
+                <p-columnFilter type="date" field="startYear" display="menu" class="ms-auto"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="quitYear">
+              <div class="d-flex justify-content-between align-items-center">
+               Quit Date
+                <p-sortIcon field="quitYear"></p-sortIcon>
+                <p-columnFilter type="text" field="quitYear" display="menu" class="ms-auto"></p-columnFilter>
+              </div>
+            </th>
+         
+           
+       
+    
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-knowledge>
+          <tr class="p-selectable-row">
+            <td>
+              <span class="p-column-title">Position</span>
+              {{ knowledge.position.title}}
+            </td>
+            <td>
+              <span class="p-column-title">Work Place</span>
+              {{ knowledge.workPlace  }}
+            </td>
+            <td>
+              <span class="p-column-title">Start Year</span>
+              {{ knowledge.startYear }}
+            </td>
+            <td>
+              <span *ngIf="knowledge.quitYear"> {{ knowledge.quitYear }}</span>
+              <span *ngIf="!knowledge.quitYear">Continue</span>
+            </td>
+         
+           
+    
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No jobs found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+ </p-card>

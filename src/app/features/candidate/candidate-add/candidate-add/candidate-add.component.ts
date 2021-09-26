@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from 'src/app/models/candidate/candidate';
 import { CandidateService } from 'src/app/service/candidate.service';
@@ -10,100 +11,70 @@ import { CandidateService } from 'src/app/service/candidate.service';
   styleUrls: ['./candidate-add.component.css']
 })
 export class CandidateAddComponent implements OnInit {
-  candidateAddForm: FormGroup
-  candidates: Candidate[] = []
-  checkNatId: boolean = false
-  checkEmail: boolean = false
-  checkPassword: boolean = false
-  password: string
-  confirmPassword: string
-  constructor(private candidateService: CandidateService, private formBuilder: FormBuilder,
-    private toastrService: ToastrService) { }
+  candidateSignForm: FormGroup;
+  checkNatId: boolean = false;
+
+  constructor(
+    private candidateService: CandidateService,
+    private toastrService: ToastrService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.createAddForm();
-    
+    this.createSignForm();
   }
 
-
-
-
-
-  getCandidate() {
-    this.candidateService.getCandidate().subscribe(data => this.candidates = data)
-
-  }
-  createAddForm() {
-    this.candidateAddForm = this.formBuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
-      email: ["", [Validators.required, Validators.email]],
-
-      birthYear: [0, Validators.required],
-      nationalityId: ["", Validators.required],
-      password: ["", Validators.required],
-      confirmPassword: ["", Validators.required]
-
-    })
+  createSignForm() {
+    this.candidateSignForm = this.formBuilder.group({
+      birthYear: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]], //email tipinde
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      nationalityId: ['', Validators.required],
+      password: [
+        '',Validators.required
+      ],
+      confirmPassword: ['', Validators.required],
+    });
   }
 
-  add() {
-    this.checkDuplicateEmail();
-    this.checkDublicateTc();
-
-    this.checkDublicatePassword();
-    if (this.candidateAddForm.valid) {
-      if (!this.checkNatId && !this.checkEmail && !this.checkPassword) {
-
-
-        this.candidateService.addCandidate(this.candidateAddForm.value).subscribe((response: any) => {
-          this.toastrService.success(response.message, "Başarılı")
-        })
-
-
-
+  addCandidate() {
+    if (this.candidateSignForm.valid) {
+      if (this.checkPassword()) {
+        this.candidateService
+        .addCandidate(this.candidateSignForm.value)
+        .subscribe(
+          (response: any) => {
+            this.toastrService.success(response.message, 'Başarılı');
+            this.router.navigate["tinjob"]
+          },
+          (responseError) => {
+            let message = JSON.stringify(responseError.error.data.errors);
+            console.log(message);
+            this.toastrService.error(
+              message.replace(/{|}|"/gi, ''),
+              'Validation error'
+            );
+          }
+        );
       }
-    } else { this.toastrService.error("Girdiğiniz bilgiler eksik") }
-
-  }
-
-  checkDuplicateEmail() {
-    this.candidateService.checkCandidateUserEmail(this.candidateAddForm.value["email"]).subscribe((data: any) => {
-      if (data.success == true) {
-        this.checkEmail = true;
-        this.toastrService.error("Bu mailden bulunmaktadır.")
-      }
-      else {
-        this.checkEmail = false
-
-      }
-    })
-  }
-
-  checkDublicateTc() {
-    this.candidateService.checkCandidateNationalityId(this.candidateAddForm.value["nationalityId"]).subscribe((data: any) => {
-      if (data.success == true) {
-        this.checkNatId = true;
-      }
-      else {
-        this.checkNatId = false
-        this.toastrService.error("Bu TC kimlik numarası ile kayıt olamazsınız")
-
-
-      }
-    })
-  }
-
-  checkDublicatePassword() {
-    if (this.password === this.confirmPassword) {
-      this.checkPassword = true
-
+    } else {
+      this.toastrService.error('Invalid form');
     }
-    else {
-      this.checkPassword = false
-      this.toastrService.error("Bu parolalar uyuşmuyor")
-    }
-
   }
 
+  checkPassword(): boolean {
+    let password = this.candidateSignForm.value['password'];
+    let confirmPassword = this.candidateSignForm.value['confirmPassword'];
+
+    if (password === confirmPassword) {
+      return true;
+    } else {
+      this.toastrService.error(
+        'Your password and confirm password does not match!'
+      );
+      return false;
+    }
+  }
 }

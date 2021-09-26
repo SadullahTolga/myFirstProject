@@ -42,6 +42,7 @@ export class UserLoginComponent implements OnInit {
       (response:any) => {
         this.toastrService.success('Sisteme giriş yapıldı.');
         localStorage.setItem('user', JSON.stringify(response));
+        this.router.navigate["tinjob"]
         
       },
       (responseError) => {

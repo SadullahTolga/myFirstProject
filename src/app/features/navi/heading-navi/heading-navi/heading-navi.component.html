@@ -1,91 +1,82 @@
-<nav style="background: linear-gradient(#141e30, #243b55);" class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="containt">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a routerLink="/tinjob" style="color: white;" class="navbar-brand" href="#">TinJob</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <span class="nav-item">
+
+        <div *ngIf="checkUser()">
+          <div *ngIf="checkEmployer()"> <button style=" border: 0; background-color: white; color: black;" #btn
+              type="button" pButton icon="pi pi-bars" label="" (click)="menu.toggle($event)"></button>
+            <p-slideMenu #menu [model]="employerItems" [popup]="true" [viewportHeight]="300  "></p-slideMenu>
+          </div>
+          <div *ngIf="checkCandidate()">
+            <button style=" border: 0; background-color: white;color: black;" #btn type="button" pButton
+              icon="pi pi-bars" label="" (click)="menu.toggle($event)"></button>
+            <p-slideMenu #menu [model]="candidateItems" [popup]="true" [viewportHeight]="300"></p-slideMenu>
+
+          </div>
+
+        </div>
+
+      </span>
+      <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: xx-large;"
+        routerLink="/home" class="navbar-brand" href="#">
+        ST Career
+      </a>
+      <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
+        routerLink="/home" class="navbar-brand" href="#">
+        Home
+      </a>
+      <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
+      routerLink="/school" class="navbar-brand" href="#">
+      University Directory
+    </a>
+    <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
+    routerLink="/department" class="navbar-brand" href="#">
+    Position Directory
+  </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a  style="color: white;"  class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a  style="color: white;"
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a  style="color: white;" class="dropdown-item" href="#">Action</a></li>
-              <li><a   style="color: white;" class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a  style="color: white;" class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-          <div *ngIf="checkEmployer()" > 
-            <li class="nav-item">
-            <a  style="color: white;" routerLink="/department" class="nav-link ">Position </a>
-          </li>
-          
-        </div>
-        <div *ngIf="checkEmployer()">
-          <li class="nav-item">
-            <a  style="color: white;" routerLink="/candidate" class="nav-link ">Candidate List </a>
-          </li>
-        </div>
-        <div *ngIf="checkEmployer()">
-          <li class="nav-item">
-            <a  style="color: white;" routerLink="/job-advertisement" class="nav-link ">Share Job Advertisement</a>
-          </li>
-        </div>
-        <div *ngIf="checkCandidate()" >
-        <li class="nav-item">
-          <a  style="color: white;" routerLink="/employer" class="nav-link ">Employer List</a>
-        </li>
-        </div>
-        <div *ngIf="checkCandidate()" >
-          <li class="nav-item">
-            <a  style="color: white;" routerLink="/activeJobAdvertisement" class="nav-link ">Active Job Advertisement</a>
-          </li>
-          </div>
+
+
+
         </ul>
-    
+
         <div *ngIf="checkUser(); else notLoginedUser">
           <app-navi-user-info></app-navi-user-info>
         </div>
         <div class="dropdown me-2">
-            
-           
+
+
+        </div>
+        <ng-template #notLoginedUser>
+          <button routerLink="/user-login" class="btn btn-outline-primary " style="box-sizing: border-box;border: 0; 
+            border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
+            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </button>
+          <div class="dropdown me-2">
+            <button class="btn btn-outline-primary " style="box-sizing: border-box;border: 0; border-radius: 24px;font-family:
+             'Gemunu Libre', sans-serif; width: auto; height: auto;font-size: x-large; " type="button"
+              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Sign in </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" style="box-sizing: 
+              border-box;border: 0; border-radius: 24px;font-family: 'Gemunu Libre', sans-serif; font-size: x-large; "
+                  routerLink="/candidate-add" href="#">Candidate</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" style="box-sizing: border-box;border: 0; border-radius: 24px;font-family:
+               'Gemunu Libre', sans-serif; font-size: x-large; " routerLink="/employee-add" href="#">Employer</a></li>
+            </ul>
           </div>
-          <ng-template #notLoginedUser>
-            <button routerLink="/user-login" class="btn btn-outline-primary "
-             style="box-sizing: border-box;border: 0; border-radius: 24px; color: white;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Login
-            </button>
-            <div  class="dropdown me-2">
-              <button  class="btn btn-outline-primary " style="box-sizing: border-box;border: 0; border-radius: 24px; color: white;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Kayıt Ol
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li ><a   class="dropdown-item" routerLink="/candidate-add" href="#">Aday Kaydı</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" routerLink="/employee-add" href="#">Şirket Kaydı</a></li>
-              </ul>
-            </div>
-          </ng-template>
+        </ng-template>
       </div>
     </div>
   </nav>
+</div>

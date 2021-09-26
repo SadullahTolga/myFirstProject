@@ -1,0 +1,21 @@
+<p-card>
+    <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
+      Personal Skill İnformation
+    </ng-template>
+
+<form style=" font-family: 'Gemunu Libre', sans-serif;" [formGroup]="cvForm">
+
+    <div style="padding-top: 20px;padding-left: 20px;">   <input type="text" formControlName="candidateLınkedIn" placeholder="Please enter your LınkedIn account" 
+        class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+ <div style="padding-left: 20px;">
+      <button
+    
+      class="btn btn-primary my-4"
+      (click)="updateLinkedIn()"
+    >
+      Update 
+    </button>
+</div>
+</form>
+</p-card>

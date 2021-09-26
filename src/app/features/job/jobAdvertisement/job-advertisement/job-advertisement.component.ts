@@ -11,7 +11,7 @@ import { JobAdvertisementService } from 'src/app/service/job-advertisement.servi
 export class JobAdvertisementComponent implements OnInit {
   
   activeJobAdvertisement:JobAdvertisement[]=[]
-  jA:JobAdvertisement
+  
   constructor(private jobAdvertisementService:JobAdvertisementService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
@@ -25,12 +25,11 @@ export class JobAdvertisementComponent implements OnInit {
 
   passiveJA(jobAdvertisement:JobAdvertisement){
     this.jobAdvertisementService.passiveJA(jobAdvertisement).subscribe((response:any) => {
-      window.location.reload();
-      this.toastrService.info('Deleted');
+     this.toastrService.error("Deleted")
+      window.location.reload()
+      
   })
 
-  // sortByCreatedAt(){
-  //   return this.jobAdvertisementService.getAdsByCreatedAt(1).subscribe((res:any) => this.activeJobAdvertisement = res.data);
-  // }
+ 
   
 }}

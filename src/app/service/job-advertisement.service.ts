@@ -9,20 +9,20 @@ import { JobAdvertisement } from '../models/jobAdvertisements/jobAdvertisements'
 })
 export class JobAdvertisementService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  apiUrl="https://javareactcamp-hrms-backend.herokuapp.com/api/jobAdvertisements/"
+  apiUrl = "https://javareactcamp-hrms-backend.herokuapp.com/api/jobAdvertisements/"
 
-  getAllJobAdvertisement():Observable<JobAdvertisement[]>{
-    return this.httpClient.get<JobAdvertisement[]>(this.apiUrl+"get/all")
+  getAllJobAdvertisement(): Observable<JobAdvertisement[]> {
+    return this.httpClient.get<JobAdvertisement[]>(this.apiUrl + "get/all")
   }
 
-  addJobAdvertisement(jobAdvertisements:JobAdvertisement):Observable<JobAdvertisement>{
-    return this.httpClient.post<JobAdvertisement>(this.apiUrl+"add",jobAdvertisements)
+  addJobAdvertisement(jobAdvertisements: JobAdvertisement): Observable<JobAdvertisement> {
+    return this.httpClient.post<JobAdvertisement>(this.apiUrl + "add", jobAdvertisements)
   }
 
-  getActiveJobAdvertisement():Observable<JobAdvertisement>{
-    return this.httpClient.get<JobAdvertisement>(this.apiUrl+"get/active")
+  getActiveJobAdvertisement(): Observable<JobAdvertisement> {
+    return this.httpClient.get<JobAdvertisement>(this.apiUrl + "get/active")
   }
   getJobsByEmployer(
     employerId: number
@@ -32,14 +32,16 @@ export class JobAdvertisementService {
     );
   }
 
-  getAdsByCreatedAt(sortDirection: number):Observable<JobAdvertisement>{
-    return this.httpClient.get<JobAdvertisement>(this.apiUrl + "/get/activeVerifiedByCreatedAt?sortDirection=" + sortDirection);
+  getJobById(jobAdvId: number): Observable<JobAdvertisementListResponse> {
+    return this.httpClient.get<JobAdvertisementListResponse>(
+      this.apiUrl + '/get/byId?jobAdvId=' + jobAdvId
+    );
   }
 
-  passiveJA(jobAdvertisement: JobAdvertisement):Observable<JobAdvertisement>{
-    return this.httpClient.put<JobAdvertisement>(this.apiUrl+"activation?jobAdvId="+jobAdvertisement.id +
-    '&status=' +
-    !jobAdvertisement.active,
-  jobAdvertisement)
+  passiveJA(jobAdvertisement: JobAdvertisement): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl + "update/activation?jobAdvId=" + jobAdvertisement.id +
+      '&status=' +
+      !jobAdvertisement.active,
+      jobAdvertisement)
   }
 }

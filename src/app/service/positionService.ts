@@ -1,26 +1,26 @@
 import { HttpClient } from '@angular/common/http';
-import { Position } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Position } from '../models/position/position';
+import { PositionListResponse } from '../models/position/positionListResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PositionService {
-  apiGetUrl="https://javareactcamp-hrms-backend.herokuapp.com/api/positions/get/all"
-  apiAddUrl="https://javareactcamp-hrms-backend.herokuapp.com/api/positions/add?positionTitle="
-  constructor(private httpClient:HttpClient) { }
+  apiUrl: string =
+  'https://javareactcamp-hrms-backend.herokuapp.com/api/positions';
 
-  getPosition():Observable<Position[]>{
-    return this.httpClient.get<Position[]>(this.apiGetUrl)
+constructor(private httpClient: HttpClient) {}
 
-  }
+addPosition(position: Position): Observable<Position> {
+  return this.httpClient.post<Position>(
+    this.apiUrl + '/add?positionTitle=' + position.title,
+    position
+  );
+}
 
-  addPosition(positionName:Position):Observable<Position[]>{
-    return this.httpClient.post<Position[]>(this.apiAddUrl,positionName)
-  }
-  checkPosition(positionName:string):Observable<Position[]>{
-    return this.httpClient.get<Position[]>(this.apiAddUrl+positionName)
-  }
-
+getPosition(): Observable<PositionListResponse[]> {
+  return this.httpClient.get<PositionListResponse[]>(this.apiUrl + '/get/all');
+}
 }

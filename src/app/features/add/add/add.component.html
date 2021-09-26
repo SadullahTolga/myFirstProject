@@ -1,22 +1,45 @@
-
- <div class="login-box" style="padding-top: 100px; background: linear-gradient(#141e30, #243b55);">
 <div class="container">
-    <div class="row">
-
-        <form [formGroup]="addForm">
-            <div class="user-box">
-              <input class="form-control" type="text" id="name" formControlName="name" placeholder="">
-              <label>Type the position you want to add</label>
-             
-            </div>
-            <a  (click)="add()">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Submit
-              </a>
-        </form>
+  <div class="row">
+    <div class="col-md-3">
+      <li class="list-group-item rounded fw-bold  mt-3 ">
+        Active Positions
+      </li>
+      <ul class="list-group overflow-auto" style="height: 515px">
+        <li *ngFor="let position of positions" class="list-group-item">
+          {{ position.title }}
+        </li>
+      </ul>
     </div>
-</div>
+
+    <div class="col-md-9 mt-3">
+      <div class="card">
+        <div class="card-header  fw-bold fs-6  text-center">Add Position</div>
+        <div class="card-body">
+          <form [formGroup]="addForm">
+            <div class="form-group">
+              <label>Position title</label>
+              <input
+                class="form-control w-100"
+                type="text"
+                id="title"
+                formControlName="title"
+                placeholder="Please enter position title"
+              />
+            
+            </div>
+
+            <div class="text-center">
+              <button
+              [disabled]="!addForm.valid"
+              class="btn btn-putline-primary mt-3"
+              (click)="add()"
+            >
+              Add Position
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

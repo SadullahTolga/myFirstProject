@@ -1,54 +1,79 @@
 
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
-<div style="margin-top: 15px;" class="container">
-    <div class="row">
-        <div class="overflow-auto">
-        <div class="col-md-offset-1 col-md-10">
-            <div class="panel">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col col-md-6 col-sm-3 col-xs-12">
-                            <h4 class="title">Position<span>List</span></h4>
-                            
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-                <div class="panel-body table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Position</th>
-                                
-                            </tr>
-                        </thead>
-                       
-                            
-                                <tbody  class="customtable ">
-                                    
-                                    <tr *ngFor="let position of positions | paginate: { 
-                                        itemsPerPage: 10,
-                                        currentPage: page,
-                                        totalItems: totalRecords } ">
-                                        <td  style="font-family: serif;">{{position.id}}</td>
-                                        <td style="font-family: serif;">{{position.title}}</td>
-                                    </tr>
-                                    
-                                    <pagination-controls class="text-center" (pageChange)="page = $event"></pagination-controls>
-                                    <button routerLink="/department-add" class="btn btn-outline-light" style="box-sizing: border-box;border: 0; border-radius: 24px;">Add Postion</button>
-                                </tbody>
-                            
-                        
-                    </table>
-                </div>
-            </div>
-            </div>
+<div class="container">
+    <p-table
+      id="myTable"
+      #dt
+      [value]="positions"
+      dataKey="id"
+      styleClass="p-datatable-customers"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+      [globalFilterFields]="['id', 'lastName', 'title']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          List of Positions
+         
         </div>
-    </div>
-</div>
-
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="firstName">
+            <div class="d-flex justify-content-between align-items-center">
+              ID
+              <p-sortIcon field="id"></p-sortIcon>
+              <p-columnFilter
+                type="number"
+                field="id"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+  
+          <th pSortableColumn="title">
+            <div class="d-flex justify-content-between align-items-center">
+              Position
+              <p-sortIcon field="title"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="title"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+       
+  
+       
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-positions>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">First Name</span>
+            {{ positions.id }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Last Name</span>
+            {{ positions.title }}
+          </td>
+  
+        
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No candidates found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 
 
 

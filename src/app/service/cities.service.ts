@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { City } from '../models/city/city';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,8 @@ export class CitiesService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getCities(){
-    return this.httpClient.get(this.apiUrl +"/get/all");
+  getCities():Observable<City[]>{
+    return this.httpClient.get<City[]>(this.apiUrl +"/get/all");
   }
 
 }

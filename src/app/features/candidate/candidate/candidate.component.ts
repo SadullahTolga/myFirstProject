@@ -23,12 +23,12 @@ export class CandidateComponent implements OnInit {
   }
 
   getCandidate(){
-    this.candidateService.getCandidate().subscribe((response:any )=> { this.candidates = response.data
+    this.candidateService.getAll().subscribe((response:any )=> { this.candidates = response.data
       })
   
   }
   getCandicateById(id:number){
-    this.candidateService.getCandidateId(id).subscribe((response:any )=> { this.candidates = response.data
+    this.candidateService.getCandidateById(id).subscribe((response:any )=> { this.candidates = response.data
     })
 
 }}

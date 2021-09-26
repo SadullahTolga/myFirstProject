@@ -15,16 +15,23 @@ import { PositionService } from 'src/app/service/positionService';
 export class AddComponent implements OnInit {
   positions: Position[] = []
   addForm: FormGroup
-  checkPosition = false
+  
   constructor(private positionService: PositionService,
     private toastrService: ToastrService,
     private router: Router,
     private formBuilder: FormBuilder,) { }
 
   ngOnInit(): void {
-    this.createAddForm()
-    this.getPosition
+    this.createAddForm();
+    this.getPosition();
   }
+
+  createAddForm() {
+    this.addForm = this.formBuilder.group({
+      title: ["", Validators.required]
+    })
+  }
+
 
   getPosition() {
     this.positionService.getPosition().subscribe((response: any) => {
@@ -32,30 +39,30 @@ export class AddComponent implements OnInit {
     })
   }
 
-  createAddForm() {
-    this.addForm = this.formBuilder.group({
-      name: ["", Validators.required]
-    })
-  }
 
   add() {
     if (this.addForm.valid) {
-      if (!this.checkDuplicatePosition(this.addForm.value)) {
-        this.positionService.addPosition(this.addForm.value).subscribe((response: any) => {
-          this.toastrService.success(response.message, "Succes")
+      if (this.checkDuplicate(this.addForm.value)) {
+        this.positionService.addPosition(this.addForm.value).subscribe((response) => {
+          this.toastrService.success("Succes")
+          window.location.reload();
+          
         })
       }
 
-    } else { this.toastrService.error("information is missing") }
+    } else {this.toastrService.error("information missing")}
   }
 
-  checkDuplicatePosition(position: Position) {
-    let item = this.positions.find((t) => t.title.toLocaleLowerCase().trim === position.title.toLocaleLowerCase().trim)
-    if (item) {
-      this.toastrService.error("This position exists")
-      return false
+  checkDuplicate(position: Position) {
+    let title = this.positions.find(
+      (t) => t.title.toLowerCase().trim() === position.title.toLowerCase().trim()
+    );
+
+    if (title) {
+      this.toastrService.error('This position exists.');
+      return false;
     } else {
-      return true
+      return true;
     }
   }
 }

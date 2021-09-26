@@ -2,39 +2,33 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidate } from '../models/candidate/candidate';
+import { CandidateListResponse } from '../models/candidate/candidateListResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidateService {
-  apiUrl="https://javareactcamp-hrms-backend.herokuapp.com/api/candidates/"
-  apiUrlUser= "https://javareactcamp-hrms-backend.herokuapp.com/api/"
-  apiUrlId="https://javareactcamp-hrms-backend.herokuapp.com/api/candidates/get/byId?candId="
-  apiUrlLogin="https://javareactcamp-hrms-backend.herokuapp.com/api/candidates/get/"
-  constructor(private httpClient:HttpClient) { }
+ apiUrl: string =
+    'https://javareactcamp-hrms-backend.herokuapp.com/api/candidates';
+  constructor(private httpClient: HttpClient) {}
 
-  getCandidate():Observable<Candidate[]>{
-    return this.httpClient.get<Candidate[]>(this.apiUrl+"get/all")
-  }
-  
-  addCandidate(candidate:Candidate):Observable<Candidate>{
-    return this.httpClient.post<Candidate>(this.apiUrl+"add",candidate)
+  addCandidate(candidate: Candidate): Observable<Candidate> {
+    return this.httpClient.post<Candidate>(this.apiUrl + '/add', candidate);
   }
 
-  checkCandidateNationalityId(nationalityId:string):Observable<Candidate[]>{
-    return this.httpClient.get<Candidate[]>(this.apiUrl+"exists/byNatId?nationalityId="+nationalityId)
+  getAll(): Observable<CandidateListResponse> {
+    return this.httpClient.get<CandidateListResponse>(this.apiUrl + '/get/all');
   }
-  checkCandidateUserEmail(email:string):Observable<Candidate[]>{
-    return this.httpClient.get<Candidate[]>(this.apiUrl+"users/exists/byEmail?email="+ email)
-  }
-  getCandidateId(id:number):Observable<Candidate[]>{
-    return this.httpClient.get<Candidate[]>(this.apiUrl+id)
 
+  getCandidateById(id: number): Observable<CandidateListResponse> {
+    return this.httpClient.get<CandidateListResponse>( this.apiUrl + '/get/byId?candId=' + id
+    );
   }
-  enterCandidate(candidate:Candidate):Observable<Candidate[]>{
-    return this.httpClient.get<Candidate[]>(this.apiUrlLogin+"byEmailAndPW?email="+candidate.email+"&password="+candidate.password)
+
+  updateGitHub(id:number ,gitHub:string):Observable<Candidate>{
+    return this.httpClient.put<Candidate>(this.apiUrl+"/update/githubAccount?candId="+id+"&githubAccount="+gitHub,gitHub)
   }
-  userExistsByLogin(candidate:Candidate):Observable<Candidate[]>{
-    return this.httpClient.get<Candidate[]>(this.apiUrlLogin + "/exists/byEmailAndPW?email="+candidate.email+ "&password="+candidate.password )
+  updateLinkedIn(id:number,linkedin:string):Observable<Candidate>{
+    return this.httpClient.put<Candidate>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linkedin,linkedin)
   }
 }

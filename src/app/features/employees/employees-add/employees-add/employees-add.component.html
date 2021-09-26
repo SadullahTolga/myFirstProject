@@ -1,106 +1,120 @@
-<div class="container">
 
-    <div class="login-box" style="padding-top: 100px;background: linear-gradient(#141e30, #243b55);">
-        <h2>Sign in</h2>
-        <form [formGroup]="employeesAddForm">
-            <div class="user-box">
-                <small  class="form-text text-danger" 
-                *ngIf="employeesAddForm.get('companyName').hasError('required')&&employeesAddForm.get('companyName').touched">Company Name is required</small>
 
-                <input class="form-control" type="text" id="companyName" formControlName="companyName" placeholder="">
-                <label>Company Name</label>
+
+
+
+<div class="containt">
+    <div class="row">
+        <body>
+            <div class="login-root">
+              <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+                <div class="loginbackground box-background--white padding-top--64">
+                  <div class="loginbackground-gridContainer">
+                    <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
+                      <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                      </div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
+                      <div class="box-root box-divider--light-all-2 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
+                      <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
+                      <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
+                      <div class="box-root box-background--gray100 animationLeftRight tans3s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
+                      <div class="box-root box-background--cyan200 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
+                      <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
+                      <div class="box-root box-background--gray100 animationRightLeft tans4s" style="flex-grow: 1;"></div>
+                    </div>
+                    <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
+                      <div class="box-root box-divider--light-all-2 animationRightLeft tans3s" style="flex-grow: 1;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+                  <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+                    <h1><a href="http://blog.stackfindover.com/" rel="dofollow">ST Career</a></h1>
+                  </div>
+                  <div class="formbg-outer">
+                    <div class="formbg">
+                      <div class="formbg-inner padding-horizontal--48">
+                        <span class="padding-bottom--15">Sign in </span>
+                        <form id="stripe-login"  [formGroup]="employeesAddForm">
+                          <div class="field padding-bottom--24">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" name="companyName" id="companyName" formControlName="companyName" >
+                          </div>
+                          <div class="field padding-bottom--24">
+                              <label for="lastName">E-mail</label>
+                              <input type="email" name="email" id="email" formControlName="email">
+                            </div>
+                            <div class="field padding-bottom--24">
+                              <label for="email">Email</label>
+                              <input type="email" name="email" id="email" formControlName="email">
+                            </div>
+                            <div class="field padding-bottom--24">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber">
+                              </div>
+                              <div class="field padding-bottom--24">
+                                <label for="website">Website</label>
+                                <input type="website" name="website" id="website" formControlName="website">
+                              </div>
+                
+                          <div class="field padding-bottom--24">
+                            <div class="grid--50-50">
+                              <label for="password">Password</label>
+                              <div class="reset-pass">
+                                <a href="#">Forgot your password?</a>
+                              </div>
+                            </div>
+                            <input  type="password" name="password" id="password" formControlName="password">
+                          </div>
+                          <div class="field padding-bottom--24">
+                              <div class="grid--50-50">
+                                <label for="password">Confirm Password</label>
+                                
+                              </div>
+                              <input  type="password" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword">
+                            </div>
+                          <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
+                            <label for="checkbox">
+                              <input type="checkbox" name="checkbox"> Stay signed in for a week
+                            </label>
+                          </div>
+                          <div class="field padding-bottom--24">
+                            <input class="btn btn-outline-primary" type="submit" routerLink="/tinjob" style="color: black;" (click)="addEmployer()" name="submit" placeholder="Sign in" value="Continue">
+                            <input class="btn btn-outline-primary" routerLink="/tinjob" type="submit" style="color: black;"  name="submit" placeholder="Back" value="Back">
+
+                          </div>
+                          <div class="field">
+                            <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="footer-link padding-top--24">
+                      <span>Don't have an account? <a href="">Sign up</a></span>
+                      <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                        <span><a href="#">Contact</a></span>
+                        <span><a href="#">Privacy & terms</a></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="user-box">
-                <input class="form-control" type="text" id="email" formControlName="email" placeholder="">
-                <label>E-mail</label>
-            </div>
-            <div class="user-box">
-                <input class="form-control" type="password" id="password" formControlName="password" placeholder="">
-                <label>Password</label>
-            </div>
-            <div class="user-box">
-                <input [(ngModel)]="confirmPassword" class="form-control" type="password" id="confirmPassword"
-                    formControlName="confirmPassword" placeholder="">
-                <label>Password</label>
-            </div>
-            <div class="user-box">
-                <input class="form-control" type="text" id="phoneNumber" formControlName="phoneNumber"
-                    placeholder="">
-                <label>Phone Number</label>
-            </div>
-            <div class="user-box">
-                <input class="form-control" type="text" id="website" formControlName="website"
-                    placeholder="">
-                <label>Website</label>
-            </div>
-            
-            <a (click)="addEmployer()">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Submit
-            </a>
-        </form>
+          </body>
+          
+          
     </div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="content " >
-    <div class="col-md-12" style="padding-right: 400px;">
-        <div class="brand-title">ETİYA</div>
-        <form [formGroup]="candidateAddForm">
-            <div class="form-group mb-3 " style="font-family: sans-serif">
-                <label>Kullanıcı Email</label>
-                <input class="form-control" type="text" id="email" formControlName="email" placeholder="Kullanıcı email" />
-            </div>
-            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                <label>First Name</label>
-                <input class="form-control" type="text" id="firstName" formControlName="firstName" placeholder="firstName" />
-            </div>
-            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                <label>Last Name</label>
-                <input class="form-control" type="text" id="lastName" formControlName="lastName" placeholder="Kullanıcı lastName" />
-            </div>
-            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                <label>Kullanıcı Birthday</label>
-                <input class="form-control" type="number" id="birthYear" formControlName="birthYear" placeholder="Kullanıcı birthday" />
-            </div>
-            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                <label>Kullanıcı nationalityId</label>
-                <input class="form-control" type="text" id="nationalityId" formControlName="nationalityId" placeholder="Kullanıcı nationalityId" />
-            </div>
-            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                <label>Kullanıcı password</label>
-                <input [(ngModel)]="password" class="form-control" type="password" id="password" formControlName="password" placeholder="Kullanıcı password" />
-            </div>
-            <div class="form-group mb-3" style="font-family: Georgia, 'Times New Roman', Times, serif;">
-                <label>Kullanıcı confirmDuplicate</label>
-                <input  [(ngModel)]="confirmPassword" class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Kullanıcı password" />
-                    
-            </div>
-            <button class="btn btn-primary btn-fill" (click)="add()">Aday Kayıt</button>
-        </form>
-    </div>
-</div> -->

@@ -1,0 +1,16 @@
+<div style=" font-family: 'Gemunu Libre', sans-serif;" class="containt">
+    <form [formGroup]="cvForm">
+        <h1>Please enter your CV name and cover letter</h1>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" formControlName="coverLetter" placeholder="Please enter your cover letter"
+                class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" formControlName="title" placeholder="Please enter your title" class="form-control"
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        </div>
+    </form>
+    <button [disabled]="!cvForm.valid" class="btn btn-primary my-4" (click)="add()">
+        Add
+    </button>
+</div>

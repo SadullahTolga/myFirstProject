@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Department } from 'src/app/models/department/departmen';
+
 import { Position } from 'src/app/models/position/position';
 import { PositionService } from 'src/app/service/positionService';
 
@@ -17,10 +17,10 @@ export class DepartmentAddComponent implements OnInit {
   constructor(private  positionService: PositionService) { }
 
   ngOnInit(): void {
-    this.getDepartment();
+    this.getPositions();
   }
 
-  getDepartment() {
+  getPositions() {
     this.positionService.getPosition().subscribe((response:any )=> { this.positions = response.data
       this.totalRecords = response.data.length })
   }

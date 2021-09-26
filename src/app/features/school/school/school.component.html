@@ -1,0 +1,65 @@
+
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+
+            
+           
+                
+                    <li class="list-group-item rounded fw-bold  mt-3 ">
+                      School
+                    </li>
+                    <ul class="list-group overflow-auto" style="height: 515px">
+                      <li *ngFor="let school of schools" class="list-group-item">
+                        {{ school.name }}
+                      </li>
+                    </ul>
+                </div>
+                <div style="padding-top: 20px;font-family: 'Gemunu Libre', sans-serif;" class="col-md-4">
+                    <p>University Directory
+                        Are you ready to choose a university and department that will determine your career path?
+                        
+                        Graduates of which universities and departments attract more attention from employers, which department graduates do what work, how many liras do they earn in which profession, how many points are required to enter which department?
+                        
+                       
+                        The answers to these questions and more are now in one place so you can make the right choice! Check out the university guide, make sure you take the first step of your career right!</p>
+                        <ul class="nav">
+                            <li class="nav-item">
+                              <a class="nav-link active" aria-current="page" href="#">
+                                Preference days</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Employer </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">Blog</a>
+                            </li>
+                           
+                          </ul>
+                </div>
+          
+          <div class="col-md-4" style="padding-left: 20px;">
+            
+                <li class="list-group-item rounded fw-bold  mt-3 ">
+                  Department
+                </li>
+                <ul class="list-group overflow-auto" style="height: 515px">
+                  <li *ngFor="let department of departments" class="list-group-item">
+                    {{ department.name }}
+                  </li>
+                </ul>
+              </div>
+        
+      
+
+  </div>
+
+
+
+
+
+
+
+
+
+

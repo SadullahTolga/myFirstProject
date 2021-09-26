@@ -1,58 +1,119 @@
+<div style="padding-top: 20px; " class="container">
+    <p-table id="myTable" #dt class="deneme" [value]="employees" dataKey="id" styleClass="p-datatable-customers"
+        [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                Employer List
 
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
-<div style="margin-top: 15px;" class="container">
-    <div class="row">
-        <div class="overflow-auto">
-        <div >
-            <div class="panel">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div >
-                            <h4 class="title">Employer<span>List</span></h4>
-                            
-                        </div>
-                        
-                        
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="schoolId">
+                    <div class="d-flex justify-content-between align-items-center">
+                        ID
+                        <p-sortIcon field="schoolId"></p-sortIcon>
+                        <p-columnFilter type="text" field="schoolId" display="menu" class="ms-auto"></p-columnFilter>
                     </div>
-                </div>
-                <div class="panel-body table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>E-mail</th>
-                                <th>Created At</th>
-                                <th>Company Name</th>
-                                <th>Website</th>
-                                <th>Phone Number</th>
-                                <th>İmages</th>
-                            </tr>
-                        </thead>
-                       
-                            
-                                <tbody  class="customtable ">
-                                    
-                                    <tr *ngFor="let employer of employees  ">
-                                        <td  style="font-family: serif;">{{employer.id}}</td>
-                                        <td style="font-family: serif;">{{employer.email}}</td>
-                                        <td style="font-family: serif;">{{employer.createdAt}}</td>
-                                        <td style="font-family: serif;">{{employer.companyName}}</td>
-                                        <td style="font-family: serif;">{{employer.website}}</td>
-                                        <td style="font-family: serif;">{{employer.phoneNumber}}</td>
-                                        <td style="font-family: serif;">{{employer.images}}</td>
-                                    </tr>
-                                    
-                                </tbody>
-                            
-                        
-                    </table>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </th>
 
+                <th pSortableColumn="departmentId">
+                    <div class="d-flex justify-content-between align-items-center">
+                        E-mail
+                        <p-sortIcon field="departmentId"></p-sortIcon>
+                        <p-columnFilter type="text" field="departmentId" display="menu" class="ms-auto">
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="startYear">
+                    <div class="d-flex justify-content-between align-items-center">
+                        Created Year
+                        <p-sortIcon field="startYear"></p-sortIcon>
+                        <p-columnFilter type="date" field="startYear" display="menu" class="ms-auto"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="graduationYear">
+                    <div class="d-flex justify-content-between align-items-center">
+                       Company Name
+                        <p-sortIcon field="graduationYear"></p-sortIcon>
+                        <p-columnFilter type="text" field="graduationYear" display="menu" class="ms-auto">
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="graduationYear">
+                    <div class="d-flex justify-content-between align-items-center">
+                       Website
+                        <p-sortIcon field="graduationYear"></p-sortIcon>
+                        <p-columnFilter type="text" field="graduationYear" display="menu" class="ms-auto">
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="graduationYear">
+                    <div class="d-flex justify-content-between align-items-center">
+                       Phone Number
+                        <p-sortIcon field="graduationYear"></p-sortIcon>
+                        <p-columnFilter type="text" field="graduationYear" display="menu" class="ms-auto">
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="graduationYear">
+                    <div class="d-flex justify-content-between align-items-center">
+                       Images
+                        <p-sortIcon field="graduationYear"></p-sortIcon>
+                        <p-columnFilter type="text" field="graduationYear" display="menu" class="ms-auto">
+                        </p-columnFilter>
+                    </div>
+                </th>
+
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-employer>
+            <tr class="p-selectable-row">
+                <td>
+                    <span class="p-column-title">ID</span>
+                    {{ employer.id}}
+                </td>
+                <td>
+                    <span class="p-column-title">E-mail</span>
+                    {{ employer.email }}
+                </td>
+                <td>
+                    <span class="p-column-title">Created Year</span>
+                    {{ employer.createdYear }}
+                </td>
+                Company Name
+                <td>
+                    <span class="p-column-title">Company Name</span>
+                    {{ employer.companyName }}
+                </td>
+                <td>
+                    <span class="p-column-title">Website</span>
+                    {{ employer.website }}
+                </td>
+                <td>
+                    <span class="p-column-title">Phone Number</span>
+                    {{ employer.phoneNumber }}
+                </td>
+                <td>
+                    <span class="p-column-title">Images</span>
+                    {{ employer.images }}
+                </td>
+
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No jobs found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
 
 
 

@@ -20,6 +20,7 @@ export class JobAdvertisementAddComponent implements OnInit {
   jobAdvertisement:JobAdvertisement[]=[]
   positions: Position[] = []
   cities: City[] = []
+  employers:Employer[]=[]
   user: any;
   jobAdvertisementForm:FormGroup
   constructor(
@@ -35,6 +36,7 @@ export class JobAdvertisementAddComponent implements OnInit {
     this.createJobAdvertisementForm()
     this.getJobPositions()
     this.getCities()
+    this.getEmployer()
     
    
   }
@@ -89,6 +91,13 @@ export class JobAdvertisementAddComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem('user'));
       return this.user.data.id;
     }
+
+    getEmployer(){
+     
+        this.employerService.getEmplooyes().subscribe((response:any )=> { this.employers = response.data
+          })
+      }
+    
 
   }
 

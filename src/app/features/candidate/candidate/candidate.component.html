@@ -1,79 +1,136 @@
-
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
-<div style="margin-top: 15px;" class="container">
-    <div class="row">
-        <div class="overflow-auto">
-        <div >
-            <div class="panel">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div >
-                            <h4 class="title">Candidate<span>List</span></h4>
-                            
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-                <div class="panel-body table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>E-mail</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>National ID</th>
-                                <th>Birth Year</th>
-                                <th>GitHub Account</th>
-                                <th>LinkedIn Account</th>
-                                <th>CVS</th>
-                                <th>Candidate Job Experiences</th>
-                                <th>Candidate Languages</th>
-                                <th>Candidate Schools</th>
-                                <th>Candidate Skills</th>
-                                
-                            </tr>
-                        </thead>
-                       
-                            
-                                <tbody  class="customtable ">
-                                    
-                                    <tr *ngFor="let candidate of candidates  ">
-                                        <td  style="font-family: serif;">{{candidate.id}}</td>
-                                        <td style="font-family: serif;">{{candidate.email}}</td>
-                                        <td style="font-family: serif;">{{candidate.firstName}}</td>
-                                        <td style="font-family: serif;">{{candidate.lastName}}</td>
-                                        <td style="font-family: serif;">{{candidate.nationalityId}}</td>
-                                        <td style="font-family: serif;">{{candidate.birthYear}}</td>
-                                        <td style="font-family: serif;">{{candidate.githubAccount}}</td>
-                                        <td style="font-family: serif;">{{candidate.linkedinAccount}}</td>
-                                        <td style="font-family: serif;">{{candidate.cvs}}</td>
-                                        <td style="font-family: serif;">{{candidate.candidateJobExperiences}}</td>
-                                        <td style="font-family: serif;">{{candidate.candidateLanguages}}</td>
-                                        <td style="font-family: serif;">{{candidate.candidateSchools}}</td>
-                                        <td style="font-family: serif;">{{candidate.candidateSkills}}</td>
-                                    </tr>
-                                    
-                                </tbody>
-                            
-                        
-                    </table>
-                </div>
-            </div>
-            </div>
+<div class="container">
+    <p-table
+      id="myTable"
+      #dt
+      [value]="candidates"
+      dataKey="id"
+      styleClass="p-datatable-customers"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+      [globalFilterFields]="['firstName', 'lastName', 'email', 'nationalityId', 'birthYear']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          List of Candidates
+         
         </div>
-    </div>
-</div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="firstName">
+            <div class="d-flex justify-content-between align-items-center">
+              First Name
+              <p-sortIcon field="firstName"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="firstName"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+  
+          <th pSortableColumn="lastName">
+            <div class="d-flex justify-content-between align-items-center">
+              Last Name
+              <p-sortIcon field="lastName"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="lastName"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+  
+          <th pSortableColumn="email">
+            <div class="d-flex justify-content-between align-items-center">
+              Email
+              <p-sortIcon field="email"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="email"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+  
+          <th pSortableColumn="githubAccount">
+            <div class="d-flex justify-content-between align-items-center">
+              Natiobal ID
+              <p-sortIcon field="nationalityId"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="nationalityId"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
 
+          <th pSortableColumn="linkedinAccount">
+            <div class="d-flex justify-content-between align-items-center">
+              Birth Year
+              <p-sortIcon field="birthYear"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="birthYear"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+  
+       
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-candidate>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">First Name</span>
+            {{ candidate.firstName }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Last Name</span>
+            {{ candidate.lastName }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Email</span>
+            {{ candidate.email }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">National ID</span>
+            {{ candidate.nationalityId }}
+          </td>
 
-
-
-
-
-
-
-
-
-
-
+          <td>
+            <span class="p-column-title">Birth Year</span>
+            {{ candidate.birthYear }}
+          </td>
+  
+          <!-- <td>
+                  <span class="p-column-title">Date</span>
+                  {{customer.date | date: 'MM/dd/yyyy'}}
+              </td> -->
+  
+          <!-- <td style="text-align: center">
+                  <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+              </td> -->
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No candidates found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
