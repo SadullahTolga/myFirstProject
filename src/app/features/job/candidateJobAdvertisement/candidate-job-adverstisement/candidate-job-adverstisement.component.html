@@ -1,24 +1,24 @@
 
-  <div style=" font-family: 'Gemunu Libre', sans-serif;" class="container">
+  <div  class="container">
     <div class="row">
       <div class="col-md-3">
         <app-sidemenu></app-sidemenu>
       </div>
-      <div class="col-md-9">
-        <div style="padding-top: 20px; " class="container">
+      <div  class="col-md-9 pt-2">
+        <div   class="container">
           <p-table id="myTable" #dt class="deneme" [value]="activeJobAdvertisement" dataKey="id"
             styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
             [globalFilterFields]="['employer.companyName', 'position.title', 'openPositions', 'createdAt', 'deadline']">
             <ng-template pTemplate="caption">
-              <div class="table-header">
+              <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
                 List of Jobs
         
               </div>
             </ng-template>
             <ng-template pTemplate="header">
-              <tr>
+              <tr style=" font-family: 'Gemunu Libre', sans-serif;">
                 <th pSortableColumn="employer.companyName">
                   <div class="d-flex justify-content-between align-items-center">
                     Company Name
@@ -63,7 +63,7 @@
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-activeJobAdvertisement>
-              <tr class="p-selectable-row">
+              <tr style=" font-family: 'Gemunu Libre', sans-serif;" class="p-selectable-row">
                 <td>
                   <span class="p-column-title">Company Name</span>
                   {{ activeJobAdvertisement.employer.companyName }}

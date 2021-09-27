@@ -3,7 +3,7 @@
     <div class="col-md-3">
       <app-sidemenu></app-sidemenu>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 pt-2">
       <p-table
       id="myTable"
       #dt
@@ -20,14 +20,14 @@
       [globalFilterFields]="['firstName', 'lastName', 'email', 'nationalityId', 'birthYear']"
     >
       <ng-template pTemplate="caption">
-        <div class="table-header">
+        <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
           List of Candidates
          
         </div>
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th pSortableColumn="firstName">
+          <th  style=" font-family: 'Gemunu Libre', sans-serif;" pSortableColumn="firstName">
             <div class="d-flex justify-content-between align-items-center">
               First Name
               <p-sortIcon field="firstName"></p-sortIcon>
@@ -40,7 +40,7 @@
             </div>
           </th>
   
-          <th pSortableColumn="lastName">
+          <th style=" font-family: 'Gemunu Libre', sans-serif;" pSortableColumn="lastName">
             <div class="d-flex justify-content-between align-items-center">
               Last Name
               <p-sortIcon field="lastName"></p-sortIcon>
@@ -53,7 +53,7 @@
             </div>
           </th>
   
-          <th pSortableColumn="email">
+          <th style=" font-family: 'Gemunu Libre', sans-serif;" pSortableColumn="email">
             <div class="d-flex justify-content-between align-items-center">
               Email
               <p-sortIcon field="email"></p-sortIcon>
@@ -66,7 +66,7 @@
             </div>
           </th>
   
-          <th pSortableColumn="githubAccount">
+          <th style=" font-family: 'Gemunu Libre', sans-serif;" pSortableColumn="githubAccount">
             <div class="d-flex justify-content-between align-items-center">
               Natiobal ID
               <p-sortIcon field="nationalityId"></p-sortIcon>
@@ -79,12 +79,12 @@
             </div>
           </th>
 
-          <th pSortableColumn="linkedinAccount">
+          <th style=" font-family: 'Gemunu Libre', sans-serif;" pSortableColumn="linkedinAccount">
             <div class="d-flex justify-content-between align-items-center">
               Birth Year
               <p-sortIcon field="birthYear"></p-sortIcon>
               <p-columnFilter
-                type="text"
+                type="number"
                 field="birthYear"
                 display="menu"
                 class="ms-auto"
@@ -96,7 +96,7 @@
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-candidate>
-        <tr class="p-selectable-row">
+        <tr style=" font-family: 'Gemunu Libre', sans-serif;" class="p-selectable-row">
           <td>
             <span class="p-column-title">First Name</span>
             {{ candidate.firstName }}

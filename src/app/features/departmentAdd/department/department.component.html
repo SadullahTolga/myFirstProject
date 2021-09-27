@@ -24,13 +24,13 @@
     [globalFilterFields]="['id', 'lastName', 'title']"
   >
     <ng-template pTemplate="caption">
-      <div class="table-header">
+      <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
         List of Positions
        
       </div>
     </ng-template>
     <ng-template pTemplate="header">
-      <tr>
+      <tr style=" font-family: 'Gemunu Libre', sans-serif;">
         <th pSortableColumn="firstName">
           <div class="d-flex justify-content-between align-items-center">
             ID
@@ -61,7 +61,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-positions>
-      <tr class="p-selectable-row">
+      <tr style=" font-family: 'Gemunu Libre', sans-serif;" class="p-selectable-row">
         <td>
           <span class="p-column-title">First Name</span>
           {{ positions.id }}

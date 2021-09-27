@@ -5,17 +5,17 @@
     <div class="col-md-3">
       <app-sidemenu></app-sidemenu>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 pt-2">
       
  <p-card>
-  <ng-template pTemplate="title">
-    Personal Job Experiences İnformation
+  <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
+    Personal Job Experiences Information
   </ng-template>
 <form style=" font-family: 'Gemunu Libre', sans-serif;" style="padding-top: 20px;" [formGroup]="jobExperienceForm">
     <div class="row mb-3">
         <div class="form-group col-md-12">
           
-          <select
+          <select style=" font-family: 'Gemunu Libre', sans-serif;"
             name="positionId"
             id="positionId"
             class="form-select"
@@ -30,13 +30,13 @@
          
         </div>
       </div>
-      <div class="input-group input-group-sm mb-3">
+      <div style=" font-family: 'Gemunu Libre', sans-serif;" class="input-group input-group-sm mb-3">
         <input type="text" formControlName="workPlace" placeholder="Please enter your work place!" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
-      <div class="input-group input-group-sm mb-3">
+      <div style=" font-family: 'Gemunu Libre', sans-serif;" class="input-group input-group-sm mb-3">
         <input type="text" formControlName="startYear" placeholder="Please enter your start job date!" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
-      <div class="input-group input-group-sm mb-3">
+      <div style=" font-family: 'Gemunu Libre', sans-serif;" class="input-group input-group-sm mb-3">
         <input type="text" formControlName="quitYear" placeholder="Please enter your quit job date!(Optional)" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
       </div>
 
@@ -59,13 +59,13 @@
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
         >
         <ng-template pTemplate="caption">
-          <div class="table-header">
+          <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
             List of Job Experiences
     
           </div>
         </ng-template>
         <ng-template pTemplate="header">
-          <tr>
+          <tr style=" font-family: 'Gemunu Libre', sans-serif;">
             <th pSortableColumn="positionId">
               <div class="d-flex justify-content-between align-items-center">
                 Position
@@ -102,7 +102,7 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-knowledge>
-          <tr class="p-selectable-row">
+          <tr  style=" font-family: 'Gemunu Libre', sans-serif;"class="p-selectable-row">
             <td>
               <span class="p-column-title">Position</span>
               {{ knowledge.position.title}}

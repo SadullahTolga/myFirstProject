@@ -5,10 +5,10 @@
     <div class="col-md-3">
       <app-sidemenu></app-sidemenu>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 pt-2">
       <p-card >
-        <ng-template pTemplate="title">
-          Personal Languages İnformation
+        <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
+          Personal Languages Information
         </ng-template>
       
       
@@ -20,7 +20,7 @@
       
       <form style=" font-family: 'Gemunu Libre', sans-serif;" [formGroup]="cvForm">
           <label>Select the language you want to add </label>
-          <select  name="languageId"
+          <select  style=" font-family: 'Gemunu Libre', sans-serif;" name="languageId"
           id="languageId"
           class="form-select"
           formControlName="languageId" class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -28,7 +28,7 @@
               <option *ngFor="let language of languages"  value="{{language.id}}">{{language.name}}</option>
           </select>
           <div style="padding-top: 10px;">
-          <select   name="languageLevel"
+          <select style=" font-family: 'Gemunu Libre', sans-serif;"  name="languageLevel"
           id="languageLevel"
           class="form-select"
           formControlName="languageLevel" class="form-select form-select-sm" aria-label=".form-select-sm example">
@@ -58,14 +58,14 @@
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
             >
             <ng-template pTemplate="caption">
-              <div class="table-header">
+              <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
                 List of Language
         
               </div>
             </ng-template>
             <ng-template pTemplate="header">
               <tr>
-                <th pSortableColumn="languageName">
+                <th style=" font-family: 'Gemunu Libre', sans-serif;" pSortableColumn="languageName">
                   <div class="d-flex justify-content-between align-items-center">
                     Language Name
                     <p-sortIcon field="languageName"></p-sortIcon>
@@ -87,7 +87,7 @@
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-language>
-              <tr class="p-selectable-row">
+              <tr style=" font-family: 'Gemunu Libre', sans-serif;" class="p-selectable-row">
                 <td>
                   <span class="p-column-title">Language Name</span>
                   {{ language.language.name }}

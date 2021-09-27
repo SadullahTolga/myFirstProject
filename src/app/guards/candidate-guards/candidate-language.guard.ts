@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
+export class CandidateLanguageGuard implements CanActivate {
   constructor(private toastrService:ToastrService,private router:Router){}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -17,15 +17,15 @@ export class LoginGuard implements CanActivate {
   
         let employer = user.message;
   
-        if (employer.includes('employer')) {
+        if (employer.includes('candidate')) {
   
           return true;
   
         } else {
   
-          this.toastrService.error('Bu sayfaya giriş izniniz bulunmuyor.');
+          this.toastrService.error('You do not have permission to access this page');
   
-          this.router.navigate(['home']);
+          this.router.navigate(['user-login']);
   
           return false;
   
@@ -33,7 +33,7 @@ export class LoginGuard implements CanActivate {
   
       } else {
   
-        this.toastrService.error('Öncelikle giriş yapmalısınız.');
+        this.toastrService.error('First you have to login.');
   
         this.router.navigate(['login']);
   

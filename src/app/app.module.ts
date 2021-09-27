@@ -18,7 +18,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AddComponent } from './features/add/add/add.component';
 import { NaviUserInfoComponent } from './features/navi/navi-user-info/navi-user-info/navi-user-info.component';
 import { JobAdvertisementAddComponent } from './features/job/jobAdvertisementAdd/job-advertisement-add/job-advertisement-add.component';
-import { JobAdvertisementComponent } from './features/job/jobAdvertisement/job-advertisement/job-advertisement.component';
 import { TableModule } from 'primeng/table';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { ButtonModule } from 'primeng/button';
@@ -50,7 +49,6 @@ import {PanelMenuModule} from 'primeng/panelmenu';
 import { CvViewComponent } from './features/cv/cvAdd/cv-view/cv-view/cv-view.component';
 import { SchoolComponent } from './features/school/school/school.component';
 import { SidemenuComponent } from './features/navi/sidemenu/sidemenu/sidemenu.component';
-import { PersonalInformationComponent } from './features/cv/cvAdd/cv-view/personalInformation/personal-information/personal-information.component';
 import {SidebarModule} from 'primeng/sidebar';
 
 @NgModule({
@@ -67,7 +65,6 @@ import {SidebarModule} from 'primeng/sidebar';
     
     CandidateComponent,
     JobAdvertisementAddComponent,
-    JobAdvertisementComponent,
     CvAddComponent,
     CandidateJobAdverstisementComponent,
     CandidateSkillComponent,
@@ -83,7 +80,7 @@ import {SidebarModule} from 'primeng/sidebar';
     CvViewComponent,
     SchoolComponent,
     SidemenuComponent,
-    PersonalInformationComponent
+
     
    
     
