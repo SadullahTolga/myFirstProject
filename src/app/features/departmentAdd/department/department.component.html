@@ -1,83 +1,92 @@
 
-<div class="container">
-    <p-table
-      id="myTable"
-      #dt
-      [value]="positions"
-      dataKey="id"
-      styleClass="p-datatable-customers"
-      [rowHover]="true"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [filterDelay]="0"
-      [globalFilterFields]="['id', 'lastName', 'title']"
-    >
-      <ng-template pTemplate="caption">
-        <div class="table-header">
-          List of Positions
-         
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th pSortableColumn="firstName">
-            <div class="d-flex justify-content-between align-items-center">
-              ID
-              <p-sortIcon field="id"></p-sortIcon>
-              <p-columnFilter
-                type="number"
-                field="id"
-                display="menu"
-                class="ms-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
-  
-          <th pSortableColumn="title">
-            <div class="d-flex justify-content-between align-items-center">
-              Position
-              <p-sortIcon field="title"></p-sortIcon>
-              <p-columnFilter
-                type="text"
-                field="title"
-                display="menu"
-                class="ms-auto"
-              ></p-columnFilter>
-            </div>
-       
-  
-       
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-positions>
-        <tr class="p-selectable-row">
-          <td>
-            <span class="p-column-title">First Name</span>
-            {{ positions.id }}
-          </td>
-  
-          <td>
-            <span class="p-column-title">Last Name</span>
-            {{ positions.title }}
-          </td>
-  
+
+  <div class="container pt-3">
+    <div class="row">
+      <div class="col-md-3">
+        <app-sidemenu></app-sidemenu>
+      </div>
+      <div class="col-md-9">
         
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="8">No candidates found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
+<div style=" font-family: 'Gemunu Libre', sans-serif;" class="container">
+  <p-table
+    id="myTable"
+    #dt
+    [value]="positions"
+    dataKey="id"
+    styleClass="p-datatable-customers"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="['id', 'lastName', 'title']"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        List of Positions
+       
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="firstName">
+          <div class="d-flex justify-content-between align-items-center">
+            ID
+            <p-sortIcon field="id"></p-sortIcon>
+            <p-columnFilter
+              type="number"
+              field="id"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="title">
+          <div class="d-flex justify-content-between align-items-center">
+            Position
+            <p-sortIcon field="title"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="title"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+     
+
+     
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-positions>
+      <tr class="p-selectable-row">
+        <td>
+          <span class="p-column-title">First Name</span>
+          {{ positions.id }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Last Name</span>
+          {{ positions.title }}
+        </td>
+
+      
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No candidates found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+      </div>
+    </div>
   </div>
-
-
-
-
+  
 
 
 

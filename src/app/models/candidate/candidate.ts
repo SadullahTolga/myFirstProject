@@ -1,5 +1,6 @@
 import { CandidateJobExperience } from "../candidate-job-experience/candidate-job-experience";
 import { Cv } from "../cv/cv";
+import { Image } from "../Image/Image";
 import { JobAdvertisement } from "../jobAdvertisements/jobAdvertisements";
 import { Language } from "../language/language";
 import { School } from "../school/school";
@@ -10,7 +11,7 @@ export interface Candidate{
     email:string
     password:string
     profileImgId:string
-    images:[]
+    images:Image[]
     createdAt:string
     lastModifiedAt:string
     firstName:string

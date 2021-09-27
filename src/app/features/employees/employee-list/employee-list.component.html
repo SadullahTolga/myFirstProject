@@ -1,119 +1,128 @@
+
 <div class="container">
-    <p-table id="myTable" #dt [value]="employerJobs" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
-        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-        [globalFilterFields]="[
-        'employer.companyName', 'position.title','openPositions','createdAt','deadline'
-      ]">
-        <ng-template pTemplate="caption">
-            <div class="table-header">
-                <h4 class="fw-bold">Job List of <span class="text-danger">{{ companyName }} </span>company</h4>
-                <!-- <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
-                </span> -->
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
-                <th pSortableColumn="position.title">
-                    <div class="d-flex justify-content-between align-items-center">
-                        Position
-                        <p-sortIcon field="position.title"></p-sortIcon>
-                        <p-columnFilter type="text" field="position.title" display="menu" class="ms-auto">
-                        </p-columnFilter>
+    <div class="row">
+      <div class="col-md-3">
+        <app-sidemenu></app-sidemenu>
+      </div>
+      <div style=" font-family: 'Gemunu Libre', sans-serif;" class="col-md-9">
+        
+            <p-table id="myTable" #dt [value]="employerJobs" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+                [globalFilterFields]="[
+                'employer.companyName', 'position.title','openPositions','createdAt','deadline'
+              ]">
+                <ng-template pTemplate="caption">
+                    <div class="table-header">
+                        <h4 class="fw-bold">Job List of <span class="text-danger">{{ companyName }} </span>company</h4>
+                       
                     </div>
-                </th>
-
-                <th pSortableColumn="openPositions">
-                    <div class="d-flex justify-content-between align-items-center">
-                        Open Positions
-                        <p-sortIcon field="openPositions"></p-sortIcon>
-
-                    </div>
-                </th>
-
-                <th pSortableColumn="createdAt">
-                    <div class="d-flex justify-content-between align-items-center">
-                        Release Date
-                        <p-sortIcon field="createdAt"></p-sortIcon>
-
-                    </div>
-                </th>
-
-                <th pSortableColumn="deadline">
-                    <div class="d-flex justify-content-between align-items-center">
-                        Deadline
-                        <p-sortIcon field="deadline"></p-sortIcon>
-
-                    </div>
-                </th>
-
-                <th pSortableColumn="active">
-                    Passive
-                </th>
-
-
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-activeJobAdvertisement>
-            <tr class="p-selectable-row">
-                <td>
-                    <span class="p-column-title">Position</span>
-                    {{ activeJobAdvertisement.position.title }}
-                </td>
-
-                <td>
-                    <span class="p-column-title">Open Positions</span>
-                    {{ activeJobAdvertisement.openPositions }}
-                </td>
-
-                <td>
-                    <span class="p-column-title">Release Date</span>
-                    {{ activeJobAdvertisement.createdAt | date: "MMMM d, y" }}
-                </td>
-
-                <td>
-                    <span class="p-column-title">Deadline</span>
-                    {{ activeJobAdvertisement.deadline | date: "MMMM d, y" }}
-                </td>
-
-
-                <td>
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
-                        <i class="far fa-trash-alt"></i></button>
-                    <div style="color: black;" class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">WARNING</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body text-start">
-                                    Are you sure?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
-                                    <button (click)="passiveJA(activeJobAdvertisement)" type="button"
-                                        class="btn btn-secondary" data-bs-dismiss="modal">Delete</button>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="position.title">
+                            <div class="d-flex justify-content-between align-items-center">
+                                Position
+                                <p-sortIcon field="position.title"></p-sortIcon>
+                                <p-columnFilter type="text" field="position.title" display="menu" class="ms-auto">
+                                </p-columnFilter>
+                            </div>
+                        </th>
+        
+                        <th pSortableColumn="openPositions">
+                            <div class="d-flex justify-content-between align-items-center">
+                                Open Positions
+                                <p-sortIcon field="openPositions"></p-sortIcon>
+        
+                            </div>
+                        </th>
+        
+                        <th pSortableColumn="createdAt">
+                            <div class="d-flex justify-content-between align-items-center">
+                                Release Date
+                                <p-sortIcon field="createdAt"></p-sortIcon>
+        
+                            </div>
+                        </th>
+        
+                        <th pSortableColumn="deadline">
+                            <div class="d-flex justify-content-between align-items-center">
+                                Deadline
+                                <p-sortIcon field="deadline"></p-sortIcon>
+        
+                            </div>
+                        </th>
+        
+                        <th pSortableColumn="active">
+                            Passive
+                        </th>
+        
+        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-activeJobAdvertisement>
+                    <tr class="p-selectable-row">
+                        <td>
+                            <span class="p-column-title">Position</span>
+                            {{ activeJobAdvertisement.position.title }}
+                        </td>
+        
+                        <td>
+                            <span class="p-column-title">Open Positions</span>
+                            {{ activeJobAdvertisement.openPositions }}
+                        </td>
+        
+                        <td>
+                            <span class="p-column-title">Release Date</span>
+                            {{ activeJobAdvertisement.createdAt | date: "MMMM d, y" }}
+                        </td>
+        
+                        <td>
+                            <span class="p-column-title">Deadline</span>
+                            {{ activeJobAdvertisement.deadline | date: "MMMM d, y" }}
+                        </td>
+        
+        
+                        <td>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                <i class="far fa-trash-alt"></i></button>
+                            <div style="color: black;" class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">WARNING</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-start">
+                                            Are you sure?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
+                                            <button (click)="passiveJA(activeJobAdvertisement)" type="button"
+                                                class="btn btn-secondary" data-bs-dismiss="modal">Delete</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+        
+                        </td>
+        
+        
+        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="8">No jobs found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        
+      </div>
+    </div>
+  </div>
 
-                </td>
-
-
-
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="8">No jobs found.</td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+  

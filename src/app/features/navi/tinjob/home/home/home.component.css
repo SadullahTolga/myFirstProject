@@ -22,8 +22,8 @@ body {
 
 .quotes .box {
   position: relative;
-  width: 25vw;
-  height: 50vh;
+  width: 15vw;
+  height: 40vh;
   min-height: 320px;
   background: #f2f2f2;
   overflow: hidden;

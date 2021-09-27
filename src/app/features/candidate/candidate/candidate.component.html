@@ -1,5 +1,10 @@
-<div class="container">
-    <p-table
+<div style=" font-family: 'Gemunu Libre', sans-serif;" class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-sidemenu></app-sidemenu>
+    </div>
+    <div class="col-md-9">
+      <p-table
       id="myTable"
       #dt
       [value]="candidates"
@@ -117,14 +122,7 @@
             {{ candidate.birthYear }}
           </td>
   
-          <!-- <td>
-                  <span class="p-column-title">Date</span>
-                  {{customer.date | date: 'MM/dd/yyyy'}}
-              </td> -->
-  
-          <!-- <td style="text-align: center">
-                  <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
-              </td> -->
+         
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
@@ -134,3 +132,6 @@
       </ng-template>
     </p-table>
   </div>
+    </div>
+  </div>
+    

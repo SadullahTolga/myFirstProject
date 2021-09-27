@@ -1,147 +1,97 @@
-<div class="containt">
+<div style=" font-family: 'Gemunu Libre', sans-serif;" class="container">
     <div class="row">
-
-        <body>
-            <div class="login-root">
-                <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
-                    <div class="loginbackground box-background--white padding-top--64">
-                        <div class="loginbackground-gridContainer">
-                            <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
-                                <div class="box-root"
-                                    style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
-                                </div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
-                                <div class="box-root box-divider--light-all-2 animationLeftRight tans3s"
-                                    style="flex-grow: 1;"></div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 6 / start / auto / 2;">
-                                <div class="box-root box-background--blue800" style="flex-grow: 1;"></div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 7 / start / auto / 4;">
-                                <div class="box-root box-background--blue animationLeftRight" style="flex-grow: 1;">
-                                </div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6;">
-                                <div class="box-root box-background--gray100 animationLeftRight tans3s"
-                                    style="flex-grow: 1;"></div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 2 / 15 / auto / end;">
-                                <div class="box-root box-background--cyan200 animationRightLeft tans4s"
-                                    style="flex-grow: 1;"></div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 3 / 14 / auto / end;">
-                                <div class="box-root box-background--blue animationRightLeft" style="flex-grow: 1;">
-                                </div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 4 / 17 / auto / 20;">
-                                <div class="box-root box-background--gray100 animationRightLeft tans4s"
-                                    style="flex-grow: 1;"></div>
-                            </div>
-                            <div class="box-root flex-flex" style="grid-area: 5 / 14 / auto / 17;">
-                                <div class="box-root box-divider--light-all-2 animationRightLeft tans3s"
-                                    style="flex-grow: 1;"></div>
-                            </div>
-                        </div>
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <div style=" font-family: 'Gemunu Libre', sans-serif;" class="container" style="padding-top:10px;">
+                <form id="stripe-login" [formGroup]="jobAdvertisementForm">
+                    <div class="field padding-bottom--24">
+                        <select class="form-select" formControlName="cityId">
+                            <option value="" disabled>Cities </option>
+                            <option *ngFor="let city of cities" [ngValue]="city.id">{{city.name}}
+                            </option>
+                        </select>
                     </div>
-                    <div class="box-root padding-top--24 flex-flex flex-direction--column"
-                        style="flex-grow: 1; z-index: 9;">
-                        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-                            <h1><a href="http://blog.stackfindover.com/" rel="dofollow">ST Career</a></h1>
-                        </div>
-                        <div class="formbg-outer">
-                            <div class="formbg">
-                                <div class="formbg-inner padding-horizontal--48">
-                                    <span class="padding-bottom--15">Sign in </span>
-                                    <form id="stripe-login" [formGroup]="jobAdvertisementForm">
-                                        <div class="field padding-bottom--24">
-                                            <select class="form-select" formControlName="cityId">
-                                                <option value="" disabled>cities </option>
-                                                <option *ngFor="let city of cities" [ngValue]="city.id">{{city.name}}
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Deadline</label>
-                                            <input type="date" placeholder="Deadline" formControlName="deadline"
-                                                class="form-control" />
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Company Name</label>
-                                            <select class="form-select" formControlName="employerId">
-                                                <option *ngFor="let employer of employers" [ngValue]="employer.id">
-                                                    {{employer.companyName}}</option>
-                                            </select>
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>job Description</label>
-                                            <input type="text" placeholder="jobDescription"
-                                                formControlName="jobDescription" class="form-control" />
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Minumum Salary</label>
-                                            <input type="number" placeholder="minSalary" formControlName="minSalary"
-                                                class="form-control" />
-                                        </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the position name for this job posting</label>
+                        <select name="positionId" id="positionId" class="form-select" formControlName="positionId">
+                            <option value="" disabled>Position Name </option>
+                            <option *ngFor="let position of positions" [ngValue]="position.id">
+                                {{position.title}}</option>
+                        </select>
 
-                                        <div class="field padding-bottom--24">
-                                            <label>Maximum Salary</label>
-                                            <input type="number" placeholder="maxSalary" formControlName="maxSalary"
-                                                class="form-control" />
-
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Number of Positions</label>
-                                            <input type="number" placeholder="openPositions"
-                                                formControlName="openPositions" class="form-control" />
-
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Work Model</label>
-                                            <input type="text" placeholder="hybrid,office,internship,seasonal"
-                                                formControlName="workModel" class="form-control" />
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Position Name</label>
-                                            <select name="positionId" id="positionId" class="form-control"
-                                                formControlName="positionId">
-                                                <option *ngFor="let position of positions" [ngValue]="position.id">
-                                                    {{position.title}}</option>
-                                            </select>
-
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <label>Work Time</label>
-                                            <input type="workTime" placeholder="full time,part time"
-                                                formControlName="workTime" class="form-control" />
-
-                                        </div>
-                                        <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                                            <label for="checkbox">
-                                                <input type="checkbox" name="checkbox"> Stay signed in for a week
-                                            </label>
-                                        </div>
-                                        <div class="field padding-bottom--24">
-                                            <input class="btn btn-outline-primary" style="color: black;" type="submit" routerLink="/tinjob"
-                                                (click)="addJobAdvertisement()" name="submit" placeholder="Sign in"
-                                                value="Continue">
-                                            <input class="btn btn-outline-primary" routerLink="/tinjob" type="submit"
-                                                style="color: black;" name="submit" placeholder="Back" value="Back">
-
-                                        </div>
-                                        <div class="field">
-                                            <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                         
-                        </div>
                     </div>
-                </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the job descrition for this job posting</label>
+
+                        <select class="form-select" formControlName="jobDescription">
+                            <option value="" disabled>Job Description</option>
+                            <option>Face to face</option>
+                            <option>Remote work</option>
+
+                        </select>
+                    </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the work model for this job posting</label>
+
+                        <select class="form-select" formControlName="workModel">
+                            <option value="" disabled>Work Model </option>
+                            <option>Hybrid</option>
+                            <option>Office</option>
+                            <option>İnternship</option>
+                            <option>Seasonal</option>
+                        </select>
+                    </div>
+                    <div class="field padding-bottom--24">
+                        <label>Work Time</label>
+
+                        <select class="form-select" formControlName="workTime">
+                            <option value="" disabled>Work Time </option>
+                            <option>Full Time</option>
+                            <option>Part Time</option>
+
+                        </select>
+                    </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the minumum salary for this job posting</label>
+                        <input type="number" placeholder="Minumum Salary" formControlName="minSalary"
+                            class="form-control" />
+                    </div>
+
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the maximum salary for this job posting</label>
+                        <input type="number" placeholder="Maximum Salary" formControlName="maxSalary"
+                            class="form-control" />
+
+                    </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the number of the positions for this job posting</label>
+                        <input type="number" placeholder="Open Positions" formControlName="openPositions"
+                            class="form-control" />
+
+                    </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the deadline for this job posting </label>
+                        <input type="date" placeholder="Deadline" formControlName="deadline" class="form-control" />
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="field" style="padding-top: 10px;">
+                        <button class="btn btn-outline-primary" style="color: black;border: 0;" type="submit"
+                            routerLink="/tinjob" (click)="addJobAdvertisement()" name="submit" placeholder="Add"
+                            value="Continue"></button>
+
+                    </div>
+
+                </form>
             </div>
-        </body>
-
-
+        </div>
     </div>
 </div>

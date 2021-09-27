@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   getUserInfo():any{
     this.user = JSON.parse(localStorage.getItem("user"))
     
+    
     return this.user;
   }
   getCity(){

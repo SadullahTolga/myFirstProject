@@ -46,10 +46,12 @@ import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob/tinjob.com
 import { HomeComponent } from './features/navi/tinjob/home/home/home.component';
 import { CandidateImageComponent } from './features/cv/candidate-image/candidate-image/candidate-image.component';
 import {RouterModule} from '@angular/router';
-
+import {PanelMenuModule} from 'primeng/panelmenu';
 import { CvViewComponent } from './features/cv/cvAdd/cv-view/cv-view/cv-view.component';
 import { SchoolComponent } from './features/school/school/school.component';
-
+import { SidemenuComponent } from './features/navi/sidemenu/sidemenu/sidemenu.component';
+import { PersonalInformationComponent } from './features/cv/cvAdd/cv-view/personalInformation/personal-information/personal-information.component';
+import {SidebarModule} from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { SchoolComponent } from './features/school/school/school.component';
     HomeComponent,
     CandidateImageComponent,
     CvViewComponent,
-    SchoolComponent
+    SchoolComponent,
+    SidemenuComponent,
+    PersonalInformationComponent
     
    
     
@@ -110,6 +114,8 @@ import { SchoolComponent } from './features/school/school/school.component';
     DropdownModule,
     StepsModule,
     CardModule,
+    PanelMenuModule,
+    SidebarModule
    
     
  

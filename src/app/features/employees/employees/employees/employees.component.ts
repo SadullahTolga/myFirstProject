@@ -14,13 +14,8 @@ export class EmployeesComponent implements OnInit {
   totalRecords: number
   page: number = 1
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      if (params["id"]) {
-        this.getEmplooyesById(params["id"])
-      } else {
-        this.getEmployees();
-      }
-    })
+   
+    this.getEmployees();
   }
   getEmployees() {
     this.employeesService.getEmplooyes().subscribe((response:any )=> { this.employees = response.data
