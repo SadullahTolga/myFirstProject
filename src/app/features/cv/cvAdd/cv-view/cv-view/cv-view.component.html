@@ -4,227 +4,432 @@
             <app-sidemenu></app-sidemenu>
         </div>
         <div style=" font-family: 'Gemunu Libre', sans-serif;" class="col-md-6 pt-2">
-           <h1>{{candidate.cvs[0].title}}</h1>
-           <h5>{{candidate.cvs[0].coverLetter}}</h5>
-            
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button style="font-weight: inherit;" class="accordion-button btn-outline-primary" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        <button style="font-weight: inherit;" class="accordion-button btn-outline-primary" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                             aria-controls="panelsStayOpen-collapseOne">
-                            Candidate Personal Information
+                            <h5 style="font-weight: bolder;"> Title : {{candidate.cvs[0].title}}</h5>
                         </button>
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                         aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
-                            <table style="font-size: x-small;" class="table">
-                                <thead>
-                                    <tr style="font-weight: inherit;" >
-                                        <th>Name</th>
-                                        <th>National ID</th>
-                                        <th>Birthyear</th>
+
+                              <h5><button style="border: 0;" type="button" class="btn  btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fas fa-pen"></i>
+                              </button>{{candidate.cvs[0].coverLetter}} </h5>
+                              
+                              
+                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Update Cover Letter</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="cvForm" class="p-2">
+           
+                                            <label>Cover Letter</label>
+                                            <textarea class="form-control" type="text" id="coverLetter" formControlName="coverLetter"
+                                                placeholder="Please enter your cover letter">
+                                            </textarea>
+                        
                                         
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
+                        
+                                        <div class="text-center">
+                                            <button [disabled]="!cvForm.valid" class="btn btn-primary mt-3" routerLink="/cv-view" (click)="addCoverLetter()">
+                                                Add
+                                            </button>
+                                            <button type="button" class="btn btn-secondary ms-2 mt-3" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                   
+                                  </div>
+                                </div>
+                              </div>
 
-                                        <td>{{candidate.firstName}} {{candidate.lastName}}</td>
-                                        <td>{{candidate.nationalityId}}</td>
-                                        <td>{{candidate.birthYear}}</td>
-                                        
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button style="font-weight: inherit;" class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                            aria-controls="panelsStayOpen-collapseOne">
-                            Candidate School Information
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                        aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
-                            <div style="padding-top: 20px; font-family: 'Gemunu Libre', sans-serif;font-size: xx-small; "
-                                class="container">
-                                <p-table id="myTable" #dt class="deneme" [value]="candidateSchool" dataKey="id"
-                                    styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
-                                    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-                                    [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
-                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                                    [filterDelay]="0">
-                                    
-                                    <ng-template pTemplate="header">
-                                        <tr>
-                                            <th pSortableColumn="schoolId">
-                                                <div style="font-size: x-small; font-weight: inherit;"
-                                                    class="d-flex justify-content-between align-items-center">
-                                                    School
-
-                                                </div>
-                                            </th>
-
-                                            <th pSortableColumn="departmentId">
-                                                <div style="font-size: x-small;font-weight: inherit;"
-                                                    class="d-flex justify-content-between align-items-center">
-                                                    Department
-
-                                                </div>
-                                            </th>
-                                            <th pSortableColumn="startYear">
-                                                <div style="font-size: x-small;font-weight: inherit;"
-                                                    class="d-flex justify-content-between align-items-center">
-                                                    Start Year
-                                                    <p-sortIcon field="startYear"></p-sortIcon>
-
-                                                </div>
-                                            </th>
-                                            <th pSortableColumn="graduationYear">
-                                                <div style="font-size: x-small;font-weight: inherit;"
-                                                    class="d-flex justify-content-between align-items-center">
-                                                    Graduation Year
-                                                    <p-sortIcon field="graduationYear"></p-sortIcon>
-
-                                                </div>
-                                            </th>
+                            <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button style="font-weight: bolder;"
+                                            class="accordion-button btn-outline-primary" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                            Candidate Personal Information
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <table style="font-size: x-small;" class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>National ID</th>
+                                                        <th>Birthyear</th>
 
 
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
 
+                                                        <td>{{candidate.firstName}} {{candidate.lastName}}</td>
+                                                        <td>{{candidate.nationalityId}}</td>
+                                                        <td>{{candidate.birthYear}}</td>
 
-                                        </tr>
-                                    </ng-template>
-                                    <ng-template pTemplate="body" let-school>
-                                        <tr class="p-selectable-row">
-                                            <td style="font-size: x-small;">
-                                                <span class="p-column-title">School</span>
-                                                {{ school.school.name}}
-                                            </td>
-                                            <td style="font-size: x-small;">
-                                                <span class="p-column-title">Department</span>
-                                                {{ school.department.name }}
-                                            </td>
-                                            <td style="font-size: x-small;">
-                                                <span class="p-column-title">Start Year</span>
-                                                {{ school.startYear }}
-                                            </td>
-                                            <td style="font-size: x-small;">
-                                                <span *ngIf="school.graduationYear"> {{ school.graduationYear }}</span>
-                                                <span *ngIf="!school.graduationYear">Continue</span>
-                                            </td>
+                                                    </tr>
 
-
-
-                                        </tr>
-                                    </ng-template>
-                                    <ng-template pTemplate="emptymessage">
-                                        <tr>
-                                            <td colspan="8">No jobs found.</td>
-                                        </tr>
-                                    </ng-template>
-                                </p-table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button style="font-weight: inherit; font-weight: bolder;"
+                                            class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                            aria-controls="panelsStayOpen-collapseOne">
+                                            Candidate School Information
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <div style="padding-top: 20px; font-family: 'Gemunu Libre', sans-serif;font-size: xx-small; "
+                                                class="container">
+                                                <p-table id="myTable" #dt class="deneme" [value]="candidateSchool"
+                                                    dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+                                                    [rows]="10" [showCurrentPageReport]="true"
+                                                    [rowsPerPageOptions]="[10, 25, 50]" 
+                                                    [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                                    [filterDelay]="0">
+
+                                                    <ng-template pTemplate="header">
+                                                        <tr>
+                                                            <th pSortableColumn="schoolId">
+                                                                <div style="font-size: x-small; "
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    School
+
+                                                                </div>
+                                                            </th>
+
+                                                            <th pSortableColumn="departmentId">
+                                                                <div style="font-size: x-small;"
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    Department
+
+                                                                </div>
+                                                            </th>
+                                                            <th pSortableColumn="startYear">
+                                                                <div style="font-size: x-small;"
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    Start Year
+                                                                    <p-sortIcon field="startYear"></p-sortIcon>
+
+                                                                </div>
+                                                            </th>
+                                                            <th pSortableColumn="graduationYear">
+                                                                <div style="font-size: x-small;"
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    Graduation Year
+                                                                    <p-sortIcon field="graduationYear"></p-sortIcon>
+
+                                                                </div>
+                                                            </th>
+
+
+
+
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-school>
+                                                        <tr class="p-selectable-row">
+                                                            <td style="font-size: x-small;">
+                                                                <span class="p-column-title">School</span>
+                                                                {{ school.school.name}}
+                                                            </td>
+                                                            <td style="font-size: x-small">
+                                                                <span class="p-column-title">Department</span>
+                                                                {{ school.department.name }}
+                                                            </td>
+                                                            <td style="font-size: x-small;">
+                                                                <span class="p-column-title">Start Year</span>
+                                                                {{ school.startYear }}
+                                                            </td>
+                                                            <td style="font-size: x-small;">
+                                                                <span *ngIf="school.graduationYear"> {{
+                                                                    school.graduationYear }}</span>
+                                                                <span *ngIf="!school.graduationYear">Continue</span>
+                                                            </td>
+
+
+
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="emptymessage">
+                                                        <tr>
+                                                            <td colspan="8">No jobs found.</td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button style="font-weight: bolder;"
+                                            class="accordion-button btn-outline-primary" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                            Candidate Job Information
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <p-table id="myTable" #dt class="deneme"
+                                                [value]="candidateJobExperiencesList" dataKey="id"
+                                                styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
+                                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+                                                 [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                                [globalFilterFields]="['workPlace','positionId']">
+                                                [filterDelay]="0">
+
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                        <th style="font-size: x-small;" pSortableColumn="positionId">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Position
+                                                                <p-sortIcon field="positionId"></p-sortIcon>
+                                                                <p-columnFilter type="text" field="positionId"
+                                                                    display="menu" class="ms-auto"></p-columnFilter>
+                                                            </div>
+                                                        </th>
+
+                                                        <th pSortableColumn="workPlace" style="font-size: x-small;">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Work Place
+                                                                <p-sortIcon field="workPlace"></p-sortIcon>
+                                                                <p-columnFilter type="text" field="workPlace"
+                                                                    display="menu" class="ms-auto"></p-columnFilter>
+
+                                                            </div>
+                                                        </th>
+                                                        <th style="font-size: x-small;" pSortableColumn="startYear">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Start Date
+
+                                                                <p-sortIcon field="startYear"></p-sortIcon>
+                                                            </div>
+                                                        </th>
+                                                        <th style="font-size: x-small;" pSortableColumn="quitYear">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Quit Date
+                                                                <p-sortIcon field="quitYear"></p-sortIcon>
+                                                            </div>
+                                                        </th>
+
+
+
+
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-knowledge>
+                                                    <tr class="p-selectable-row">
+                                                        <td style="font-size: x-small;">
+                                                            <span class="p-column-title">Position</span>
+                                                            {{ knowledge.position.title}}
+
+                                                        </td>
+                                                        <td style="font-size: x-small;">
+
+                                                            <span class="p-column-title">Work Place</span>
+                                                            {{ knowledge.workPlace }}
+
+
+
+                                                        </td>
+                                                        <td style="font-size: x-small;">
+                                                            <span class="p-column-title">Start Year</span>
+                                                            {{ knowledge.startYear }}
+                                                        </td>
+                                                        <td style="font-size: x-small;">
+                                                            <span *ngIf="knowledge.quitYear"> {{ knowledge.quitYear
+                                                                }}</span>
+                                                            <span *ngIf="!knowledge.quitYear">Continue</span>
+                                                        </td>
+
+
+
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="emptymessage">
+                                                    <tr>
+                                                        <td colspan="8">No jobs found.</td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button style="font-weight: bolder;"
+                                            class="accordion-button btn-outline-primary" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                            Candidate Languages Information
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse  collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <p-table id="myTable" #dt class="deneme" [value]="candidateLanguage" dataKey="id"
+                                                styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
+                                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+                                                 [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                                [filterDelay]="0">
+
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                        <th style="font-size: x-small;" pSortableColumn="Language">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Language
+                                                                <p-sortIcon field="Language"></p-sortIcon>
+                                                                <p-columnFilter type="text" field="Language"
+                                                                    display="menu" class="ms-auto"></p-columnFilter>
+                                                            </div>
+                                                        </th>
+                                                        <th style="font-size: x-small;" pSortableColumn="Level">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Level
+                                                                <p-sortIcon field="positLevelionId"></p-sortIcon>
+                                                                <p-columnFilter type="text" field="Level"
+                                                                    display="menu" class="ms-auto"></p-columnFilter>
+                                                            </div>
+                                                        </th>
+
+
+
+
+
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-language>
+                                                    <tr class="p-selectable-row">
+                                                        <td style="font-size: x-small;">
+                                                            <span class="p-column-title">Language</span>
+                                                            {{ language.language.name}}
+                                                        </td>
+
+                                                        <td style="font-size: x-small;">
+                                                            <span class="p-column-title">Language</span>
+                                                            {{ language.languageLevel}}
+                                                        </td>
+
+
+                                                    </tr>
+                                                  
+                                                </ng-template>
+                                                <ng-template pTemplate="emptymessage">
+                                                    <tr>
+                                                        <td colspan="8">No jobs found.</td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button style="font-weight: bolder;"
+                                            class="accordion-button btn-outline-primary" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                            aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                            Candidate Skill Information
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse  collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <p-table id="myTable" #dt class="deneme" [value]="skill" dataKey="id"
+                                                styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
+                                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+                                                 [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                                [filterDelay]="0">
+
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                        <th style="font-size: x-small;" pSortableColumn="positionId">
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                Skills
+                                                                <p-sortIcon field="positionId"></p-sortIcon>
+                                                                <p-columnFilter type="text" field="positionId"
+                                                                    display="menu" class="ms-auto"></p-columnFilter>
+                                                            </div>
+                                                        </th>
+
+
+
+
+
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-skill>
+                                                    <tr class="p-selectable-row">
+                                                        <td style="font-size: x-small;">
+                                                            <span class="p-column-title">Skills</span>
+                                                            {{ skill.skill.name}}
+                                                        </td>
+
+
+
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="emptymessage">
+                                                    <tr>
+                                                        <td colspan="8">No jobs found.</td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
+
                     </div>
                 </div>
             </div>
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button style="font-weight: inherit;" class="accordion-button btn-outline-primary" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-                            aria-controls="panelsStayOpen-collapseOne">
-                            Candidate Job Information
-                        </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
-                        aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
-                            <p-table id="myTable" #dt class="deneme" [value]="candidateJobExperiencesList" dataKey="id"
-                            styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
-                            [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
-                            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-                            >
-                          
-                            <ng-template pTemplate="header">
-                              <tr>
-                                <th style="font-size: x-small;" pSortableColumn="positionId">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    Position
-                                    <p-sortIcon field="positionId"></p-sortIcon>
-                                    <p-columnFilter type="text" field="positionId" display="menu" class="ms-auto"></p-columnFilter>
-                                  </div>
-                                </th>
-                      
-                                <th style="font-size: x-small;" pSortableColumn="workPlace">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                   Work Place
-                                    <p-sortIcon field="workPlace"></p-sortIcon>
-                                  </div>
-                                </th>
-                                <th style="font-size: x-small;" pSortableColumn="startYear">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                  Start Date
-                                    <p-sortIcon field="startYear"></p-sortIcon>
-                                  </div>
-                                </th>
-                                <th style="font-size: x-small;" pSortableColumn="quitYear">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                   Quit Date
-                                    <p-sortIcon field="quitYear"></p-sortIcon>
-                                  </div>
-                                </th>
-                             
-                               
-                           
-                        
-                              </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-knowledge>
-                              <tr class="p-selectable-row">
-                                <td style="font-size: x-small;">
-                                  <span class="p-column-title">Position</span>
-                                  {{ knowledge.position.title}}
-                                </td>
-                                <td style="font-size: x-small;">
-                                  <span class="p-column-title">Work Place</span>
-                                  {{ knowledge.workPlace  }}
-                                </td>
-                                <td style="font-size: x-small;">
-                                  <span class="p-column-title">Start Year</span>
-                                  {{ knowledge.startYear }}
-                                </td>
-                                <td style="font-size: x-small;">
-                                  <span *ngIf="knowledge.quitYear"> {{ knowledge.quitYear }}</span>
-                                  <span *ngIf="!knowledge.quitYear">Continue</span>
-                                </td>
-                             
-                               
-                        
-                              </tr>
-                            </ng-template>
-                            <ng-template pTemplate="emptymessage">
-                              <tr>
-                                <td colspan="8">No jobs found.</td>
-                              </tr>
-                            </ng-template>
-                          </p-table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
         </div>
         <div class="col-md-2 pt-2">
             <div class="card" style="width: 18rem;font-family: 'Gemunu Libre', sans-serif;">
@@ -241,77 +446,22 @@
                         <li class="list-group-item"><i class="fab fa-github"></i>{{candidate.githubAccount}}</li>
                         <li class="list-group-item"><i class="fab fa-linkedin"></i>{{candidate.linkedinAccount}}</li>
                     </ul>
-                    <h5>Skills</h5>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[1].skill.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[2].skill.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[4].skill.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[5].skill.name}}</button>
-
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[0].skill.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[3].skill.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateSkills[6].skill.name}}</button>
-
-                        </div>
-                       
-
-                    </div>
-                    <h5>Languages</h5>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateLanguage[0].language.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateLanguage[1].language.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateLanguage[2].language.name}}</button>
-
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" style="border: 0;"
-                                class="btn btn-outline-primary btn-sm">{{candidateLanguage[3].language.name}}</button>
-
-                        </div>
-
-                    </div>
+                
                 </div>
 
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 </div>

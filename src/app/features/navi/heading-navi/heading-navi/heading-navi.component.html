@@ -6,24 +6,35 @@
        
        
       </span>
-      <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: xx-large;"
-        routerLink="/home" class="navbar-brand" href="#">
+      <div *ngIf="!checkUser()">
+      <a  style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: xx-large;"
+        routerLink="/tinjob" class="navbar-brand" >
         ST Career
       </a>
-      <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
-        routerLink="/home" class="navbar-brand" href="#">
+    </div>
+    <div *ngIf="checkUser()">
+      <a  style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: xx-large;"
+        routerLink="/home" class="navbar-brand">
+        ST Career
+      </a>
+    </div>
+      <div *ngIf="!checkCandidate() && !checkEmployer() && !checkSystemEmployer()">
+        <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
+        routerLink="/tinjob" class="navbar-brand">
         Home
       </a>
+      </div>
+    
       <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
-      routerLink="/school" class="navbar-brand" href="#">
+      routerLink="/school" class="navbar-brand" >
       University Directory
     </a>
     <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
-    routerLink="/department" class="navbar-brand" href="#">
+    routerLink="/department" class="navbar-brand" >
     Position Directory
   </a>
   <a style="padding-right: 10px;font-family: 'Gemunu Libre', sans-serif; width: auto; height: auto; font-size: x-large;"
-    routerLink="/activatedJobAdvertisement" class="navbar-brand" href="#">
+    routerLink="/activatedJobAdvertisement" class="navbar-brand" >
     Active Job Advertisement
   </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { JobAdvertisement } from 'src/app/models/jobAdvertisements/jobAdvertisements';
 import { JobAdvertisementService } from 'src/app/service/job-advertisement.service';
 
@@ -8,10 +9,10 @@ import { JobAdvertisementService } from 'src/app/service/job-advertisement.servi
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
-  user:any;
+  user: any;
   companyName: any;
   employerJobs: JobAdvertisement[] = [];
-  constructor(private jobAdvertisementService: JobAdvertisementService) {}
+  constructor(private jobAdvertisementService: JobAdvertisementService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.getJobsByEmployer();
@@ -24,14 +25,16 @@ export class EmployeeListComponent implements OnInit {
       .subscribe((response: any) => {
         this.employerJobs = response.data;
         console.log(this.employerJobs)
+        
       });
   }
 
-  passiveJA(job:JobAdvertisement) {
+  passiveJA(jobAdvertisement: JobAdvertisement) {
     this.jobAdvertisementService
-      .passiveJA(job)
+      .passiveJA(jobAdvertisement)
       .subscribe((response: any) => {
         window.location.reload();
+        this.toastrService.success("Process succes!")
         console.log(response)
       });
   }

@@ -7,21 +7,21 @@ import { Employer } from '../models/employees/employees';
   providedIn: 'root'
 })
 export class EmplooyesService {
-  apiUrl = "https://javareactcamp-hrms-backend.herokuapp.com/api/employers/get/all"
-  apiUrlAdd = "https://javareactcamp-hrms-backend.herokuapp.com/api/employers/add"
-  apiUrlGetId="https://javareactcamp-hrms-backend.herokuapp.com/api/employers/get/byId?emplId="
+  apiUrl = "https://javareactcamp-hrms-backend.herokuapp.com/api/employers/"
+  
+ 
   constructor(private httpClient: HttpClient) { }
 
   getEmplooyes(): Observable<Employer[]> {
-    return this.httpClient.get<Employer[]>(this.apiUrl)
+    return this.httpClient.get<Employer[]>(this.apiUrl+"get/all")
 
   }
 
   addEmplooyes(emplooyesId: Employer): Observable<Employer[]> {
-    return this.httpClient.post<Employer[]>(this.apiUrlAdd , emplooyesId)
+    return this.httpClient.post<Employer[]>(this.apiUrl+"add" , emplooyesId)
   }
   getEmplooyesId(id:number):Observable<Employer[]>{
-    return  this.httpClient.get<Employer[]>(this.apiUrlGetId+id)
+    return  this.httpClient.get<Employer[]>(this.apiUrl+"get/byId?emplId="+id)
   }
 
   checkEmployeeUserEmail(email:string):Observable<Employer[]>{

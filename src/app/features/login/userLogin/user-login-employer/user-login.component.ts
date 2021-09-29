@@ -40,16 +40,16 @@ export class UserLoginComponent implements OnInit {
 
     this.userService.enterEmploye(user).subscribe(
       (response:any) => {
-        this.toastrService.success('Sisteme giriş yapıldı.');
+        this.toastrService.success('Enter the system');
         localStorage.setItem('user', JSON.stringify(response));
-        this.router.navigate["tinjob"]
+        
         
       },
       (responseError) => {
         let message = JSON.stringify(responseError.error.message);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Error'
         );
       }
     );

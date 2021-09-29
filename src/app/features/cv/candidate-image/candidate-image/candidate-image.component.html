@@ -1,11 +1,5 @@
 
- <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <app-sidemenu></app-sidemenu>
-      </div>
-      <div class="col-md-9">
-          
+
  <p-card>
     <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
       Personal Images Information
@@ -28,7 +22,7 @@
           />
           <button
             [disabled]="!imageForm.valid"
-            class="btn btn-primary my-3"
+            class="btn btn-outline-primary my-3"
             (click)="imageUpload()"
           >
             Upload image
@@ -44,7 +38,4 @@
   </div>
  </p-card>
 
-      </div>
-    </div>
-</div>
-
+      

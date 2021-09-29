@@ -52,9 +52,20 @@ getLanguages(){
 add(){
   if(this.cvForm.valid){
     this.candidateLanguageService.add(this.cvForm.value).subscribe((data:any)=>{this.toastrService.success("Succes")})
-    window.location.reload();
+    setTimeout(() => {window.location.reload()
+        
+    }, 1400);
   }
   else{this.toastrService.error("Please enter your information.")}
+}
+
+removeLanguages(languageId:number){
+  this.candidateLanguageService.removeLanguage(languageId).subscribe((data:any)=>{
+    this.toastrService.error("Deleted language!")
+    setTimeout(() => {window.location.reload()
+      
+    }, 1400);
+  })
 }
 
 getCandidateLanguages(){

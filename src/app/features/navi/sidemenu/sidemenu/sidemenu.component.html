@@ -1,15 +1,19 @@
 
 
-    <div  class="row">
-        <div class="pt-2 " *ngIf="checkUser()">
+   
+        <div class="pt-2 sticky-top sticky-sm-top  " style="top:5rem" *ngIf="checkUser()">
             <div *ngIf="checkEmployer()"><p-panelMenu [model]="employerItems"  ></p-panelMenu>
             </div>
             <div *ngIf="checkCandidate()">
-              <p-panelMenu [model]="candidateItems"   ></p-panelMenu>
+              <p-panelMenu [model]="candidateItems"></p-panelMenu>
+        
+            </div>
+            <div *ngIf="checkSystemEmployer()">
+              <p-panelMenu [model]="systemEmployerItems"   ></p-panelMenu>
         
             </div>
         
           </div>
-    </div>
+    
 
 

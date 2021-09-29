@@ -7,6 +7,7 @@ import { CandidateAccountComponent } from './features/cv/candidate-account/candi
 import { CandidateCvSchoolComponent } from './features/cv/candidate-cv-school/candidate-cv-school.component';
 import { CandidateGithubComponent } from './features/cv/candidate-Github/candidate-github/candidate-github.component';
 import { CandidateImageComponent } from './features/cv/candidate-image/candidate-image/candidate-image.component';
+import { CandidateInformationComponent } from './features/cv/candidate-information/candidate-information/candidate-information.component';
 import { CandidateJobExperiencesComponent } from './features/cv/candidate-job-experiences/candidate-job-experiences.component';
 import { CandidateLanguagesComponent } from './features/cv/candidate-languages/candidate-languages.component';
 import { CandidateSkillComponent } from './features/cv/candidate-skill/candidate-skill.component';
@@ -18,6 +19,7 @@ import { EmployeesAddComponent } from './features/employees/employees-add/employ
 import { EmployeesComponent } from './features/employees/employees/employees/employees.component';
 import { CandidateJobAdverstisementComponent } from './features/job/candidateJobAdvertisement/candidate-job-adverstisement/candidate-job-adverstisement.component';
 import { JobAdvertisementAddComponent } from './features/job/jobAdvertisementAdd/job-advertisement-add/job-advertisement-add.component';
+import { UnverifiedJAComponent } from './features/job/unverifiedJobAdvertisement/unverified-ja/unverified-ja.component';
 import { UserLoginComponent } from './features/login/userLogin/user-login-employer/user-login.component';
 import { HomeComponent } from './features/navi/tinjob/home/home/home.component';
 import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob/tinjob.component';
@@ -31,6 +33,7 @@ import { CandidateSchoolGuard } from './guards/candidate-guards/candidate-school
 import { CandidateSkillGuard } from './guards/candidate-guards/candidate-skill.guard';
 import { EmployerListGuardGuard } from './guards/candidate-guards/employer-list-guard.guard';
 import { PositionGuard } from './guards/Employer/position.guard';
+import { SystemEmployerGuard } from './guards/systemEmployerGuard/system-employer.guard';
 
 
 
@@ -55,9 +58,10 @@ const routes: Routes = [
   { path: "image-upload", component: CandidateImageComponent, canActivate: [CandidateImageComponent] },
   { path: "cv", component: CvAddComponent, canActivate: [CandidateCvAddGuard] },
   { path: "cv-view", component: CvViewComponent, canActivate: [CandidateCvViewGuard] },
-
+  {path:"cvInformation",component:CandidateInformationComponent},
   { path: "activeJobAdvertisement", component: EmployeeListComponent,canActivate:[PositionGuard]  },
   { path: "department-add", component: AddComponent,canActivate:[PositionGuard]  },
+  {path:"unverifiedJA",component:UnverifiedJAComponent,canActivate:[SystemEmployerGuard]},
   { path: "home", component: HomeComponent },
   { path: "school", component: SchoolComponent },
   { path: "tinjob", component: TinjobComponent }

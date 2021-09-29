@@ -1,11 +1,4 @@
 
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <app-sidemenu></app-sidemenu>
-    </div>
-    <div class="col-md-9 pt-2">
       <p-card >
         <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
           Personal Languages Information
@@ -41,9 +34,9 @@
               <option >A1</option>
           </select>
       </div>
-          <button
+          <button 
           
-        class="btn btn-primary my-4"
+        class="btn btn-outline-primary my-4"
         (click)="add()"
       >
         Add 
@@ -80,6 +73,9 @@
                     <p-columnFilter type="text" field="languageLevel" display="menu" class="ms-auto"></p-columnFilter>
                   </div>
                 </th>
+                <th pSortableColumn="languageLevel">
+                 
+                </th>
         
                
            
@@ -96,7 +92,11 @@
                   <span class="p-column-title">Language Level</span>
                   {{ language.languageLevel }}
                 </td>
-               
+                <td>
+                  <button (click)="removeLanguages(language.id)" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                 </td>
+
+
         
               </tr>
             </ng-template>
@@ -108,6 +108,3 @@
           </p-table>
         </div>
       </p-card>
-    </div>
-  </div>
-</div>

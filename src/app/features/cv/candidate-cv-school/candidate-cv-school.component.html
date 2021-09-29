@@ -1,11 +1,6 @@
 
 
-<div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <app-sidemenu></app-sidemenu>
-      </div>
-      <div style=" font-family: 'Gemunu Libre', sans-serif;" class="col-md-9 pt-2">
+
         <p-card>
             <ng-template pTemplate="title">
               Personal Skill Information
@@ -43,13 +38,13 @@
         
                 </div>
             </div>
-            <button class="btn btn-primary my-4" (click)="add()">
+            <button class="btn btn-outline-primary my-4" (click)="add()">
                 Add
             </button>
         
         </form>
         
-        <div style="padding-top: 20px; font-family: 'Gemunu Libre', sans-serif; " class="container">
+        <div style="font-family: 'Gemunu Libre', sans-serif; " class="container pt-2">
             <p-table id="myTable" #dt class="deneme" [value]="candidateSchool" dataKey="id" styleClass="p-datatable-customers"
                 [rowHover]="true" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
                 [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
@@ -93,6 +88,10 @@
                                 </p-columnFilter>
                             </div>
                         </th>
+                        <th pSortableColumn="graduationYear">
+                        
+                        </th>
+        
         
         
         
@@ -118,7 +117,11 @@
                             <span *ngIf="!school.graduationYear">Continue</span>
                         </td>
         
-        
+                        <td>
+                            <button (click)="removeSchool(school.id)" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                           </td>
+       
+       
         
                     </tr>
                 </ng-template>
@@ -130,7 +133,5 @@
             </p-table>
         </div>
         </p-card>
-      </div>
-    </div>
-</div>
+      
 

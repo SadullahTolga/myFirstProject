@@ -239,4 +239,20 @@ export class HeadingNaviComponent implements OnInit {
       return false;
     }
   }
+
+  checkSystemEmployer(): boolean {
+   if (this.checkUser()) {
+     let user = JSON.parse(localStorage.getItem('user'));
+     let role = user.message;
+     if (role.includes('systemEmployee')) {
+        
+       return true;
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+ }
+
 }

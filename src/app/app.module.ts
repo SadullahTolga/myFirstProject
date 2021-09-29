@@ -50,6 +50,9 @@ import { CvViewComponent } from './features/cv/cvAdd/cv-view/cv-view/cv-view.com
 import { SchoolComponent } from './features/school/school/school.component';
 import { SidemenuComponent } from './features/navi/sidemenu/sidemenu/sidemenu.component';
 import {SidebarModule} from 'primeng/sidebar';
+import { SystemEmployerComponent } from './features/systemEmployer/system-employer/system-employer.component';
+import { UnverifiedJAComponent } from './features/job/unverifiedJobAdvertisement/unverified-ja/unverified-ja.component';
+import { CandidateInformationComponent } from './features/cv/candidate-information/candidate-information/candidate-information.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,10 @@ import {SidebarModule} from 'primeng/sidebar';
     CvViewComponent,
     SchoolComponent,
     SidemenuComponent,
+    SystemEmployerComponent,
+    UnverifiedJAComponent,
+    CandidateInformationComponent,
+    
 
     
    

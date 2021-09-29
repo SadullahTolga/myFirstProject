@@ -41,8 +41,8 @@ export class CvAddComponent implements OnInit {
       candidateLanguageIds: [this.getCandidateLanguagesIds()],
       candidateSchoolIds: [this.getCandidateSchoolIds()],
       candidateSkillIds: [this.getCandidateSkillIds()],
-      coverLetter: ["", Validators.required],
-      title: ["", Validators.required],
+      coverLetter: ["",Validators.required],
+      title: ["",Validators.required],
     })
   }
 

@@ -20,17 +20,9 @@ export class CandidateJobAdverstisementComponent implements OnInit {
   }
 
   getActiveJA(){
-    this.jobAdvertisementService.getActiveJobAdvertisement().subscribe((response:any)=>{this.activeJobAdvertisement=response.data
+    this.jobAdvertisementService.getActiveJobAdvertisement().subscribe((response:any)=>
+    {this.activeJobAdvertisement=response.data
     })
   }
 
-  passiveJA(jobAdvertisement:JobAdvertisement){
-    this.jobAdvertisementService.passiveJA(jobAdvertisement).subscribe((response:any) => {
-     this.toastrService.error("Deleted")
-      window.location.reload()
-      
-  })
-
- 
-  
-}}
+ }

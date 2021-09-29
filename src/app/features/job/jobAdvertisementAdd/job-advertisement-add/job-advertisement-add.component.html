@@ -22,16 +22,7 @@
                         </select>
 
                     </div>
-                    <div class="field padding-bottom--24">
-                        <label>Please enter the job descrition for this job posting</label>
-
-                        <select class="form-select" formControlName="jobDescription">
-                            <option value="" disabled>Job Description</option>
-                            <option>Face to face</option>
-                            <option>Remote work</option>
-
-                        </select>
-                    </div>
+                   
                     <div class="field padding-bottom--24">
                         <label>Please enter the work model for this job posting</label>
 
@@ -52,6 +43,12 @@
                             <option>Part Time</option>
 
                         </select>
+                    </div>
+                    <div class="field padding-bottom--24">
+                        <label>Please enter the job description for this job posting</label>
+                        <input type="text" placeholder="Job Description" formControlName="jobDescription"
+                            class="form-control" />
+
                     </div>
                     <div class="field padding-bottom--24">
                         <label>Please enter the minumum salary for this job posting</label>
@@ -83,10 +80,9 @@
 
 
 
-                    <div class="field" style="padding-top: 10px;">
-                        <button class="btn btn-outline-primary" style="color: black;border: 0;" type="submit"
-                            routerLink="/tinjob" (click)="addJobAdvertisement()" name="submit" placeholder="Add"
-                            value="Continue"></button>
+                    <div class="d-grid gap-2 pt-2">
+                        <button class="btn btn-outline-primary btn-blck" type="submit" 
+                          [disabled]="!jobAdvertisementForm"  (click)="addJobAdvertisement()" name="submit" placeholder="Add" value="Continue">Add</button>
 
                     </div>
 

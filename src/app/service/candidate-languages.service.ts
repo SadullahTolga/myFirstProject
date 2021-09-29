@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CandidateLanguage } from '../models/candidate/candidate-languages/candidate-languages';
 import { Language } from '../models/language/language';
 
 @Injectable({
@@ -18,5 +19,9 @@ add(candidateLanguage: Language): Observable<Language> {
     this.apiUrl + '/add',
     candidateLanguage
   );
+}
+
+removeLanguage(languageId:number):Observable<CandidateLanguage>{
+  return this.httpClient.delete<CandidateLanguage>(this.apiUrl+"/delete/byId?CandLangId="+languageId)
 }
 }

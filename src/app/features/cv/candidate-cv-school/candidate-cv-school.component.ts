@@ -37,8 +37,9 @@ export class CandidateCvSchoolComponent implements OnInit {
       candidateId:[this.getUserId()],
       schoolId: ["", Validators.required],
       departmentId: ["", Validators.required],
-      graduationYear: [""],
       startYear: ["",Validators.required],
+      graduationYear: [""],
+      
     })
   }
 
@@ -64,11 +65,25 @@ export class CandidateCvSchoolComponent implements OnInit {
     if (this.candidateSchoolForm.valid) {
       this.candidateSchoolService.add(this.candidateSchoolForm.value).subscribe((data: any) => {
         this.toastrService.success(data.message, "Succes")
-        window.location.reload();
+        setTimeout(() => {window.location.reload()
+        
+        }, 1400);
         console.log("Eklendi")
         
       })
     } else {
       this.toastrService.error("Please chose your information")
     }  }
+
+    
+  removeSchool(schoolId: number) {
+    this.candidateSchoolService.removeSchool(schoolId).subscribe((data: any) => {
+      this.toastrService.error("Deleted school!")
+      setTimeout(() => {window.location.reload()
+        
+      }, 1400);
+    }
+    )
+
+  }
 }

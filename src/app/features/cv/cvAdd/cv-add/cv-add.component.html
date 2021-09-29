@@ -1,10 +1,4 @@
 
-<div  class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <app-sidemenu></app-sidemenu>
-      </div>
-      <div class="col-md-9">
         <div style=" font-family: 'Gemunu Libre', sans-serif;" class="containt">
             <form [formGroup]="cvForm">
                 <h1>Please enter your CV name and cover letter</h1>
@@ -17,10 +11,8 @@
                         aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 </div>
             </form>
-            <button [disabled]="!cvForm.valid" class="btn btn-primary my-4" (click)="add()">
+            <button [disabled]="!cvForm.valid" class="btn btn-outline-primary my-4" (click)="add()">
                 Add
             </button>
         </div>
-      </div>
-    </div>
-  </div>
+    

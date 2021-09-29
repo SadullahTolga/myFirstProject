@@ -15,29 +15,18 @@ import { JobAdvertisementService } from 'src/app/service/job-advertisement.servi
 export class HomeComponent implements OnInit {
 
   user:User;
-  city:City[]=[]
-  activeJobAdvertisement:JobAdvertisement[]=[]
+ 
  
   constructor(private route:Router,private toastrService:ToastrService,
-    private citiesService:CitiesService,
-    private jobAdvertisementService:JobAdvertisementService) { }
+   ) { }
 
   ngOnInit(): void {
-    this.getCity();
-    this.getActiveJA()
+    this.getUserInfo()
   }
-
   getUserInfo():any{
     this.user = JSON.parse(localStorage.getItem("user"))
     
-    
     return this.user;
   }
-  getCity(){
-    this.citiesService.getCities().subscribe((response:any)=>{this.city=response.data})
-  }
-  getActiveJA(){
-    this.jobAdvertisementService.getActiveJobAdvertisement().subscribe((response:any)=>{this.activeJobAdvertisement=response.data
-    })
-  }
+  
 }

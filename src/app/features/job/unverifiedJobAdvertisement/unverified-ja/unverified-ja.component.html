@@ -1,0 +1,125 @@
+<div  class="container pt-2">
+    <p-table
+      id="myTable"
+      #dt
+      [value]="unverifiedJA"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <h4 class="fw-bold">
+            <span style=" font-family: 'Gemunu Libre', sans-serif;" class="text-danger">{{ unverifiedJA.length }} </span> jobs are waiting for verification.
+          </h4>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr style=" font-family: 'Gemunu Libre', sans-serif;">
+            <th pSortableColumn="companyName">
+                <div class="d-flex justify-content-between align-items-center">
+                  Company Name
+                  <p-sortIcon field="companyName"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="companyName"
+                    display="menu"
+                    class="ms-auto"
+                  ></p-columnFilter>
+                </div>
+              </th>
+
+          <th pSortableColumn="position.title">
+            <div class="d-flex justify-content-between align-items-center">
+              Position
+            </div>
+          </th>
+
+          <th pSortableColumn="jobDescription">
+            <div class="d-flex justify-content-between align-items-center">
+              Job Description
+              
+            </div>
+          </th>
+  
+          <th pSortableColumn="openPositions">
+            <div class="d-flex justify-content-between align-items-center">
+              Open Positions
+              
+            </div>
+          </th>
+  
+          <th pSortableColumn="createdAt">
+            <div class="d-flex justify-content-between align-items-center">
+              Release Date
+              <p-sortIcon field="createdAt"></p-sortIcon>
+            </div>
+          </th>
+  
+          <th pSortableColumn="deadline">
+            <div class="d-flex justify-content-between align-items-center">
+              Deadline
+              <p-sortIcon field="deadline"></p-sortIcon>
+            </div>
+          </th>
+
+          <th>
+              Verification JA
+          </th>
+  
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-jobAdvertisement>
+        <tr style=" font-family: 'Gemunu Libre', sans-serif;"  class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Company</span>
+                {{ jobAdvertisement.employer.companyName }}
+              </td>
+
+          <td>
+            <span class="p-column-title">Position</span>
+            {{ jobAdvertisement.position.title }}
+          </td>
+
+          <td>
+            <div class="overflow-auto" style="max-height: 50px;">
+            {{ jobAdvertisement.jobDescription }}
+            </div>
+          </td>
+  
+          <td>
+            <span class="p-column-title">Open Positions</span>
+            {{ jobAdvertisement.openPositions }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Release Date</span>
+            {{ jobAdvertisement.createdAt | date: "MMMM d, y" }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Deadline</span>
+            {{ jobAdvertisement.deadline | date: "MMMM d, y" }}
+          </td>
+          <td>
+            <span class="p-column-title">Verification Change</span>
+            <button (click)="changeUnverifiedJA(jobAdvertisement)" class="btn btn-outline-primary"><i class="far fa-check-square"></i></button>
+          </td>
+  
+         
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No unverified jobs found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

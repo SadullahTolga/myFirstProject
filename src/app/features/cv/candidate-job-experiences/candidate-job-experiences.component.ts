@@ -45,8 +45,17 @@ export class CandidateJobExperiencesComponent implements OnInit {
 add(){
   if(this.jobExperienceForm.valid){
     this.candidateJobExperiencesService.add(this.jobExperienceForm.value).subscribe((response:any)=>{this.toastrService.success("Succes")
-    window.location.reload();})
+    setTimeout(() => {window.location.reload()
+        
+    }, 1400);})
   } else{this.toastrService.error("Please enter your all information!")}
+}
+
+removeJob(jobId:number){
+  this.candidateJobExperiencesService.removeJob(jobId).subscribe((response:any)=>{this.toastrService.error("Deleted school!")
+  setTimeout(() => {window.location.reload()
+    
+  }, 1400);})
 }
 
 getCandidateJobExp(){

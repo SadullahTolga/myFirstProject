@@ -87,19 +87,5 @@ export class EmployeesAddComponent implements OnInit {
 
   }
 
-  // checkEmailWebsite(){
-  //   let website=this.employeesAddForm.value["website"]
-  //   let webHeading = website.replace("www."," ")
-
-  //   let mail =this.employeesAddForm.value["email"]
-  //   let headingMail=mail.split("@")
-
-  //   if(webHeading===headingMail[1]){
-      
-  //     return this.checkDomain =false;
-  //   }else{
-  //     this.toastrService.error("Email-Website domaini uyuşmamaktadır.")
-  //     return this.checkDomain =true;}
-  // }
 
 }

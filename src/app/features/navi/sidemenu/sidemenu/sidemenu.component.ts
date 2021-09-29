@@ -9,6 +9,7 @@ import { MenuItem } from 'primeng/api';
 export class SidemenuComponent implements OnInit {
   employerItems:MenuItem[]
   candidateItems:MenuItem[];
+  systemEmployerItems:MenuItem[];
   constructor() { }
 
   ngOnInit(): void {
@@ -45,7 +46,7 @@ export class SidemenuComponent implements OnInit {
                   icon:'pi pi-fw pi-file',
                   routerLink:"/candidate"},
                {
-                  label:'Active Job Advertisement',
+                  label:'Job Advertisement',
                   icon:'pi pi-fw pi-file',
                   routerLink:"/activeJobAdvertisement"
                },
@@ -114,7 +115,7 @@ export class SidemenuComponent implements OnInit {
    items:[ 
       {label:'Candidate CV Add',
       icon:'pi pi-fw pi-align-justify',
-      routerLink:"/cv"
+      routerLink:"/cvInformation"
 
       },
       {label:'Candidate CV View',
@@ -122,60 +123,7 @@ export class SidemenuComponent implements OnInit {
       routerLink:"/cv-view"
       },
       
-      {label:'Candidate Personal Information',
-      icon:"",
-      items:[
-         {
-            label:'Candidate School Information',
-            icon:'pi pi-fw pi-align-justify',
-            routerLink:"/candidate-school"
-         },
       
-         {
-            label:'Candidate Skill Information',
-            icon:'pi pi-fw pi-align-justify',
-            routerLink:"/candidate-skill"
-   
-         },
-         {
-            label:'Candidate Languages Information',
-            icon:'pi pi-fw pi-align-justify',
-            routerLink:"/candidate-languages"
-            
-         },
-         {
-            label:'Candidate Job Experiences Information',
-            icon:'pi pi-fw pi-align-justify',
-            routerLink:"/candidate-jobExperiences"
-           
-         },
-         {
-            label:'Candidate Account Information',
-            icon:'',
-            items:[
-               {
-                  label:'GitHub',
-                  icon:'pi pi-fw pi-file',
-                  routerLink:"/candidate-gitHub"
-               },
-               {
-                  label:'LınkedIn',
-                  icon:'pi pi-fw pi-file',
-                  routerLink:"/candidate-LınkedIn"
-               }
-   
-            ]
-           
-         },
-         {
-            label:'Candidate Images Information',
-            icon:'pi pi-fw pi-align-justify',
-            routerLink:"/image-upload"
-           
-         }
-         
-      ]
-      },
       
     
 
@@ -189,7 +137,16 @@ export class SidemenuComponent implements OnInit {
          
      ];
       
-   
+   this.systemEmployerItems=[
+     {
+      label:'Unverified JA',
+      icon:'pi pi-fw pi-align-justify',
+      routerLink:"/unverifiedJA"
+     
+     }
+             
+
+   ]
     
   }
  
@@ -233,4 +190,18 @@ export class SidemenuComponent implements OnInit {
       return false;
     }
   }
+  checkSystemEmployer(): boolean {
+   if (this.checkUser()) {
+     let user = JSON.parse(localStorage.getItem('user'));
+     let role = user.message;
+     if (role.includes('systemEmployee')) {
+        
+       return true;
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+ }
 }

@@ -27,4 +27,8 @@ add(
     candidateJobExperience
   );
 }
+
+removeJob(jobId:number):Observable<CandidateJobExperience>{
+  return this.httpClient.delete<CandidateJobExperience>(this.apiUrl+"/delete/byId?candJobExpId="+jobId)
+}
 }

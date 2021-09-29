@@ -19,7 +19,7 @@ export class CandidateSkillComponent implements OnInit {
   skills: Skill[] = []
   user: any
   cvForm: FormGroup
-  candidate:Candidate[]=[]
+  candidate: Candidate[] = []
   candidateSkills: Skill[] = []
 
 
@@ -55,13 +55,26 @@ export class CandidateSkillComponent implements OnInit {
     if (this.cvForm.valid) {
       this.candidateSkillService.addSkill(this.cvForm.value).subscribe((data: any) => {
         this.toastrService.success(data.message, "Succes")
-        window.location.reload();
-        console.log("Eklendi")
+        setTimeout(() => {window.location.reload()
         
+        }, 1400);
+        console.log("Eklendi")
+
       })
     } else {
       this.toastrService.error("Please chose your skill")
     }
+  }
+
+  removeSkill(skillId: number) {
+    this.candidateSkillService.removeSkill(skillId).subscribe((data: any) => {
+      this.toastrService.error("Deleted skill!")
+      setTimeout(() => {window.location.reload()
+        
+      }, 1400);
+    }
+    )
+
   }
   getSkills() {
     this.skillService.getSkills().subscribe((data: any) => {

@@ -48,29 +48,38 @@ export class JobAdvertisementAddComponent implements OnInit {
   createJobAdvertisementForm(){
     this.jobAdvertisementForm=this.formBuilder.group({
       cityId:["",Validators.required],
-      deadLine:["",Validators.required],
+      
+      positionId:["",Validators.required],
       employerId: [this.getUserId()],
-      id:["",Validators.required],
+      workModel:["",Validators.required],
+      workTime:["",Validators.required],
       jobDescription:["",Validators.required],
       maxSalary:[""],
       minSalary:[""],
       openPositions:["",Validators.required],
-      positionId:["",Validators.required],
-      workModel:["",Validators.required],
-      workTime:["",Validators.required]
+      deadline:["",Validators.required],
+     
+  
+     
+     
+      
+      
     })
 
     }
 
     addJobAdvertisement(){
-      
-      this.jobAdvertisementService.addJobAdvertisement(this.jobAdvertisementForm.value).subscribe((response:any)=>{
-        this.toastrService.success("Job Advertisement add.")
-      }), (responseError) => {
-        let message = JSON.stringify(responseError.error.data.errors);
-        this.toastrService.error(
-          message.replace(/{|}|"/gi, ''), 'Doğrulama Hatası');
+      if (this.jobAdvertisementForm.valid) {
+        this.jobAdvertisementService.addJobAdvertisement(this.jobAdvertisementForm.value).subscribe((response)=>{
+          this.toastrService.success('Successfully added');
+          setTimeout(() => {window.location.reload()
+        
+          }, 1400);
+        })
+      } else{
+        this.toastrService.error("Please enter all information")
       }
+     
     }
     getJobPositions() {
       this.positionService.getPosition().subscribe((data: any) => {
