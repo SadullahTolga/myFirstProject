@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidate } from '../models/candidate/candidate';
 import { CandidateListResponse } from '../models/candidate/candidateListResponse';
+import { JobAdvertisement } from '../models/jobAdvertisements/jobAdvertisements';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,11 @@ export class CandidateService {
   }
   updateLinkedIn(id:number,linkedin:string):Observable<Candidate>{
     return this.httpClient.put<Candidate>(this.apiUrl+"/update/linkedinAccount?candId="+id+"&linkedinAccount="+linkedin,linkedin)
+  }
+  addFavoriteJA(candidate:Candidate,jobAdvertisement:number):Observable<JobAdvertisement>{
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl+"/update/favoriteJobAdvs/add?candId="+candidate.id+"&jobAdvId="+jobAdvertisement,candidate)
+  }
+  removeFavoriteJA(candidate:Candidate,jobAdvertisement:number):Observable<JobAdvertisement>{
+    return this.httpClient.put<JobAdvertisement>(this.apiUrl+"/update/favoriteJobAdvs/remove?candId="+candidate.id+"&jobAdvId="+jobAdvertisement,candidate)
   }
 }

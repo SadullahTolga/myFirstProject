@@ -56,13 +56,16 @@ export class SidemenuComponent implements OnInit {
                   routerLink:"/job-advertisement"
                   
                },
-               {
-                  label:'Justify',
-                  icon:'pi pi-fw pi-align-justify'
-               },
+               
    
             ]
          },
+         {
+            label:"Employer Information",
+            icon:"pi pi-fw  pi-align-justify",
+            routerLink:"/employerInformation"
+            
+         }
          
      ];
        
@@ -99,21 +102,23 @@ export class SidemenuComponent implements OnInit {
                   routerLink:"/activatedJobAdvertisement"
                },
             
-               {
-                  label:'Justify',
-                  icon:'pi pi-fw pi-align-justify'
-               },
+            
               
    
             ]
+         },
+         {
+            label:'Favorite Job Advertisement',
+            icon:'pi pi-fw pi-chevron-right ',
+            routerLink:"/favoriteJA"
          },
         
          
 {
    label:'CV Processors',
-   icon:'pi pi-fw pi-file',
+   icon:'pi pi-fw  pi-file',
    items:[ 
-      {label:'Candidate CV Add',
+      {label:'Candidate CV Transactions',
       icon:'pi pi-fw pi-align-justify',
       routerLink:"/cvInformation"
 
@@ -142,6 +147,13 @@ export class SidemenuComponent implements OnInit {
       label:'Unverified JA',
       icon:'pi pi-fw pi-align-justify',
       routerLink:"/unverifiedJA"
+     
+     },
+
+     {
+      label:'Unverified Employer Update',
+      icon:'pi pi-fw pi-align-justify',
+      routerLink:"/employerUpdateVerified"
      
      }
              

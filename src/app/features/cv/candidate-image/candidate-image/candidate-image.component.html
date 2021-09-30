@@ -1,7 +1,7 @@
 
 
  <p-card>
-    <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
+    <ng-template  pTemplate="title">
       Personal Images Information
     </ng-template>
 
@@ -23,7 +23,7 @@
           <button
             [disabled]="!imageForm.valid"
             class="btn btn-outline-primary my-3"
-            (click)="imageUpload()"
+            (click)="imageUpload()" style="border: 0;"
           >
             Upload image
           </button>

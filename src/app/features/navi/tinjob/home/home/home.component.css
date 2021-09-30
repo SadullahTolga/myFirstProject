@@ -1,5 +1,5 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,6 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+div{
+  font-family: 'Gemunu Libre', sans-serif;
+}
+
+
 
 .quotes {
   width: 80vw;
@@ -19,6 +24,7 @@ body {
   justify-content: space-between;
   z-index: 2;
 }
+
 
 .quotes .box {
   position: relative;

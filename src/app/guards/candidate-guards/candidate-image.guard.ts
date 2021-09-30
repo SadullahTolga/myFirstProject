@@ -17,7 +17,7 @@ export class CandidateImageGuard implements CanActivate {
   
         let employer = user.message;
   
-        if (employer.includes('candidate')) {
+        if (employer.includes('tinjob')) {
   
           return true;
   
@@ -25,7 +25,7 @@ export class CandidateImageGuard implements CanActivate {
   
           this.toastrService.error('You do not have permission to access this page');
   
-          this.router.navigate(['user-login']);
+          this.router.navigate(['home']);
   
           return false;
   

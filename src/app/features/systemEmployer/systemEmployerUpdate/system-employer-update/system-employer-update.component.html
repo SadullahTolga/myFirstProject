@@ -1,0 +1,32 @@
+<form [formGroup]="updateFirstNameForm" class="p-2">
+
+    <label>New First Name</label>
+    <textarea class="form-control" type="text" id="firstName" formControlName="firstName"
+        placeholder="Please enter your new firts name ">
+</textarea>
+
+
+
+
+    <div class="text-center">
+        <button [disabled]="!updateFirstNameForm.valid" class="btn btn-primary mt-3" (click)=" updateFirstName()">
+            Update
+        </button>
+
+    </div>
+</form>
+<form [formGroup]="updateLastNameForm" class="p-2">
+
+    <label>New Last Name</label>
+    <textarea class="form-control" type="text" id="lastName" formControlName="lastName"
+        placeholder="Please enter your new firts name ">
+</textarea>
+
+
+    <div class="text-center">
+        <button [disabled]="!updateLastNameForm.valid" class="btn btn-primary mt-3" (click)=" updateLastName()">
+            Update
+        </button>
+
+    </div>
+</form>

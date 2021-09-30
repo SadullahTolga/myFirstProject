@@ -29,5 +29,9 @@ export class CvService {
       cv
     );
   }
-  
+
+  titleUpdate(cv:Cv ,title:string):Observable<Cv>{
+    return this.httpClient.put<Cv>(this.apiUrl+"/update/title?cvId="+cv.id+"&title="+title,cv)
+  }
+
 }

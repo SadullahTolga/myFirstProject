@@ -44,15 +44,17 @@ import { EmployeeListComponent } from './features/employees/employee-list/employ
 import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob/tinjob.component';
 import { HomeComponent } from './features/navi/tinjob/home/home/home.component';
 import { CandidateImageComponent } from './features/cv/candidate-image/candidate-image/candidate-image.component';
-import {RouterModule} from '@angular/router';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import { CvViewComponent } from './features/cv/cvAdd/cv-view/cv-view/cv-view.component';
 import { SchoolComponent } from './features/school/school/school.component';
 import { SidemenuComponent } from './features/navi/sidemenu/sidemenu/sidemenu.component';
 import {SidebarModule} from 'primeng/sidebar';
-import { SystemEmployerComponent } from './features/systemEmployer/system-employer/system-employer.component';
 import { UnverifiedJAComponent } from './features/job/unverifiedJobAdvertisement/unverified-ja/unverified-ja.component';
 import { CandidateInformationComponent } from './features/cv/candidate-information/candidate-information/candidate-information.component';
+import { EmployerUpdateComponent } from './features/employees/employerUpdate/employer-update/employer-update.component';
+import { EmployerUpdateVerifiedComponent } from './features/systemEmployer/employerUpdateVerified/employer-update-verified/employer-update-verified.component';
+import { SystemEmployerUpdateComponent } from './features/systemEmployer/systemEmployerUpdate/system-employer-update/system-employer-update.component';
+import { FavoriteJAComponent } from './features/job/favoriteJA/favorite-ja/favorite-ja.component';
 
 @NgModule({
   declarations: [
@@ -83,9 +85,12 @@ import { CandidateInformationComponent } from './features/cv/candidate-informati
     CvViewComponent,
     SchoolComponent,
     SidemenuComponent,
-    SystemEmployerComponent,
     UnverifiedJAComponent,
     CandidateInformationComponent,
+    EmployerUpdateComponent,
+    EmployerUpdateVerifiedComponent,
+    SystemEmployerUpdateComponent,
+    FavoriteJAComponent,
     
 
     

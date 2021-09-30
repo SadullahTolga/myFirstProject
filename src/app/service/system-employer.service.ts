@@ -21,4 +21,14 @@ export class SystemEmployerService {
   getBySystemEmployerId(id:number):Observable<SystemEmployee>{
     return this.httpClient.get<SystemEmployee>(this.apiUrl+"get/byId?sysEmplId="+id)
   }
+
+  updateFirstName(systemEmploye:SystemEmployee,firstName:string):Observable<SystemEmployee>{
+    return this.httpClient.put<SystemEmployee>
+    (this.apiUrl+"update/firstName?firstName="+firstName+"&sysEmplId="+systemEmploye.id,systemEmploye)
+  }
+  
+  updateLastName(systemEmploye:SystemEmployee,lastName:string):Observable<SystemEmployee>{
+    return this.httpClient.put<SystemEmployee>
+    (this.apiUrl+"update/lastName?lastName="+lastName+"&sysEmplId="+systemEmploye.id,systemEmploye)
+  }
 }

@@ -3,8 +3,8 @@
         <div class="col-md-3">
             <app-sidemenu></app-sidemenu>
         </div>
-        <div class="col-md-9">
-            <div style=" font-family: 'Gemunu Libre', sans-serif;" class="container" style="padding-top:10px;">
+        <div class="col-md-9 pt-4">
+            <div style=" font-family: 'Gemunu Libre', sans-serif;" class="container" >
                 <form id="stripe-login" [formGroup]="jobAdvertisementForm">
                     <div class="field padding-bottom--24">
                         <select class="form-select" formControlName="cityId">
@@ -82,7 +82,7 @@
 
                     <div class="d-grid gap-2 pt-2">
                         <button class="btn btn-outline-primary btn-blck" type="submit" 
-                          [disabled]="!jobAdvertisementForm"  (click)="addJobAdvertisement()" name="submit" placeholder="Add" value="Continue">Add</button>
+                          [disabled]="!jobAdvertisementForm.valid"  (click)="addJobAdvertisement()" name="submit" placeholder="Add" value="Continue">Add</button>
 
                     </div>
 

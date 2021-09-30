@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { City } from 'src/app/models/city/city';
-import { JobAdvertisement } from 'src/app/models/jobAdvertisements/jobAdvertisements';
+
 import { User } from 'src/app/models/user/user';
-import { CitiesService } from 'src/app/service/cities.service';
-import { JobAdvertisementService } from 'src/app/service/job-advertisement.service';
+
 
 @Component({
   selector: 'app-home',
@@ -28,5 +26,56 @@ export class HomeComponent implements OnInit {
     
     return this.user;
   }
+
+  checkUser():boolean{
+    if (localStorage.getItem("user")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  checkEmployer(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('employer')) {
+         
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  checkCandidate(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('candidate')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+  checkSystemEmployer(): boolean {
+   if (this.checkUser()) {
+     let user = JSON.parse(localStorage.getItem('user'));
+     let role = user.message;
+     if (role.includes('systemEmployee')) {
+        
+       return true;
+     } else {
+       return false;
+     }
+   } else {
+     return false;
+   }
+ }
   
 }

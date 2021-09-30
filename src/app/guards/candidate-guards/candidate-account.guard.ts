@@ -25,7 +25,7 @@ export class CandidateAccountGuard implements CanActivate {
   
           this.toastrService.error('You do not have permission to access this page');
   
-          this.router.navigate(['user-login']);
+          this.router.navigate(['home']);
   
           return false;
   

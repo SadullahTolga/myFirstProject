@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SystemEmployerComponent } from './system-employer.component';
+import { FavoriteJAComponent } from './favorite-ja.component';
 
-describe('SystemEmployerComponent', () => {
-  let component: SystemEmployerComponent;
-  let fixture: ComponentFixture<SystemEmployerComponent>;
+describe('FavoriteJAComponent', () => {
+  let component: FavoriteJAComponent;
+  let fixture: ComponentFixture<FavoriteJAComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SystemEmployerComponent ]
+      declarations: [ FavoriteJAComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SystemEmployerComponent);
+    fixture = TestBed.createComponent(FavoriteJAComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,167 @@
+<div class="container pt-2">
+    <div class="row">
+        <div class="col-md-3">
+            <app-sidemenu></app-sidemenu>
+        </div>
+        <div class="col-md-9">
+            <table class="table">
+                <thead>
+                    <tr class="fw-bold">
+                        <th>
+                            Company Name
+                            <button style="border: 0;" type="button" class="btn  btn-outline btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Update Company Name</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form [formGroup]="companyNameUpdateForm" class="p-2">
+
+                                                <label>Company Name</label>
+                                                <textarea class="form-control" type="text" id="companyName"
+                                                    formControlName="companyName"
+                                                    placeholder="Please enter your company name ">
+                                            </textarea>
+
+
+
+                                                <div class="text-center">
+                                                    <button [disabled]="!companyNameUpdateForm.valid"
+                                                        class="btn btn-primary mt-3" (click)="updateCompanyName()">
+                                                        Update
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary ms-2 mt-3"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            Email
+                            <button style="border: 0;" type="button" class="btn  btn-outline btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">Update Email</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="updateEmailAndWebsiteForm" class="p-2">
+
+                                            <label>Email</label>
+                                            <textarea class="form-control" type="text" id="email"
+                                                formControlName="email"
+                                                placeholder="Please enter your new email ">
+                                        </textarea>
+                                        <label>Website</label>
+                                            <textarea class="form-control" type="text" id="website"
+                                                formControlName="website"
+                                                placeholder="Please enter your new website ">
+                                        </textarea>
+
+
+
+                                            <div class="text-center">
+                                                <button [disabled]="!updateEmailAndWebsiteForm.valid"
+                                                    class="btn btn-primary mt-3" (click)="updateEmailAndWebsite()">
+                                                    Update
+                                                </button>
+                                                <button type="button" class="btn btn-secondary ms-2 mt-3"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </th>
+                        <th>
+                            Website
+                            
+                        </th>
+                        <th>
+                            Phone Number
+                            <button style="border: 0;" type="button" class="btn  btn-outline btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                            <i class="fas fa-pen"></i>
+                        </button>
+                        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">Update Phone Number</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="updatePhoneNumberForm" class="p-2">
+
+                                            <label>Phone Number</label>
+                                            <textarea class="form-control" type="text" id="phoneNumber"
+                                                formControlName="phoneNumber"
+                                                placeholder="Please enter your new phone number ">
+                                        </textarea>
+                                        
+
+
+
+                                            <div class="text-center">
+                                                <button [disabled]="!updatePhoneNumberForm.valid"
+                                                    class="btn btn-primary mt-3" (click)=" updatePhoneNumber()">
+                                                    Update
+                                                </button>
+                                                <button type="button" class="btn btn-secondary ms-2 mt-3"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        </th>
+                        <th>
+                            Created at
+                        </th>
+                        <th>
+                            Last Modified at
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{employer.companyName}} </td>
+                        <td>{{employer.email}}</td>
+                        <td>{{employer.website}}</td>
+                        <td>{{employer.phoneNumber}}</td>
+                        <td>{{employer.createdAt | date:'mm/dd/yyyy'}}</td>
+                        <td>{{employer.lastModifiedAt | date:'mm/dd/yyyy'}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

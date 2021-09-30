@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CandidateJobExperience } from 'src/app/models/candidate-job-experience/candidate-job-experience';
 import { Candidate } from 'src/app/models/candidate/candidate';
@@ -20,26 +21,30 @@ import { DepartmentService } from 'src/app/service/department.service';
   styleUrls: ['./cv-view.component.css']
 })
 export class CvViewComponent implements OnInit {
-  
+
   candidateSkills: Skill
   skill: Skill[] = []
-  candidateLanguage: Language[]=[]
+  candidateLanguage: Language[] = []
   departments: Department
   candidateSchool: School[] = []
-  
+
   candidateJobExperiencesList: CandidateJobExperience[] = []
   candidate: Candidate
   cvForm: FormGroup
+  titleForm: FormGroup
   toUpdatedCv: any;
   updatedCvId: number;
   user: any
 
-  constructor(private candidateService: CandidateService,private cvService:CvService,private formBuilder:FormBuilder,private toastrService:ToastrService
-   
+  constructor(private candidateService: CandidateService,
+    private cvService: CvService, private formBuilder: FormBuilder, private toastrService: ToastrService,
+    private router: Router
+
   ) { }
 
   ngOnInit(): void {
     this.createCvForm();
+    this.createTitleForm();
     this.getCandidateById()
     this.departmentGetAll()
     this.getCandidateSchool()
@@ -56,20 +61,53 @@ export class CvViewComponent implements OnInit {
 
     })
   }
+  createTitleForm() {
+    this.titleForm = this.formBuilder.group({
+      cvId: [this.updatedCvId],
+      title: ["", Validators.required]
+    })
+  }
 
-  addCoverLetter() { 
-    if(this.cvForm.valid){
+  titleUpdate() {
+    if (this.titleForm.valid) {
       this.cvService
-      .coverLetterUpdate(
-        this.toUpdatedCv,
-        this.cvForm.value['coverLetter']
-      )
-      .subscribe((response: any) => {
-        this.toastrService.success('Cover letter added successfully');
-        
-      });
-    } else{this.toastrService.error("Please enter your cover letter")}
-   
+        .titleUpdate(
+          this.toUpdatedCv,
+          this.titleForm.value['title']
+        )
+        .subscribe((response: any) => {
+          this.toastrService.success('Title added successfully');
+
+          setTimeout(() => {
+            window.location.reload()
+
+          }, 1400);
+
+
+        });
+    } else { this.toastrService.error("Please enter your title") }
+
+  }
+
+  addCoverLetter() {
+    if (this.cvForm.valid) {
+      this.cvService
+        .coverLetterUpdate(
+          this.toUpdatedCv,
+          this.cvForm.value['coverLetter']
+        )
+        .subscribe((response: any) => {
+          this.toastrService.success('Cover letter added successfully');
+
+          setTimeout(() => {
+            window.location.reload()
+
+          }, 1400);
+
+
+        });
+    } else { this.toastrService.error("Please enter your cover letter") }
+
   }
 
   getCvById() {
@@ -108,7 +146,7 @@ export class CvViewComponent implements OnInit {
     return this.user.data.id
   }
 
- 
+
 
   departmentGetAll() {
     this.candidateService.getCandidateById(this.getByUserId()).subscribe((response: any) => { this.departments = response.data.department })

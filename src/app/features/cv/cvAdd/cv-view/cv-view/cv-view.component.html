@@ -10,47 +10,94 @@
                         <button style="font-weight: inherit;" class="accordion-button btn-outline-primary" type="button"
                             data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                             aria-controls="panelsStayOpen-collapseOne">
-                            <h5 style="font-weight: bolder;"> Title : {{candidate.cvs[0].title}}</h5>
+
+                            Your all personal information!
                         </button>
+
                     </h2>
                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
                         aria-labelledby="panelsStayOpen-headingOne">
                         <div class="accordion-body">
+                            <h5><button style="border: 0;" type="button" class="btn  btn-outline btn-sm"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                    <i class="fas fa-pen"></i>
+                                </button>{{candidate.cvs[0].title}} </h5>
 
-                              <h5><button style="border: 0;" type="button" class="btn  btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="fas fa-pen"></i>
-                              </button>{{candidate.cvs[0].coverLetter}} </h5>
-                              
-                              
-                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
                                 <div class="modal-dialog">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Update Cover Letter</h5>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form [formGroup]="cvForm" class="p-2">
-           
-                                            <label>Cover Letter</label>
-                                            <textarea class="form-control" type="text" id="coverLetter" formControlName="coverLetter"
-                                                placeholder="Please enter your cover letter">
-                                            </textarea>
-                        
-                                        
-                        
-                                        <div class="text-center">
-                                            <button [disabled]="!cvForm.valid" class="btn btn-primary mt-3" routerLink="/cv-view" (click)="addCoverLetter()">
-                                                Add
-                                            </button>
-                                            <button type="button" class="btn btn-secondary ms-2 mt-3" data-bs-dismiss="modal">Close</button>
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel1">Update Title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
-                                    </form>
+                                        <div class="modal-body">
+                                            <form [formGroup]="titleForm" class="p-2">
+
+                                                <label>Title</label>
+                                                <textarea class="form-control" type="text" id="title"
+                                                    formControlName="title" placeholder="Please enter your new title">
+                                            </textarea>
+
+
+
+                                                <div class="text-center">
+                                                    <button [disabled]="!titleForm.valid" class="btn btn-primary mt-3"
+                                                        routerLink="/cv-view" (click)="titleUpdate()">
+                                                        Update
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary ms-2 mt-3"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
                                     </div>
-                                   
-                                  </div>
                                 </div>
-                              </div>
+                            </div>
+
+                            <h5><button style="border: 0;" type="button" class="btn  btn-outline btn-sm"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="fas fa-pen"></i>
+                                </button>{{candidate.cvs[0].coverLetter}} </h5>
+
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Update Cover Letter</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form [formGroup]="cvForm" class="p-2">
+
+                                                <label>Cover Letter</label>
+                                                <textarea class="form-control" type="text" id="coverLetter"
+                                                    formControlName="coverLetter"
+                                                    placeholder="Please enter your cover letter">
+                                            </textarea>
+
+
+
+                                                <div class="text-center">
+                                                    <button [disabled]="!cvForm.valid" class="btn btn-primary mt-3"
+                                                        routerLink="/cv-view" (click)="addCoverLetter()">
+                                                        Update
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary ms-2 mt-3"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="accordion pt-2" id="accordionPanelsStayOpenExample">
                                 <div class="accordion-item">
@@ -108,7 +155,7 @@
                                                 <p-table id="myTable" #dt class="deneme" [value]="candidateSchool"
                                                     dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
                                                     [rows]="10" [showCurrentPageReport]="true"
-                                                    [rowsPerPageOptions]="[10, 25, 50]" 
+                                                    [rowsPerPageOptions]="[10, 25, 50]"
                                                     [ngStyle]="{backgroundColor:'var(--blue-500)'}"
                                                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                                     [filterDelay]="0">
@@ -204,7 +251,7 @@
                                                 [value]="candidateJobExperiencesList" dataKey="id"
                                                 styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
                                                 [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-                                                 [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                                [ngStyle]="{backgroundColor:'var(--blue-500)'}"
                                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                                 [globalFilterFields]="['workPlace','positionId']">
                                                 [filterDelay]="0">
@@ -304,10 +351,11 @@
                                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse  collapse show"
                                         aria-labelledby="panelsStayOpen-headingOne">
                                         <div class="accordion-body">
-                                            <p-table id="myTable" #dt class="deneme" [value]="candidateLanguage" dataKey="id"
-                                                styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
-                                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-                                                 [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                            <p-table id="myTable" #dt class="deneme" [value]="candidateLanguage"
+                                                dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
+                                                [rows]="10" [showCurrentPageReport]="true"
+                                                [rowsPerPageOptions]="[10, 25, 50]"
+                                                [ngStyle]="{backgroundColor:'var(--blue-500)'}"
                                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                                 [filterDelay]="0">
 
@@ -327,8 +375,8 @@
                                                                 class="d-flex justify-content-between align-items-center">
                                                                 Level
                                                                 <p-sortIcon field="positLevelionId"></p-sortIcon>
-                                                                <p-columnFilter type="text" field="Level"
-                                                                    display="menu" class="ms-auto"></p-columnFilter>
+                                                                <p-columnFilter type="text" field="Level" display="menu"
+                                                                    class="ms-auto"></p-columnFilter>
                                                             </div>
                                                         </th>
 
@@ -352,7 +400,7 @@
 
 
                                                     </tr>
-                                                  
+
                                                 </ng-template>
                                                 <ng-template pTemplate="emptymessage">
                                                     <tr>
@@ -380,7 +428,7 @@
                                             <p-table id="myTable" #dt class="deneme" [value]="skill" dataKey="id"
                                                 styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
                                                 [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-                                                 [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+                                                [ngStyle]="{backgroundColor:'var(--blue-500)'}"
                                                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                                                 [filterDelay]="0">
 
@@ -446,7 +494,7 @@
                         <li class="list-group-item"><i class="fab fa-github"></i>{{candidate.githubAccount}}</li>
                         <li class="list-group-item"><i class="fab fa-linkedin"></i>{{candidate.linkedinAccount}}</li>
                     </ul>
-                
+
                 </div>
 
             </div>

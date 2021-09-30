@@ -1,6 +1,6 @@
 
       <p-card >
-        <ng-template style=" font-family: 'Gemunu Libre', sans-serif;" pTemplate="title">
+        <ng-template  pTemplate="title">
           Personal Languages Information
         </ng-template>
       
@@ -37,7 +37,7 @@
           <button 
           
         class="btn btn-outline-primary my-4"
-        (click)="add()"
+        (click)="add()" style="border: 0;"
       >
         Add 
       </button>
@@ -93,7 +93,7 @@
                   {{ language.languageLevel }}
                 </td>
                 <td>
-                  <button (click)="removeLanguages(language.id)" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                  <button (click)="removeLanguages(language.id)" style="border: 0;" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
                  </td>
 
 
