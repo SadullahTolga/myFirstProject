@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from 'src/app/models/candidate/candidate';
+import { JobAdvertisement } from 'src/app/models/jobAdvertisements/jobAdvertisements';
 import { CandidateService } from 'src/app/service/candidate.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { CandidateService } from 'src/app/service/candidate.service';
 export class FavoriteJAComponent implements OnInit {
   user:any
   candidate:Candidate
-  favoriteJA:Candidate[]=[]
+  favoriteJA:JobAdvertisement[]=[]
   constructor(private candidateService:CandidateService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {

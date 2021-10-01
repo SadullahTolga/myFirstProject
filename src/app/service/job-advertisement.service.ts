@@ -38,6 +38,12 @@ export class JobAdvertisementService {
     );
   }
 
+  getByCreatedAt(id:number): Observable<JobAdvertisementListResponse> {
+    return this.httpClient.get<JobAdvertisementListResponse>(
+      this.apiUrl + '/get/activeVerifiedByCreatedAt?sortDirection=' + id
+    );
+  }
+
   passiveJA(jobAdvertisement: JobAdvertisement): Observable<JobAdvertisement> {
     return this.httpClient.put<JobAdvertisement>(this.apiUrl + "update/activation?jobAdvId=" + jobAdvertisement.id +
       '&status=' +

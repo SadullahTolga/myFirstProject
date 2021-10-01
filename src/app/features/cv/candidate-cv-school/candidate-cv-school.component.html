@@ -11,34 +11,49 @@
         <form  [formGroup]="candidateSchoolForm" class="mt-3">
             <div class="row mb-3">
                 <div class="form-group col-md-12">
-        
-                    <select name="schoolId" id="schoolId" class="form-select" formControlName="schoolId">
-                        <option value="" disabled selected>Please select your school</option>
-                        <option *ngFor="let school of schools" value="{{ school.id }}">
-                            {{ school.name }}
-                        </option>
-                    </select>
-                    <div style="padding-top:10px ;"> <select name="departmentId" id="departmentId" class="form-select"
-                            formControlName="departmentId">
-                            <option value="" disabled selected>Please select your skill</option>
-                            <option *ngFor="let department of departments" value="{{ department.id }}">
-                                {{ department.name }}
-                            </option>
-                        </select></div>
-        
-                    <div style="padding-top:10px ;" class="input-group input-group-sm mb-3">
-                        <input type="text" formControlName="startYear" placeholder="Please enter your start year!"
-                            class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                    </div>
-                    <div class="input-group input-group-sm mb-3">
-                        <input type="text" formControlName="graduationYear" placeholder="Please enter your graduation year!"
-                            class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <select name="schoolId" id="schoolId" class="form-select" formControlName="schoolId">
+                    <option value="" disabled selected>Please select your school</option>
+                    <option *ngFor="let school of schools" value="{{ school.id }}">
+                        {{ school.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <div > <select name="departmentId" id="departmentId" class="form-select"
+                    formControlName="departmentId">
+                    <option value="" disabled selected>Please select your skill</option>
+                    <option *ngFor="let department of departments" value="{{ department.id }}">
+                        {{ department.name }}
+                    </option>
+                </select></div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div  class="input-group input-group-sm pt-2 mb-3">
+                    <input type="text" formControlName="startYear" placeholder="Please enter your start year!"
+                        class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+            <div class="col-md-6">
+                
+                <div class="input-group input-group-sm pt-2 mb-3">
+                    <input type="text" formControlName="graduationYear" placeholder="Please enter your graduation year!"
+                        class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+        </div>
+                   
+                  
+                  
         
         
                 </div>
             </div>
-            <button class="btn btn-outline-primary my-4" (click)="add()"> style="border: 0;"
+            <button class="btn btn-primary my-4" (click)="add()"> 
                 Add
             </button>
         
@@ -118,7 +133,7 @@
                         </td>
         
                         <td>
-                            <button (click)="removeSchool(school.id)" style="border: 0;" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                            <button (click)="removeSchool(school.id)" style="border: 0;" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                            </td>
        
        

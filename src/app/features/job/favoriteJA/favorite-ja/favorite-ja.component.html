@@ -13,7 +13,7 @@
             [globalFilterFields]="['employer.companyName', 'position.title', 'cities.name', 'workTime', 'deadline']">
             <ng-template pTemplate="caption">
               <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
-                List of Jobs
+                List of Favorite Jobs
         
               </div>
             </ng-template>
@@ -94,7 +94,7 @@
                   {{ activeJobAdvertisement.deadline | date: 'MMMM d, y'}}
                 </td>
                 <td>
-                 <button style="border: 0;" class="btn btn-outline-danger" (click)="removeFromJA(activeJobAdvertisement.id)"
+                 <button style="border: 0;" class="btn btn-danger" (click)="removeFromJA(activeJobAdvertisement.id)"
                  ><i class="fas fa-trash-alt"></i></button>
                 </td>
                

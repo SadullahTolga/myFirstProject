@@ -13,7 +13,9 @@ import { JobAdvertisementService } from 'src/app/service/job-advertisement.servi
 export class CandidateJobAdverstisementComponent implements OnInit {
   user: any
   candidate: Candidate
+  jobAdvertisment:JobAdvertisement[]=[]
   activeJobAdvertisement: JobAdvertisement[] = []
+  favoriteJA:Candidate[]=[]
 
   constructor(private jobAdvertisementService: JobAdvertisementService, private toastrService: ToastrService,
     private candidateService: CandidateService) { }
@@ -21,6 +23,7 @@ export class CandidateJobAdverstisementComponent implements OnInit {
   ngOnInit(): void {
     this.getActiveJA()
     this.getCandidateById()
+    this.getFavoriteJA()
     this.getUserById()
   }
 
@@ -30,6 +33,7 @@ export class CandidateJobAdverstisementComponent implements OnInit {
     })
   }
   addFavoriteJA(id:number) {
+    
     this.candidateService.addFavoriteJA(this.candidate, id).subscribe((response:any)=>{
       this.toastrService.success("successfully added to favorites")
       setTimeout(() => {
@@ -40,6 +44,23 @@ export class CandidateJobAdverstisementComponent implements OnInit {
       }))
   }
 
+  getFavoriteJA(){
+    this.candidateService.getCandidateById(this.getUserById()).subscribe((response:any)=>{
+      
+      this.favoriteJA=response.data.favoriteJobAdvertisements
+    
+    })
+  }
+
+  checkFavorite(id:number){
+    let favja= this.favoriteJA.find((r)=>r.id===id)
+    if (favja) {
+      
+      return false;
+    } else {
+      return true;
+    }
+  }
   
 
   getCandidateById(){

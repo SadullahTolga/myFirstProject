@@ -6,6 +6,7 @@ import { CandidateJobExperience } from 'src/app/models/candidate-job-experience/
 import { Candidate } from 'src/app/models/candidate/candidate';
 import { Cv } from 'src/app/models/cv/cv';
 import { Department } from 'src/app/models/department/departmen';
+import { Image } from 'src/app/models/Image/Image';
 import { Language } from 'src/app/models/language/language';
 import { School } from 'src/app/models/school/school';
 import { Skill } from 'src/app/models/skill/skill';
@@ -35,10 +36,13 @@ export class CvViewComponent implements OnInit {
   toUpdatedCv: any;
   updatedCvId: number;
   user: any
+  images: Image[] = []
+  profileImg: any
 
   constructor(private candidateService: CandidateService,
     private cvService: CvService, private formBuilder: FormBuilder, private toastrService: ToastrService,
-    private router: Router
+    
+
 
   ) { }
 
@@ -124,17 +128,14 @@ export class CvViewComponent implements OnInit {
 
 
 
-
-
-
-
-
   getCandidateById() {
     this.candidateService
       .getCandidateById(this.getByUserId())
       .subscribe((response: any) => {
         this.candidate = response.data;
         this.getCvById();
+        this.images = response.data.images
+        this.profileImg = this.images[this.images.length - 1]
       });
   }
 

@@ -1,0 +1,97 @@
+
+      <p-table id="myTable" #dt class="deneme" [value]="activeJobAdvertisement" dataKey="id"
+        styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [ngStyle]="{backgroundColor:'var(--blue-500)'}"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+        [globalFilterFields]="['employer.companyName', 'position.title', 'cities.name', 'workTime', 'deadline']">
+        <ng-template pTemplate="caption">
+          <div style=" font-family: 'Gemunu Libre', sans-serif;" class="table-header">
+            List of Jobs
+    
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr style=" font-family: 'Gemunu Libre', sans-serif;">
+            <th pSortableColumn="employer.companyName">
+              <div class="d-flex justify-content-between align-items-center">
+                Company Name
+                <p-sortIcon field="employer.companyName"></p-sortIcon>
+                <p-columnFilter type="text" field="employer.companyName" display="menu" class="ms-auto"></p-columnFilter>
+              </div>
+            </th>
+    
+            <th pSortableColumn="position.title">
+              <div class="d-flex justify-content-between align-items-center">
+                Position
+                <p-sortIcon field="position.title"></p-sortIcon>
+                <p-columnFilter type="text" field="position.title" display="menu" class="ms-auto"></p-columnFilter>
+              </div>
+            </th>
+    
+            <th pSortableColumn="cities">
+              <div class="d-flex justify-content-between align-items-center">
+                Cities
+                <p-sortIcon field="cities"></p-sortIcon>
+                <p-columnFilter type="text" field="cities.name" display="menu" class="ms-auto"></p-columnFilter>
+
+              </div>
+            </th>
+    
+            <th pSortableColumn="createdAt">
+              <div class="d-flex justify-content-between align-items-center">
+                Work Time
+                <p-sortIcon field="createdAt"></p-sortIcon>
+                <p-columnFilter type="text" field="workTime" display="menu" class="ms-auto"></p-columnFilter>
+
+              </div>
+            </th>
+    
+            <th pSortableColumn="deadline">
+              <div class="d-flex justify-content-between align-items-center">
+                Deadline
+                <p-sortIcon field="deadline"></p-sortIcon>
+    
+              </div>
+            </th>
+         
+    
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-activeJobAdvertisement>
+          <tr style=" font-family: 'Gemunu Libre', sans-serif;" class="p-selectable-row">
+            <td>
+              <span class="p-column-title">Company Name</span>
+              {{ activeJobAdvertisement.employer.companyName }}
+            </td>
+    
+            <td>
+              <span class="p-column-title">Position</span>
+              {{ activeJobAdvertisement.position.title }}
+            </td>
+    
+            <td>
+              <span class="p-column-title">Cities</span>
+              {{ activeJobAdvertisement.city.name }}
+            </td>
+    
+            <td>
+              <span class="p-column-title">Work Time</span>
+              {{ activeJobAdvertisement.workTime  }}
+            </td>
+    
+            <td>
+              <span class="p-column-title">Deadline</span>
+              {{ activeJobAdvertisement.deadline | date: 'MMMM d, y'}}
+            </td>
+            <td>
+          
+           
+    
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">No jobs found.</td>
+          </tr>
+        </ng-template>
+      </p-table>

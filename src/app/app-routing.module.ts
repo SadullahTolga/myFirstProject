@@ -21,8 +21,10 @@ import { EmployerUpdateComponent } from './features/employees/employerUpdate/emp
 import { CandidateJobAdverstisementComponent } from './features/job/candidateJobAdvertisement/candidate-job-adverstisement/candidate-job-adverstisement.component';
 import { FavoriteJAComponent } from './features/job/favoriteJA/favorite-ja/favorite-ja.component';
 import { JobAdvertisementAddComponent } from './features/job/jobAdvertisementAdd/job-advertisement-add/job-advertisement-add.component';
+import { PublicJaComponent } from './features/job/public-JA/public-ja/public-ja.component';
 import { UnverifiedJAComponent } from './features/job/unverifiedJobAdvertisement/unverified-ja/unverified-ja.component';
 import { UserLoginComponent } from './features/login/userLogin/user-login-employer/user-login.component';
+import { FavoriteJobComponent } from './features/navi/tinjob/home/favorite-job/favorite-job/favorite-job.component';
 import { HomeComponent } from './features/navi/tinjob/home/home/home.component';
 import { TinjobComponent } from './features/navi/tinjob/tinjob/tinjob/tinjob.component';
 import { SchoolComponent } from './features/school/school/school.component';
@@ -52,6 +54,8 @@ const routes: Routes = [
   { path: "user-login", component: UserLoginComponent },
   { path: "department", component: DepartmentAddComponent },
   { path: "employer", component: EmployeesComponent, canActivate: [CandidateSkillGuard] },
+  {path: "public-JA",component:PublicJaComponent},
+  {path:"favJa",component:FavoriteJobComponent,canActivate:[CandidateAccountGuard]},
   {path:"employerInformation",component:EmployerUpdateComponent,canActivate:[EmployerUpdateGuard]},
   { path: "candidate", component: CandidateComponent,canActivate:[PositionGuard] },
   { path: "job-advertisement", component: JobAdvertisementAddComponent ,canActivate:[PositionGuard] },
@@ -72,6 +76,7 @@ const routes: Routes = [
   {path:"unverifiedJA",component:UnverifiedJAComponent,canActivate:[SystemEmployerGuard]},
   {path:"employerUpdateVerified",component:EmployerUpdateVerifiedComponent,canActivate:[SystemEmployerGuard]},
   {path:"systemEmployerUpdate",component:SystemEmployerUpdateComponent,canActivate:[SystemEmployerGuard]},
+  
   { path: "home", component: HomeComponent },
   { path: "school", component: SchoolComponent },
   { path: "tinjob", component: TinjobComponent }

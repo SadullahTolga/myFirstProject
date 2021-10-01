@@ -1,0 +1,52 @@
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="feature">
+            <b>Featured job postings</b><button routerLink="/public-JA" style="font-size: x-small;" class="btn btn-sm ms-2">All job offer<i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="carousel-item active">
+           
+            <div class="row ">
+                
+                <div class="card me-2 col-md-3" *ngFor="let job of jobAdvertisements | slice: 0:5"
+                    style="width: 18rem;">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{job.employer.companyName}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{job.city.name}}</h6>
+                        <h6 class="card-text">{{job.position.title}}</h6>
+
+
+                        <p href="#" class="card-text">{{job.workModel}}</p>
+                        <p href="#" class="card-text"><i
+                                class="fas fa-hand-point-right"></i>{{job.employer.phoneNumber}}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="row">
+                <div class="card me-2 col-md-3" *ngFor="let job of jobAdvertisements | slice: 0:4"
+                    style="width: 18rem;">
+                    <div class="card-body ">
+                        <h5 class="card-title">{{job.employer.companyName}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{job.city.name}}</h6>
+                        <h6 class="card-text">{{job.position.title}}</h6>
+
+
+                        <p href="#" class="card-text"><i class="fas fa-hand-point-right"></i>{{job.workModel}}</p>
+                        <p href="#" class="card-text"><i
+                                class="fas fa-hand-point-right"></i>{{job.employer.phoneNumber}}</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <button  class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span  class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+</div>

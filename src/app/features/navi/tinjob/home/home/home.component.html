@@ -3,7 +3,7 @@
     class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow">
     <div  class="col-lg-7 p-3 p-lg-5 pt-lg-3  ">
       <h1 class="display-5 fw-bold lh-1">WELCOME BACK
-        <b>{{ getUserInfo().data.email }}</b>
+        <b>{{ loggedUser.firstName }} {{ loggedUser.lastName }}</b>
       </h1>
       
       <p class="lead ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec elit gravida,
@@ -19,12 +19,33 @@
         <button style="color: black; " type="button" routerLink="/cvInformation"
           class="btn btn-outline-light btn-md px-4 mt-1 fw-bold">
           Candidate CV Transactions</button>
-        <button style="color: black; " type="button" routerLink="/cv-view"
-          class="btn btn-outline-light btn-md px-4 mt-1 fw-bold">
-          Candidate CV View</button>
+        
       </div>
     </div>
   </div>
+
+  <div >
+    <app-favorite-job></app-favorite-job>
+  </div>
+
+  <div class="firstClass">
+    <app-position-hober></app-position-hober>
+  </div>
+
+  <section id="footer">
+    <div style="padding-bottom: 0px;" class="socialAccount ">
+      <i class="me-1 fab fa-instagram fa-3x"></i>
+      <i class="me-1 fab fa-facebook-square fa-3x"></i>
+      <i class="me-1 fab fa-twitter-square fa-3x"></i>
+      <i class="me-1 fab fa-google-play fa-3x"></i>
+      <i class=" me-1 fab fa-apple fa-3x"></i>
+      <div style="text-align: center; font-family: 'Gemunu Libre', sans-serif; padding-bottom: 0px;"> Human Resources Management System within
+        Etiya Academy
+        developed.</div>
+    </div>
+    </section>
+    
+
 </div>
 
 <div *ngIf="checkEmployer()">
@@ -32,14 +53,14 @@
     class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow">
     <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
       <h1 class="display-5 fw-bold lh-1">WELCOME BACK
-        <b>{{ getUserInfo().data.email }}</b>
+        <b>{{ loggedUser.companyName }}</b>
       </h1>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec elit gravida,
         ultrices
         arcu vel, tristique leo. Sed sed malesuada justo. Nullam non orci id leo ultrices bibendum nec tristique
         metus. Maecenas convallis varius metus eu ullamcorper.</p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-        <button style="color: black;" type="button" routerLink="/employer"
+        <button style="color: black;" type="button" routerLink="/department-add"
           class="btn btn-outline-light btn-md px-4 me-md-2 fw-bold mt-1">Position</button>
         <button style="color: black; " type="button" routerLink="/candidate"
           class="btn btn-outline-light btn-md px-4 mt-1 fw-bold">
@@ -53,6 +74,23 @@
       </div>
     </div>
   </div>
+  <div class="firstClass">
+    <app-position-hober></app-position-hober>
+  </div>
+
+  <section id="footer">
+    <div style="padding-bottom: 0px;" class="socialAccount ">
+      <i class="me-1 fab fa-instagram fa-3x"></i>
+      <i class="me-1 fab fa-facebook-square fa-3x"></i>
+      <i class="me-1 fab fa-twitter-square fa-3x"></i>
+      <i class="me-1 fab fa-google-play fa-3x"></i>
+      <i class=" me-1 fab fa-apple fa-3x"></i>
+      <div style="text-align: center; font-family: 'Gemunu Libre', sans-serif; padding-bottom: 0px;"> Human Resources Management System within
+        Etiya Academy
+        developed.</div>
+    </div>
+    </section>
+    
 </div>
 
 <div *ngIf="checkSystemEmployer()">
@@ -60,7 +98,7 @@
     class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow">
     <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
       <h1 class="display-5 fw-bold lh-1">WELCOME BACK
-        <b>{{ getUserInfo().data.email }}</b>
+        <b>{{ loggedUser.firstName }} {{ loggedUser.lastName }}</b>
       </h1>
       <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec elit gravida,
         ultrices
@@ -72,46 +110,41 @@
         <button style="color: black; " type="button" routerLink="/employerUpdateVerified"
           class="btn btn-outline-light btn-md px-4 mt-1 fw-bold">
           Unverified Employer Update</button>
+          <button style="color: black; " type="button" routerLink="/systemEmployerUpdate"
+          class="btn btn-outline-light btn-md px-4 mt-1 fw-bold">
+          Your Personal Information Update</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="unverifiedJA.length>0" class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        
+        <strong class="me-auto">Notification<button routerLink="/unverifiedJA" class="btn btn-sm btn-ligth"><i class="fas fa-arrow-right"></i></button></strong>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+       {{unverifiedJA.length}}  have a unapproved employer update notification
+      </div>
+    </div>
+  </div>
+  <div *ngIf="unverifiedEmployers.length>0" class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        
+        <strong class="me-auto">Notification<button routerLink="/employerUpdateVerified" class="btn btn-sm btn-ligth"><i class="fas fa-arrow-right"></i></button></strong>
+        
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+       {{unverifiedEmployers.length}}   have a unapproved employer update notification 
       </div>
     </div>
   </div>
 </div>
+ 
 
 
 
-<div class="container ">
-  <div style=" font-family: 'Gemunu Libre', sans-serif;" class="row row-cols-1 row-cols-md-3 pt-2 g-4 ">
-    <div class="quotes">
-      <div class="card">
-        <div class="box box1">
-          <p>The first step toward success is taken when you refuse to be a captive of the environment in which you
-            first find yourself. </p>
-          <h2>Mark Caine</h2>
-        </div>
 
-      </div>
-      <div class="card">
-        <div class="box box1">
-          <p>The first step toward success is taken when you refuse to be a captive of the environment in which you
-            first find yourself. </p>
-          <h2>Mark Caine</h2>
-        </div>
-
-      </div>
-      <div class="card">
-        <div class="box box1">
-          <p>The first step toward success is taken when you refuse to be a captive of the environment in which you
-            first find yourself. </p>
-          <h2>Mark Caine</h2>
-        </div>
-
-      </div>
-
-
-    </div>
-  </div>
-</div>
-
-<div style="text-align: center; font-family: 'Gemunu Libre', sans-serif;"> Human Resources Management System within
-  Etiya Academy
-  developed.</div>

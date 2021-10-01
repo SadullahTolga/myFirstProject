@@ -17,10 +17,12 @@ export class EmplooyesService {
 
   }
 
- 
+  getUnverified():Observable<Employer[]>{
+    return this.httpClient.get<Employer[]>(this.apiUrl+"get/unverified")
+  }
 
-  addEmplooyes(emplooyesId: Employer): Observable<Employer[]> {
-    return this.httpClient.post<Employer[]>(this.apiUrl+"add" , emplooyesId)
+  addEmplooyes(emplooyesId: Employer): Observable<Employer> {
+    return this.httpClient.post<Employer>(this.apiUrl+"add" , emplooyesId)
   }
   getEmplooyesId(id:number):Observable<Employer[]>{
     return  this.httpClient.get<Employer[]>(this.apiUrl+"get/byId?emplId="+id)

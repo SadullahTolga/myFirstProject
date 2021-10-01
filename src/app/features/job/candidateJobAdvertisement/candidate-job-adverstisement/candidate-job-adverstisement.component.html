@@ -60,7 +60,7 @@
         
                   </div>
                 </th>
-                <th pSortableColumn="deadline">
+                <th pSortableColumn="">
                 
                 </th>
            
@@ -94,7 +94,16 @@
                   {{ activeJobAdvertisement.deadline | date: 'MMMM d, y'}}
                 </td>
                 <td>
-                 <button style="border: 0;" class="btn btn-outline-primary" (click)="addFavoriteJA(activeJobAdvertisement.id)"><i class="fas fa-check"></i></button>
+                  <div  *ngIf="checkFavorite(activeJobAdvertisement.id)==true" >
+                    <button  style="border: 0;" class="btn btn-primary"
+                    (click)="addFavoriteJA(activeJobAdvertisement.id)"><i class="far fa-heart"></i></button>
+  
+                  </div>
+                  <div *ngIf="checkFavorite(activeJobAdvertisement.id)==false">
+                    <button  style="border: 0;" class="btn btn-outline-primary"
+                    (click)="addFavoriteJA(activeJobAdvertisement.id)"><i class="fas fa-heart"></i></button>
+                  </div>
+                
                 </td>
                
         

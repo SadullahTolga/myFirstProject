@@ -12,8 +12,7 @@ import { PositionService } from 'src/app/service/positionService';
 })
 export class DepartmentAddComponent implements OnInit {
   positions: Position[] = []
-  totalRecords: number
-  page: number = 1
+
   constructor(private  positionService: PositionService) { }
 
   ngOnInit(): void {
@@ -22,7 +21,7 @@ export class DepartmentAddComponent implements OnInit {
 
   getPositions() {
     this.positionService.getPosition().subscribe((response:any )=> { this.positions = response.data
-      this.totalRecords = response.data.length })
+       })
   }
 
   

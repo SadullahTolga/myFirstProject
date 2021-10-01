@@ -19,7 +19,8 @@ export class UserLoginComponent implements OnInit {
     private toastrService:ToastrService,
     private router:Router,
     private formBuilder:FormBuilder,
-    private userService:UserService) { }
+    private userService:UserService,
+    ) { }
 
   ngOnInit(): void {
     this.createLoginForm()
@@ -42,7 +43,7 @@ export class UserLoginComponent implements OnInit {
       (response:any) => {
         this.toastrService.success('Enter the system');
         localStorage.setItem('user', JSON.stringify(response));
-        
+        this.router.navigate(["home"])
         
       },
       (responseError) => {
@@ -51,7 +52,7 @@ export class UserLoginComponent implements OnInit {
           message.replace(/{|}|"/gi, ''),
           'Error'
         );
-      }
+      this.router.navigate(["user-login"])}
     );
     
      

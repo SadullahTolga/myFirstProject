@@ -12,31 +12,39 @@
       
       
       <form style=" font-family: 'Gemunu Libre', sans-serif;" [formGroup]="cvForm">
-          <label>Select the language you want to add </label>
-          <select  style=" font-family: 'Gemunu Libre', sans-serif;" name="languageId"
-          id="languageId"
-          class="form-select"
-          formControlName="languageId" class="form-select form-select-sm" aria-label=".form-select-sm example">
-              <option value="" disabled selected>Choose your language</option>
-              <option *ngFor="let language of languages"  value="{{language.id}}">{{language.name}}</option>
-          </select>
-          <div style="padding-top: 10px;">
-          <select style=" font-family: 'Gemunu Libre', sans-serif;"  name="languageLevel"
-          id="languageLevel"
-          class="form-select"
-          formControlName="languageLevel" class="form-select form-select-sm" aria-label=".form-select-sm example">
-              <option value="" disabled selected>Choose your language level</option>
-              <option >C2</option>
-              <option >C1</option>
-              <option >B2</option>
-              <option >B1</option>
-              <option >A2</option>
-              <option >A1</option>
-          </select>
-      </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Select the language you want to add </label>
+            <select  style=" font-family: 'Gemunu Libre', sans-serif;" name="languageId"
+            id="languageId"
+            class="form-select"
+            formControlName="languageId" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option value="" disabled selected>Choose your language</option>
+                <option *ngFor="let language of languages"  value="{{language.id}}">{{language.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label>Select the your language level </label>
+              <select style=" font-family: 'Gemunu Libre', sans-serif; "  name="languageLevel"
+              id="languageLevel"
+              class="form-select"
+              formControlName="languageLevel" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                  <option value="" disabled selected>Choose your language level</option>
+                  <option >C2</option>
+                  <option >C1</option>
+                  <option >B2</option>
+                  <option >B1</option>
+                  <option >A2</option>
+                  <option >A1</option>
+              </select>
+          </div>
+          </div>
+        
+         
+          
           <button 
           
-        class="btn btn-outline-primary my-4"
+        class="btn btn-primary my-4"
         (click)="add()" style="border: 0;"
       >
         Add 
@@ -93,7 +101,7 @@
                   {{ language.languageLevel }}
                 </td>
                 <td>
-                  <button (click)="removeLanguages(language.id)" style="border: 0;" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                  <button (click)="removeLanguages(language.id)" style="border: 0;" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                  </td>
 
 

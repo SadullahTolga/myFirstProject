@@ -3,11 +3,11 @@
         <div class="col-md-4">
             <app-sidemenu></app-sidemenu>
         </div>
-        <div style=" font-family: 'Gemunu Libre', sans-serif;" class="col-md-6 pt-2">
+        <div style=" font-family: 'Gemunu Libre', sans-serif;" class="col-md-6 pt-4">
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button style="font-weight: inherit;" class="accordion-button btn-outline-primary" type="button"
+                        <button style="font-weight: inherit;" class="accordion-button btn-primary" type="button"
                             data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                             aria-controls="panelsStayOpen-collapseOne">
 
@@ -103,7 +103,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button style="font-weight: bolder;"
-                                            class="accordion-button btn-outline-primary" type="button"
+                                            class="accordion-button btn-primary" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
                                             aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                             Candidate Personal Information
@@ -238,7 +238,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button style="font-weight: bolder;"
-                                            class="accordion-button btn-outline-primary" type="button"
+                                            class="accordion-button btn-primary" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
                                             aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                             Candidate Job Information
@@ -342,7 +342,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button style="font-weight: bolder;"
-                                            class="accordion-button btn-outline-primary" type="button"
+                                            class="accordion-button btn-primary" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
                                             aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                             Candidate Languages Information
@@ -416,7 +416,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                                         <button style="font-weight: bolder;"
-                                            class="accordion-button btn-outline-primary" type="button"
+                                            class="accordion-button btn-primary" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
                                             aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                             Candidate Skill Information
@@ -479,20 +479,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 pt-2">
+        <div class="col-md-2 pt-4">
             <div class="card" style="width: 18rem;font-family: 'Gemunu Libre', sans-serif;">
-                <img *ngIf="user.profileImg" class=" m-2 border border-5" src="{{ user.profileImg?.imageUrl }}" />
-                <img *ngIf="!user.profileImg" class=" m-2 border border-5"
-                    src="http://res.cloudinary.com/cloudinary73/image/upload/v1632614121/ahzjkccwtyec64zi4eqj.jpg" />
+                <img class=" m-2 border border-5" src="{{ profileImg.imageUrl }}" />
+               
                 <div class="card-body">
                     <h5 class="card-title">Personal Information</h5>
                     <ul class="list-group list-group-flush">
 
-                        <li class="list-group-item"> <i class="fas fa-user"></i>{{candidate.firstName}}
+                        <li class="list-group-item"><i class="fas fa-user me-1"></i>{{candidate.firstName}}
                             {{candidate.lastName}}</li>
-                        <li class="list-group-item"><i class="fas fa-envelope "></i>{{candidate.email}}</li>
-                        <li class="list-group-item"><i class="fab fa-github"></i>{{candidate.githubAccount}}</li>
-                        <li class="list-group-item"><i class="fab fa-linkedin"></i>{{candidate.linkedinAccount}}</li>
+                        <li class="list-group-item"><i class="fas fa-envelope me-1 "></i>{{candidate.email}}</li>
+                        <li class="list-group-item"><i class="fab fa-github me-1"></i>{{candidate.githubAccount}}</li>
+                        <li class="list-group-item"><i class="fab fa-linkedin me-1"></i>{{candidate.linkedinAccount}}</li>
                     </ul>
 
                 </div>

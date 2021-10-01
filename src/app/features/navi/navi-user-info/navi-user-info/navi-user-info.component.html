@@ -1,6 +1,38 @@
 
-
+<div *ngIf="checkCandidate()">
 <div class="nav-item">
-    <b >{{ getUserInfo().data.email }}</b>
-    <button class="btn btn-sm btn-outline-danger ms-2" routerLink="/tinjob" (click)="signOut()">Logout</button>
+    <b style="font-size: 26px;" class="me-1" >{{ loggedUser.firstName}} {{ loggedUser.lastName}}</b>
+    <button routerLink="/candidate-add" class="btn btn-danger ms-2  mb-2  "  routerLink="/tinjob"
+    style="box-sizing: border-box;border: 0; 
+           border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
+             (click)="signOut()" aria-expanded="false">
+          Logout
+         </button>
 </div>
+
+</div>
+<div *ngIf="checkEmployer()">
+    <div class="nav-item">
+        <b style="font-size: 26px;"  >{{ loggedUser.companyName}}</b>
+        <button routerLink="/candidate-add" class="btn btn-danger ms-2 mb-2  "  routerLink="/tinjob"
+        style="box-sizing: border-box;border: 0; 
+               border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
+                 (click)="signOut()" aria-expanded="false">
+              Logout
+             </button>
+    </div>
+    
+    </div>
+    <div *ngIf="checkSystemEmployer()">
+        <div class="nav-item">
+            <b style="font-size: 26px;" class="me-1" >{{ loggedUser.firstName}} {{ loggedUser.lastName}}</b>
+            <button routerLink="/candidate-add" class="btn btn-danger  ms-2 mb-2  "  routerLink="/tinjob"
+            style="box-sizing: border-box;border: 0; 
+                   border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
+                     (click)="signOut()" aria-expanded="false">
+                  Logout
+                 </button>
+        </div>
+        
+        </div>
+   

@@ -55,6 +55,10 @@ import { EmployerUpdateComponent } from './features/employees/employerUpdate/emp
 import { EmployerUpdateVerifiedComponent } from './features/systemEmployer/employerUpdateVerified/employer-update-verified/employer-update-verified.component';
 import { SystemEmployerUpdateComponent } from './features/systemEmployer/systemEmployerUpdate/system-employer-update/system-employer-update.component';
 import { FavoriteJAComponent } from './features/job/favoriteJA/favorite-ja/favorite-ja.component';
+import { JobCardComponent } from './features/navi/tinjob/job-card/job-card/job-card.component';
+import { PositionHoberComponent } from './features/navi/tinjob/position-hover/position-hober/position-hober.component';
+import { PublicJaComponent } from './features/job/public-JA/public-ja/public-ja.component';
+import { FavoriteJobComponent } from './features/navi/tinjob/home/favorite-job/favorite-job/favorite-job.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +95,10 @@ import { FavoriteJAComponent } from './features/job/favoriteJA/favorite-ja/favor
     EmployerUpdateVerifiedComponent,
     SystemEmployerUpdateComponent,
     FavoriteJAComponent,
+    JobCardComponent,
+    PositionHoberComponent,
+    PublicJaComponent,
+    FavoriteJobComponent,
     
 
     

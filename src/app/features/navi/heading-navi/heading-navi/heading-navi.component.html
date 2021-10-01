@@ -53,27 +53,22 @@
 
         </div>
         <ng-template #notLoginedUser>
-          <button routerLink="/user-login" class="btn btn-outline-primary " style="box-sizing: border-box;border: 0; 
+          <button routerLink="/user-login" class="btn btn-primary me-1 " style="box-sizing: border-box;border: 0; 
             border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
-            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            data-bs-toggle="dropdown" aria-expanded="false">
             Login
           </button>
-          <div class="dropdown me-2">
-            <button class="btn btn-outline-primary " style="box-sizing: border-box;border: 0; border-radius: 24px;font-family:
-             'Gemunu Libre', sans-serif; width: auto; height: auto;font-size: x-large; " type="button"
-              id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Sign in </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" style="box-sizing: 
-              border-box;border: 0; border-radius: 24px;font-family: 'Gemunu Libre', sans-serif; font-size: x-large; "
-                  routerLink="/candidate-add" href="#">Candidate</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" style="box-sizing: border-box;border: 0; border-radius: 24px;font-family:
-               'Gemunu Libre', sans-serif; font-size: x-large; " routerLink="/employee-add" href="#">Employer</a></li>
-            </ul>
-          </div>
+          <button routerLink="/candidate-add" class="btn btn-secondary me-1 " style="box-sizing: border-box;border: 0; 
+            border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Candidate Sign in
+          </button>
+          <button routerLink="//employee-add" class="btn btn-secondary me-1 " style="box-sizing: border-box;border: 0; 
+            border-radius: 24px; font-family: 'Gemunu Libre', sans-serif; font-size: x-large;" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Employer Sign in
+          </button>
+        
         </ng-template>
       </div>
     </div>

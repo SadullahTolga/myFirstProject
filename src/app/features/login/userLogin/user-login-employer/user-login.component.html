@@ -1,5 +1,5 @@
 
-<div style=" font-family: 'Gemunu Libre', sans-serif;" class="containt">
+<div class="containt">
   <div class="row">
       <body>
           <div class="login-root">
@@ -67,11 +67,12 @@
                           </label>
                         </div>
                         <div class="field padding-bottom--24">
-                          <input  type="submit" style="color: black;" routerLink="/home" (click)="login()" name="submit" placeholder="Sign in" value="Sign in">                   
+                          <input  type="submit" style="color: black;"
+                            (click)="login()" name="submit" placeholder="Sign in" value="Sign in">   
+                           <input  type="submit" style="color: black;" routerLink="/tinjob"  name="submit" placeholder="Sign in" value="Back">                   
+                
                          </div>
-                         <div class="field padding-bottom--24">
-                          <input  type="submit" style="color: black;" routerLink="/tinjob"  name="submit" placeholder="Sign in" value="Back">                   
-                         </div>
+                         
                         <div class="field">
                           <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
                         </div>
@@ -79,7 +80,9 @@
                     </div>
                   </div>
                   <div class="footer-link padding-top--24">
-                    <span>Don't have an account? <a href="">Sign up</a></span>
+                    <span>Don't have an account? <a routerLink="/candidate-add">Sign up for Candidate</a></span>
+                    <span>Don't have an account? <a routerLink="/employee-add">Sign up for Employer</a></span>
+
                     <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
                       <span><a href="#">Contact</a></span>
                       <span><a href="#">Privacy & terms</a></span>

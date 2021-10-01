@@ -101,17 +101,18 @@ export class SidemenuComponent implements OnInit {
                   icon:'pi pi-fw pi-file',
                   routerLink:"/activatedJobAdvertisement"
                },
+               {
+                  label:'Favorite Job Advertisement',
+                  icon:'pi pi-fw pi-file ',
+                  routerLink:"/favoriteJA"
+               }
             
             
               
    
             ]
          },
-         {
-            label:'Favorite Job Advertisement',
-            icon:'pi pi-fw pi-chevron-right ',
-            routerLink:"/favoriteJA"
-         },
+         
         
          
 {
@@ -119,12 +120,12 @@ export class SidemenuComponent implements OnInit {
    icon:'pi pi-fw  pi-file',
    items:[ 
       {label:'Candidate CV Transactions',
-      icon:'pi pi-fw pi-align-justify',
+      icon:'pi pi-fw pi-file ',
       routerLink:"/cvInformation"
 
       },
       {label:'Candidate CV View',
-      icon:'pi pi-fw pi-align-justify',
+      icon:'pi pi-fw pi-file ',
       routerLink:"/cv-view"
       },
       
@@ -154,6 +155,12 @@ export class SidemenuComponent implements OnInit {
       label:'Unverified Employer Update',
       icon:'pi pi-fw pi-align-justify',
       routerLink:"/employerUpdateVerified"
+     
+     },
+     {
+      label:'Your Personal Information Update',
+      icon:'pi pi-fw pi-align-justify',
+      routerLink:"/systemEmployerUpdate"
      
      }
              
