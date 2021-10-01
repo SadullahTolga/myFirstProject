@@ -85,6 +85,7 @@
                           [disabled]="!jobAdvertisementForm.valid"  (click)="addJobAdvertisement()" name="submit" placeholder="Add" value="Continue">Add</button>
 
                     </div>
+                    <small *ngIf="jobAdvertisementForm.valid" class="text-danger mt-0 mb-1">*İş ilanınız sistem çalışanı tarafından onaylandıktan sonra yayına alınacaktır.</small>
 
                 </form>
             </div>

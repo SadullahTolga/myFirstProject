@@ -128,6 +128,10 @@ export class SidemenuComponent implements OnInit {
       icon:'pi pi-fw pi-file ',
       routerLink:"/cv-view"
       },
+      {label:'Candidate Add',
+      icon:'pi pi-fw pi-file ',
+      routerLink:"/cv"
+      },
       
       
       

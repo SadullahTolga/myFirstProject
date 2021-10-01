@@ -41,9 +41,6 @@ export class CvViewComponent implements OnInit {
 
   constructor(private candidateService: CandidateService,
     private cvService: CvService, private formBuilder: FormBuilder, private toastrService: ToastrService,
-    
-
-
   ) { }
 
   ngOnInit(): void {
